@@ -1,4 +1,4 @@
 # backEndStudy
 backEndStudy
 
-현진 & 이사
+현진 & 이삭
