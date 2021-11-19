@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="callSettersOnNulls" value="true" />
+		<!-- NULL이면 ““(공백)으로 받게되는데 이것을 NULL로 그대로 받고싶을 때가 있다. 이때는 mybatis-config.xml에 
+			설정해 해결 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- SQL의 언더바 변수를 VO(DTO.DAO)의 카멜표기법 (testTest)로 바꿔줌 -->
+	</settings>
+
+	<mappers>
+		<mapper resource="mapper/login_query.xml" />
+		<mapper resource="mapper/user_query.xml" />
+	</mappers>
+</configuration>

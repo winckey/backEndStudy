@@ -6,7 +6,7 @@ import com.my.house.dto.UserDto;
 
 @Mapper
 public interface LoginDao {
-	public UserDto login(String userEmail);
+	public UserDto login(String userId);
 }
 // @Mapper는 매퍼 등록을 위한 애너테이션으로 사용
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.my.house.dao.LoginDao">
+<!--<mapper>의 namespace 속성은 자바의 패키지처럼 여러개의 SQL문을 묶는 용도-->
+<!-- MyBatis 사용 목적 중 하나는 DAO로부터 SQL문을 분리하는 것이다.-->
+<!--분리된 SQL문은 SQL mapper 파일에 작성하며 DAO에서는 SqlSession 객체가 SQL mapper 파일을 참조 -->
+
+	<select id="login" parameterType="string" resultType="com.my.house.dto.UserDto">
+		SELECT USER_NO, USER_NAME, USER_ID, USER_PASSWORD, USER_EMAIL,USER_PHONE ,USER_POSITON , USER_ProfileImage_Url
+		FROM   USER 
+		WHERE  USER_ID = #{userId};
+	</select>
+<!-- id	          :   각 SQL문을 구분
+     resultType   :   SELECT문 실행 결과를 담을 객체
+                   	   패키지 이름을 포함한 클래스 이름 또는 객체 alias 지정
+     resultMap	  :   SELECT문 실행 결과를 담을 객체를 resultMap으로 지정
+                      <resultMap>을 따로 선언해줘야 한다.
+                      resultType과 resultMap 중 하나를 택해서 설정한다.
+     parameterType:   이 속성에 지정한 객체의 프로퍼티값이 SQL문의 입력 파라미터에 지정된다. -->
+</mapper>

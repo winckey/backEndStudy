@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,34 +25,34 @@ import com.my.house.service.LoginService;
 	///ajax를 사용하는데 이 same-origin policy를 따르지 않을 경우, 오류가 나면서 api 사용이 거절된다.
 	///보안 이슈 발생 --- 추가 공부
 	
-	@RestController // controller + requsetBody
-//	/// @Bean
-//	  @Bean은 개발자가 직접 제어가 불가능한 외부 라이브러리를 사용할 때 사용한다.
-//	  @Configuration을 선언한 클래스 내부에서 사용해준다.
-//	  즉, 개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만든다.
-//	 @Component : scan-auto-detection과 dependency injection을 사용하기 위해서 사용되는 가장 기본 어노테이션이다.
-//	 @Component는 개발자가 직접 작성한 Class를 Bean으로 등록 할 수 있게 만들어 준다.
-//	 즉 개발자가 작성한 class를 Bean으로 만든다.
-
-//  requsetBody : restApi를 사용하기 위한 어노테이션	
-//  controller(여기서만 requestmapping사용가능) : @RequestMapping => urlmapping 에 사용	
-	
-	
-// rest  : REST는 분산 시스템 설계를 위한 아키텍처 스타일이다.(여러 api에서 사용하기 위한 하나의 약속)
-//		     어떤 다른 모듈 또는 애플리케이션들이라도 RESTful API를 통해 상호간에 통신
-//REST의 구성 요소
-//HTTP URI = 자원 => /bords
-//HTTP Method = 행위 =>/get
-//MIME Type = 표현 방식  => json/Content-type
-	//ex)HTTP/1.1 200 OK
-//		 Content-Type : application/json-patch+json
-// uri 와 url
-//	Uniform Resource Identifier, Uniform Resource Locator
-//	REST에서는 모든 것을 Resource로 표현한다. 그리고 그 자원은 유일한 것을 나타낸다. Identifier, 식별자라는 것이다.
-//	반면에 과거의 웹에서는 Identifier의 개념이 따로 필요없었다. html같은 파일들을 주고 받았기 때문에 파일의 위치를 가리키는 Locator를 썼다고 이해하면 된다.
-//	URI가 파일뿐만 아니라 여러 자원들 까지도 포함하는 개념으로 이해할 수 있다.
+	@RestController 
 	public class LoginController {
-	
+		// controller + requsetBody
+//		/// @Bean
+//		  @Bean은 개발자가 직접 제어가 불가능한 외부 라이브러리를 사용할 때 사용한다.
+//		  @Configuration을 선언한 클래스 내부에서 사용해준다.
+//		  즉, 개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만든다.
+//		 @Component : scan-auto-detection과 dependency injection을 사용하기 위해서 사용되는 가장 기본 어노테이션이다.
+//		 @Component는 개발자가 직접 작성한 Class를 Bean으로 등록 할 수 있게 만들어 준다.
+//		 즉 개발자가 작성한 class를 Bean으로 만든다.
+
+	//  requsetBody : restApi를 사용하기 위한 어노테이션	
+	//  controller(여기서만 requestmapping사용가능) : @RequestMapping => urlmapping 에 사용	
+		
+		
+	// rest  : REST는 분산 시스템 설계를 위한 아키텍처 스타일이다.(여러 api에서 사용하기 위한 하나의 약속)
+//			     어떤 다른 모듈 또는 애플리케이션들이라도 RESTful API를 통해 상호간에 통신
+	//REST의 구성 요소
+	//HTTP URI = 자원 => /bords
+	//HTTP Method = 행위 =>/get
+	//MIME Type = 표현 방식  => json/Content-type
+		//ex)HTTP/1.1 200 OK
+//			 Content-Type : application/json-patch+json
+	// uri 와 url
+//		Uniform Resource Identifier, Uniform Resource Locator
+//		REST에서는 모든 것을 Resource로 표현한다. 그리고 그 자원은 유일한 것을 나타낸다. Identifier, 식별자라는 것이다.
+//		반면에 과거의 웹에서는 Identifier의 개념이 따로 필요없었다. html같은 파일들을 주고 받았기 때문에 파일의 위치를 가리키는 Locator를 썼다고 이해하면 된다.
+//		URI가 파일뿐만 아니라 여러 자원들 까지도 포함하는 개념으로 이해할 수 있다.
 		@Autowired
 		LoginService service;
 		
@@ -66,12 +67,13 @@ import com.my.house.service.LoginService;
 //		클라이언트에서 서버로 요청 본문을 자바 객체로 conversion : json형태의 객체를 넘겨받을때 사용
 		
 		// json request (body /payload)
+		
 		// request content type : application/json
 		@PostMapping(value="/login")
 		public ResponseEntity<UserDto> login(@RequestBody UserDto dto, HttpSession session){ // session
 			//// responsebody -> 비동기 처리 할때 사용  [응답 본문], 자바객체를 http요청에 실어 보낼때 사용함
 			// //requestBody -> 요청 본문을 자바 객체로 conversion : json형태의 객체를 넘겨받을때 사용
-			
+			System.out.println("login controller : "+ dto);
 			UserDto userDto = service.login(dto);
 			if( userDto != null ) {
 				session.setAttribute("userDto", userDto);
@@ -89,6 +91,16 @@ import com.my.house.service.LoginService;
 		
 //ResponseEntity 를 사용할 때, Constructor 를 사용하기보다는 Builder 를 활용하는 것을 권장하고 있습니다. 
 //그 이유는 숫자로 된 상태 코드를 넣을 때, 잘못된 숫자를 넣을 수 있는 실수 때문
+		
+		@GetMapping(value="/logout")
+		public ResponseEntity<Integer> logout(HttpSession session) {
+			System.out.println("logout  b invalidate11 : " + session.getAttribute("userDto"));
+			session.invalidate();
+			
+			return new ResponseEntity<Integer>(1, HttpStatus.OK);
+		}
+		
+		
 }
 
 
