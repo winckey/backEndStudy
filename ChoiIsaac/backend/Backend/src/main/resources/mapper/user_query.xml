@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.my.house.dao.UserDao">
+
+	<!-- <insert id="userRegister" parameterType="com.my.house.dto.UserDto">
+		insert into user (   user_name,   user_id,    user_password,   user_email, user_phone, user_position) 
+		          values (  #{userName}, #{userId}, #{userPassword}, #{userEmail},  #{userPhone}, #{userPosition})
+	</insert>
+ -->
+ 
+ <insert id="userRegister" parameterType="com.my.house.dto.UserDto">
+		insert into user (   user_name,       user_password,   user_email) 
+		          values (  #{userName}, #{userPassword}, #{userEmail} )
+	</insert>
+ 
+	<update id="userUpdate" parameterType="com.my.house.dto.UserDto">
+		UPDATE USER SET USER_PASS = #{userPass}, USER_EMAIL = #{userEmail}, USER_ADDR = #{userAddr}, USER_PHONE = #{userPhone} 
+		 WHERE USER_ID = #{userId}  
+	</update>
+	
+	<delete id="userDelete">
+		DELETE FROM user
+		 WHERE USER_ID = #{userId}
+	</delete>
+	
+	
+</mapper>
