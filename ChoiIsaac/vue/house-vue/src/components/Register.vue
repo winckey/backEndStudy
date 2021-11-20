@@ -23,7 +23,63 @@
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                   <p class="text-center small">Enter your personal details to create account</p>
                 </div>
+                <!-- ID -->
+                <div class="col-12">
+                  <label for="yourId" class="form-label">ID</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="yourId"
+                    :class="{
+                      'is-valid': isUserIdFocusAndValid,
+                      'is-invalid': isUserIdFocusAndInvalid,
+                    }"
+                    v-model="userId"
+                    @input="validateUserId"
+                    @focus="isUserIdFocus = true"
+                  />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">4자리 이상 올바른 ID를 입력해 주세요.</div>
+                </div>
+                <!-- password -->
+                <div class="col-12">
+                  <label for="yourPassword" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="yourPassword"
+                    :class="{
+                      'is-valid': isUserPasswordFocusAndValid,
+                      'is-invalid': isUserPasswordFocusAndInvalid,
+                    }"
+                    v-model="userPassword"
+                    @input="validatePassword"
+                    @focus="isUserPasswordFocus = true"
+                  />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">
+                    1개 이상의 특수문자, 대소문자 및 숫자를 포함하고 8자리 이상이여야 합니다.
+                  </div>
+                </div>
 
+                <div class="col-12">
+                  <label for="yourPassword2" class="form-label">Password check</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="yourPassword2"
+                    :class="{
+                      'is-valid': isUserPassword2FocusAndValid,
+                      'is-invalid': isUserPassword2FocusAndInvalid,
+                    }"
+                    v-model="userPassword2"
+                    @input="validatePassword2"
+                    @focus="isUserPassword2Focus = true"
+                  />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
+                </div>
+                <!-- name -->
                 <form class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
                     <label for="yourName" class="form-label">Your Name</label>
@@ -42,7 +98,7 @@
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">올바른 이름을 입력해 주세요.</div>
                   </div>
-
+                  <!-- Email -->
                   <div class="col-12">
                     <label for="yourEmail" class="form-label">Your Email</label>
                     <input
@@ -61,58 +117,52 @@
                     <div class="invalid-feedback">올바른 Email 을 입력해 주세요.</div>
                   </div>
 
+                  <!-- Phone number -->
                   <div class="col-12">
-                    <label for="yourPassword" class="form-label">Password</label>
+                    <label for="yourPhone" class="form-label">Phone number</label>
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
-                      id="yourPassword"
+                      id="yourPhone"
                       :class="{
-                        'is-valid': isUserPasswordFocusAndValid,
-                        'is-invalid': isUserPasswordFocusAndInvalid,
+                        'is-valid': isUserPhoneFocusAndValid,
+                        'is-invalid': isUserPhoneFocusAndInValid,
                       }"
-                      v-model="userPassword"
-                      @input="validatePassword"
-                      @focus="isUserPasswordFocus = true"
+                      v-model="userPhone"
+                      @input="validatePhone"
+                      @focus="isUserPhoneFocus = true"
                     />
                     <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">
-                      1개 이상의 특수문자, 대소문자 및 숫자를 포함하고 8자리 이상이여야 합니다.
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="yourPassword2" class="form-label">Password check</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="yourPassword2"
-                      :class="{
-                        'is-valid': isUserPassword2FocusAndValid,
-                        'is-invalid': isUserPassword2FocusAndInvalid,
-                      }"
-                      v-model="userPassword2"
-                      @input="validatePassword2"
-                      @focus="isUserPassword2Focus = true"
-                    />
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
+                    <div class="invalid-feedback">01x-xxxx-xxxx형태로 입력해 주세요.</div>
                   </div>
 
-                  <div class="col-12">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        name="terms"
-                        type="checkbox"
-                        value=""
-                        id="acceptTerms"
-                        required
-                      />
-                      <label class="form-check-label" for="acceptTerms"
-                        >I agree and accept the <a href="#">terms and conditions</a></label
-                      >
-                      <div class="invalid-feedback">You must agree before submitting.</div>
-                    </div>
+                  <div
+                    class="btn-group col-12"
+                    role="group"
+                    aria-label="Basic radio toggle button group"
+                  >
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="btnPosition"
+                      id="btnPosition1"
+                      v-model="userPosition"
+                      value="1"
+                      autocomplete="off"
+                      checked
+                    />
+                    <label class="btn btn-outline-success" for="btnPosition1">일반회원</label>
+
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="btnPosition"
+                      id="btnPosition2"
+                      v-model="userPosition"
+                      value="2"
+                      autocomplete="off"
+                    />
+                    <label class="btn btn-outline-success" for="btnPosition2">중개회원</label>
                   </div>
 
                   <div class="col-12">
@@ -120,6 +170,7 @@
                       Create Account
                     </button>
                   </div>
+
                   <div class="col-12">
                     <p class="small mb-0">
                       Already have an account? <router-link to="/login"> Log in</router-link>
@@ -149,22 +200,32 @@ export default {
   data() {
     return {
       // v-model
-      userName: "",
-      userEmail: "",
+      userId: "",
       userPassword: "",
       userPassword2: "",
 
+      userName: "",
+      userEmail: "",
+      userPhone: "",
+      userPosition: "",
+
       // focus
-      isUserNameFocus: false,
-      isUserEmailFocus: false,
+      isUserIdFocus: false,
       isUserPasswordFocus: false,
       isUserPassword2Focus: false,
 
+      isUserNameFocus: false,
+      isUserEmailFocus: false,
+      isUserPhoneFocus: false,
+
       // validation
-      isUserNameValid: false,
-      isUserEmailValid: false,
+      isUserIdValid: false,
       isUserPasswordValid: false,
       isUserPassword2Valid: false,
+
+      isUserNameValid: false,
+      isUserEmailValid: false,
+      isUserPhoneValid: false,
 
       // 회원 구분
       // groupCode: '001',
@@ -173,17 +234,11 @@ export default {
     };
   },
   computed: {
-    isUserNameFocusAndValid() {
-      return this.isUserNameFocus && this.isUserNameValid;
+    isUserIdFocusAndValid() {
+      return this.isUserIdFocus && this.isUserIdValid;
     },
-    isUserNameFocusAndInvalid() {
-      return this.isUserNameFocus && !this.isUserNameValid;
-    },
-    isUserEmailFocusAndValid() {
-      return this.isUserEmailFocus && this.isUserEmailValid;
-    },
-    isUserEmailFocusAndInValid() {
-      return this.isUserEmailFocus && !this.isUserEmailValid;
+    isUserIdFocusAndInvalid() {
+      return this.isUserIdFocus && !this.isUserIdValid;
     },
     isUserPasswordFocusAndValid() {
       return this.isUserPasswordFocus && this.isUserPasswordValid;
@@ -197,8 +252,30 @@ export default {
     isUserPassword2FocusAndInvalid() {
       return this.isUserPassword2Focus && !this.isUserPassword2Valid;
     },
+    isUserNameFocusAndValid() {
+      return this.isUserNameFocus && this.isUserNameValid;
+    },
+    isUserNameFocusAndInvalid() {
+      return this.isUserNameFocus && !this.isUserNameValid;
+    },
+    isUserEmailFocusAndValid() {
+      return this.isUserEmailFocus && this.isUserEmailValid;
+    },
+    isUserEmailFocusAndInValid() {
+      return this.isUserEmailFocus && !this.isUserEmailValid;
+    },
+    isUserPhoneFocusAndValid() {
+      return this.isUserPhoneFocus && this.isUserPhoneValid;
+    },
+    isUserPhoneFocusAndInValid() {
+      return this.isUserPhoneFocus && !this.isUserPhoneValid;
+    },
   },
   methods: {
+    validateUserId() {
+      this.isUserIdValid = this.userId.length > 3 ? true : false;
+      console.log(this.isUserIdValid);
+    },
     validateUserName() {
       this.isUserNameValid = this.userName.length > 0 ? true : false;
       console.log(this.isUserNameValid);
@@ -230,15 +307,22 @@ export default {
     validatePassword2() {
       this.isUserPassword2Valid = this.userPassword == this.userPassword2 ? true : false;
     },
+    validatePhone() {
+      var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+      this.isUserPhoneValid = regPhone.test(this.userPhone) ? true : false;
+      console.log(this.isUserPhoneValid);
+    },
     register() {
       if (!this.isUserEmailValid || !this.isUserPasswordValid || !this.isUserPassword2Valid) return;
 
       http
         .post("/register", {
+          userId: this.userId,
+          userPassword: this.userPassword,
           userName: this.userName,
           userEmail: this.userEmail,
-          userPassword: this.userPassword,
-          // userClsf: this.userClsf,
+          userPhone: this.userPhone,
+          userPosition: this.userPosition,
         })
 
         .then(({ data }) => {

@@ -8,7 +8,7 @@ import Login from '@/components/Login.vue';
 import Main from '@/components/Main.vue';
 import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
-
+import Mypage from '@/components/Mypage.vue';
 const routes = [
   {
 
@@ -37,6 +37,12 @@ const routes = [
     name: 'Register',
     path: '/register',
     component: Register
+  },
+  
+  {
+    name: 'Mypage',
+    path: '/mypage',
+    component: Mypage
   }
 ];
 // 여러 컴포넌트 붙일땐  components 

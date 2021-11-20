@@ -9,8 +9,8 @@
  -->
  
  <insert id="userRegister" parameterType="com.my.house.dto.UserDto">
-		insert into user (   user_name,       user_password,   user_email) 
-		          values (  #{userName}, #{userPassword}, #{userEmail} )
+		insert into user (  user_id,    user_name,   user_password,   user_email,   user_phone,   user_position ) 
+		          values (  #{userId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{userPosition} )
 	</insert>
  
 	<update id="userUpdate" parameterType="com.my.house.dto.UserDto">
