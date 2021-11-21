@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.my.house.dto.UserDto;
 
 @Mapper
-// 
 public interface LoginDao {
-	public UserDto login(String userEmail);
+	public UserDto login(String userId);
 }

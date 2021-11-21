@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>	
+<!-- 	mybatis 설정 파일, 값이 없어도 setter 호출 , _ -> 카멜표기  -->
+	<settings>
+		<setting name="callSettersOnNulls" value="true"/>
+		<!-- 널값을 공백이아닌 널값으로 리턴 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 자동으로 스네이크 표기를 카멜 표기로 변환 -->
+	</settings>
+
+<!-- Dao호출 쿼리문 맵핑 -->
+	<mappers>
+		<mapper resource="mapper/login_query.xml" />	
+		<mapper resource="mapper/user_query.xml" />	
+		
+	</mappers>
+</configuration>

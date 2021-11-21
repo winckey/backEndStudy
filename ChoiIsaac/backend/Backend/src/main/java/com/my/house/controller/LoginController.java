@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,14 +34,14 @@ import com.my.house.service.LoginService;
 	public class LoginController {
 	
 		@Autowired
-		//싱글톤 패턴으로 자동생성
 		LoginService service;
+		//싱글톤 패턴으로 자동생성
 		
 		
 		@PostMapping(value="/login")
-		//requestBody -> 요청 본문을 자바 객체로 conversion : json형태의 객체를 넘겨받을때 사용
 		public ResponseEntity<UserDto> login(@RequestBody UserDto dto, HttpSession session){
-			
+			//requestBody -> 요청 본문을 자바 객체로 conversion : json형태의 객체를 넘겨받을때 사용
+			System.out.println("controller: "+ dto);
 			UserDto userDto = service.login(dto);
 			if( userDto != null ) {
 				session.setAttribute("userDto", userDto);
@@ -57,6 +58,18 @@ import com.my.house.service.LoginService;
       
 //ResponseEntity 를 사용할 때, Constructor 를 사용하기보다는 Builder 를 활용하는 것을 권장하고 있습니다. 
 //그 이유는 숫자로 된 상태 코드를 넣을 때, 잘못된 숫자를 넣을 수 있는 실수 때문
+	
+
+		@GetMapping(value="/logout")
+		public ResponseEntity<Integer> logout(HttpSession session) {
+			System.out.println("before invalidate : "+session);
+			session.invalidate();
+			System.out.println("after invalidate : " +session);
+			
+			
+			return new ResponseEntity<Integer>(1, HttpStatus.OK);
+		}
+	
 	}
 
 
