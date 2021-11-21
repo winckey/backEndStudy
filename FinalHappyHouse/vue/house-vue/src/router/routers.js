@@ -9,6 +9,7 @@ import Main from '@/components/Main.vue';
 import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
 import Mypage from '@/components/Mypage.vue';
+import Notify from '@/components/Notify.vue';
 
 const routes = [
   {
@@ -38,6 +39,12 @@ const routes = [
     name: 'Register',
     path: '/register',
     component: Register
+  },
+
+  {
+    name: 'Notify',
+    path: '/notify',
+    component: Notify
   },
   
   {
