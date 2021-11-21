@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.my.house.dto.DealParamDto;
-import com.my.house.dto.DealResultDto;
+import com.my.house.dto.HouseParamDto;
+import com.my.house.dto.HouseResultDto;
+import com.my.house.dto.HouseParamDto;
+import com.my.house.dto.HouseResultDto;
 import com.my.house.service.DealService;
 @CrossOrigin(///// 媛쒕컻�슜�룄濡� �궗�슜�븯�뒗嫄곗엫
 		origins = "http://localhost:5500",
@@ -38,69 +40,24 @@ public class DealController extends HttpServlet {
 	
 	private static final int SUCCESS = 1;
 	private static final int FAIL = -1;
-	@GetMapping(value = "/deals")
-	public ResponseEntity<DealResultDto> boardList(DealParamDto boardParamDto) {
+	@GetMapping(value = "/houses")
+	public ResponseEntity<HouseResultDto> houseList(HouseParamDto houseParamDto) {
 
-		DealResultDto boardResultDto;
+		HouseResultDto houseResultDto;
 
-		if (boardParamDto.getSearchWord().isEmpty()) {
-			boardResultDto = service.dealList(boardParamDto);
+		if (houseParamDto.getSearchWord().isEmpty()) {
+			houseResultDto = service.dealList(houseParamDto);
 		} else {
-			boardResultDto = service.dealList(boardParamDto);
+			houseResultDto = service.dealList(houseParamDto);
 		}
 
-		if (boardResultDto.getResult() == SUCCESS) {
+		if (houseResultDto.getResult() == SUCCESS) {
 			
-			return new ResponseEntity<DealResultDto>(boardResultDto, HttpStatus.OK);
+			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<DealResultDto>(boardResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
-	
-
-	@GetMapping(value="/deals/{boardId}")
-	public ResponseEntity<DealResultDto> boardDetail(@PathVariable int boardId, HttpSession session){
-
-		DealParamDto boardParamDto = new DealParamDto();
-		System.out.println("board detail serch " + boardId);
-		boardParamDto.setBoardId(boardId);
-		
-		DealResultDto boardResultDto = service.dealDetail(boardParamDto);
-		// 寃뚯떆湲� �옉�꽦�옄�� �쁽 �궗�슜�옄媛� �룞�씪
-//		if( ((UserDto) session.getAttribute("userDto")).getUserSeq() == boardResultDto.getDto().getUserSeq() ) {
-//			boardResultDto.setOwner(true);
-//		}				
-				
-		if( boardResultDto.getResult() == SUCCESS ) {
-			System.out.println("board detail " + boardResultDto.getDto().toString());
-			return new ResponseEntity<DealResultDto>(boardResultDto, HttpStatus.OK);
-		}else {
-			return new ResponseEntity<DealResultDto>(boardResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
-		}		
-		
-	}
-	
-	
-	@GetMapping(value = "/deal/ListTotalCnt")
-	private void ListTotalCnt(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		String searchWord = request.getParameter("searchWord");
-
-		int totalCnt;
-		totalCnt = service.ListTotalCnt(searchWord);
-
-		response.setContentType("text/html; charset=utf-8");
-
-		Gson gson = new Gson();
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("totalCnt", totalCnt);
-		String jsonStr = gson.toJson(jsonObject);
-		response.getWriter().write(jsonStr);
-
-		System.out.println("dealServlet ListTotalCnt totalCnt : " + totalCnt);
-
-	}
 
 }

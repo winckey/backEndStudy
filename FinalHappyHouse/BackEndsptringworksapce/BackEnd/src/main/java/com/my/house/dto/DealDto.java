@@ -86,11 +86,11 @@ public class DealDto {
 	public void setDong(String dong) {
 		this.dong = dong;
 	}
-	public String getAptname() {
+	public String getHouseName() {
 		return houseName;
 	}
-	public void setAptname(String aptname) {
-		this.houseName = aptname;
+	public void setHouseName(String houseName) {
+		this.houseName = houseName;
 	}
 	public String getBuildYear() {
 		return buildYear;
@@ -120,12 +120,8 @@ public class DealDto {
 	public String toString() {
 		return "DealDto [deal_no=" + deal_no + ", dealAmount=" + dealAmount + ", dealYear=" + dealYear + ", dealMonth="
 				+ dealMonth + ", dealDay=" + dealDay + ", area=" + area + ", code=" + code + ", dong=" + dong
-				+ ", aptname=" + houseName + ", buildYear=" + buildYear + ", jibun=" + jibun + ", lat=" + lat + ", lng="
-				+ lng + "]";
+				+ ", houseName=" + houseName + ", buildYear=" + buildYear + ", jibun=" + jibun + ", lat=" + lat
+				+ ", lng=" + lng + "]";
 	}
-	
-	
-
-
 	
 }

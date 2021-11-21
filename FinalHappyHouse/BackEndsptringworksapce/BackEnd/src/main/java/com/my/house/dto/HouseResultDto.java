@@ -2,7 +2,7 @@ package com.my.house.dto;
 
 import java.util.List;
 
-public class DealResultDto {
+public class HouseResultDto {
 	private int result;
 	private DealDto dto;
 	private List<DealDto> list;
