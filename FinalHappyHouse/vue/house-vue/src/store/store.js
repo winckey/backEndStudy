@@ -170,7 +170,7 @@ export default new Vuex.Store({
 
     houseList(context) {
       http
-        .get("/boards", {
+        .get("/deals", {
           // get query string
           params: {
             limit: this.state.house.limit,
