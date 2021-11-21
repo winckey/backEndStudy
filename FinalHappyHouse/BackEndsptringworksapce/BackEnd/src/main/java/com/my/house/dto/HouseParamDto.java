@@ -5,39 +5,54 @@ public class HouseParamDto {
 	private int limit;
 	private int offset;
 	private String searchWord;
+	private int houseNo;
 	
-	private int dealId;
-	private int userNo;
+	
+	public HouseParamDto() {
+		super();
+	}
+
+	public HouseParamDto(int limit, int offset, String searchWord, int houseNo) {
+		super();
+		this.limit = limit;
+		this.offset = offset;
+		this.searchWord = searchWord;
+		this.houseNo = houseNo;
+	}
+
 	public int getLimit() {
 		return limit;
 	}
+
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
+	
+
 	public int getOffset() {
 		return offset;
 	}
+
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
+
 	public String getSearchWord() {
 		return searchWord;
 	}
+
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-	public int getDealId() {
-		return dealId;
+
+	public int getHouseNo() {
+		return houseNo;
 	}
-	public void setDealId(int dealId) {
-		this.dealId = dealId;
+
+	public void setHouseNo(int houseNo) {
+		this.houseNo = houseNo;
 	}
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
+
 	
 	
 }

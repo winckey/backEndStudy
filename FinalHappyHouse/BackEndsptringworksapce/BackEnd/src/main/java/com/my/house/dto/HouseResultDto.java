@@ -4,36 +4,28 @@ import java.util.List;
 
 public class HouseResultDto {
 	private int result;
-	private DealDto dto;
-	private List<DealDto> list;
+	private HouseDto dto;
+	private List<HouseDto> list;
 	private int count;
-	
-	private boolean isOwner;
-	
-	public boolean isOwner() {
-		return isOwner;
-	}
-	public void setOwner(boolean isOwner) {
-		this.isOwner = isOwner;
-	}
-	
+	private List<DealDto> dealList;
+	private String agentName;
+	private int agentNo;
 	public int getResult() {
 		return result;
 	}
 	public void setResult(int result) {
 		this.result = result;
 	}
-	public DealDto getDto() {
+	public HouseDto getDto() {
 		return dto;
 	}
-	public void setDto(DealDto dto) {
+	public void setDto(HouseDto dto) {
 		this.dto = dto;
 	}
-
-	public List<DealDto> getList() {
+	public List<HouseDto> getList() {
 		return list;
 	}
-	public void setList(List<DealDto> list) {
+	public void setList(List<HouseDto> list) {
 		this.list = list;
 	}
 	public int getCount() {
@@ -42,6 +34,32 @@ public class HouseResultDto {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public List<DealDto> getDealList() {
+		return dealList;
+	}
+	public void setDealList(List<DealDto> dealList) {
+		this.dealList = dealList;
+	}
+	public String getAgentName() {
+		return agentName;
+	}
+	public void setAgentName(String agentName) {
+		this.agentName = agentName;
+	}
+	public int getAgentNo() {
+		return agentNo;
+	}
+	public void setAgentNo(int agentNo) {
+		this.agentNo = agentNo;
+	}
+	
+	
+	
+	
+	
+
+	
+	
 	
 
 }
