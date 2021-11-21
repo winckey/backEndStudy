@@ -32,7 +32,6 @@ public class BoardController {
 
 	@Autowired
 	BoardService service;
-	int test =0;
 	private static final int SUCCESS = 1;
 	
 	@GetMapping(value="/boards")

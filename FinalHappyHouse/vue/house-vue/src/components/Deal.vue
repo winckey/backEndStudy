@@ -1,13 +1,27 @@
 <template>
-  <div class="container">
+  <div class="container2">
     <div class="item">
-      <div id="map"></div>
+      <div id="warpper">
+        <div id="map"></div>
+        <div id="search" class="">
+          <!-- store 사용 -->
+          <input v-model="$store.state.house.searchWord" @keydown.enter="houseList" type="text" class="form-control">
+          <button @click="houseList" class="btn btn-success" type="button">Search</button>
+          <button class="btn btn-success" type="button">필터</button>
+          <!-- enter나 버튼 클릭시 search 동작 -->
+        </div>
+      </div>
     </div>
     <div class="item">
       지역 목록
       <h1>List Group</h1>
-      <ul class="list-group">
-        <li style="cursor:pointer" v-for="(house, index) in listGetters" v-bind:key="index" class="list-group-item">
+      <div v-show="textCondition">
+        검색결과가 없습니다!!!!!!!!!!!!!!!
+      </div>
+
+      <ul v-show="liCondition" class="list-group">
+        <li style="cursor:pointer" v-for="(house, index) in this.$store.state.house.list"
+          @click="houseDetail(house.houseNo)" v-bind:key="index" class="list-group-item">
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
               <div class="col-md-4">
@@ -15,9 +29,10 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">{{house.title}}}</h5>
-                  <p class="card-text">name : {{ house.userName }}<br>
-                    house : {{ house.boardId }}</p>
+                  <h5 class="card-title">{{house.title}}</h5>
+                  <p class="card-text">name : {{ house.houseName }}<br>
+                    지역 : {{ house.dong }}<br>
+                    건축연도 : {{ house.buildYear }}<br></p>
                 </div>
               </div>
             </div>
@@ -25,43 +40,104 @@
         </li>
       </ul>
     </div>
+
+
+    <detail-house-modal></detail-house-modal>
   </div>
+
+
+
+
+
+
+
+
 </template>
 
 <script>
+  import {
+    Modal
+  } from 'bootstrap';
+
+  import DetailHouseModal from './modals/DetailHouseModal.vue';
+  import http from "@/common/axios.js";
+
   export default {
     name: "KakaoMap",
+    components: {
+      DetailHouseModal
+    },
     data() {
       return {
         map: null,
-
+        list: [],
+        liCondition: false,
+        textCondition: true,
         markers: [],
         infowindow: null,
+        detailHouseModal: null,
       };
     },
-    mounted() {
-      if (window.kakao && window.kakao.maps) {
-        this.initMap();
-      } else {
-        const script = document.createElement("script");
-        /* global kakao */
-        script.onload = () => kakao.maps.load(this.initMap);
-        script.src =
-          "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0";
-        document.head.appendChild(script);
-      }
-    },
+
     computed: {
       // gttters 이용
-      listGetters() {
-        return this.$store.getters.houseList; // no getBoardList()
-      },
     },
     methods: {
 
-      houseList(){
-      this.$store.dispatch('houseList');      
-    },
+      houseList() {
+        this.$store.dispatch('houseList');
+
+
+        this.liCondition = true;
+        this.textCondition = false;
+        // this.list = this.$store.state.house.list;
+        // if (this.list.length > 0) {
+        //   this.liCondition = true;
+        //   this.textCondition = false;
+        // }
+      },
+
+      houseDetail(houseNo) {
+        // store 변경
+        // this.boardId = boardId;
+        // this.$store.commit('mutateSetBoardBoardId', boardId);
+
+        http.get(
+            '/houses/' + houseNo, // props variable
+          )
+          .then(({
+            data
+          }) => {
+            console.log("DetailHouseModalVue: data : ");
+            console.log(data);
+
+            if (data.result == 'login') {
+              this.$router.push("/login")
+            } else {
+              this.$store.commit(
+                'SET_HOUSE_DETAIL', {
+                  houseNo: data.dto.houseNo,
+                  area: data.dto.area,
+                  code: data.dto.code,
+                  dong: data.dto.dong,
+                  houseName: data.dto.houseName,
+                  buildYear: data.dto.buildYear,
+                  lat: data.dto.lat,
+                  lng: data.dto.lng,
+                  dealList: data.dto.dealList,
+                  agentName: data.dto.agentName,
+                  agentNo: data.dto.agentNo,
+                }
+              );
+              this.detailHouseModal.show();
+            }
+          })
+          .catch((error) => {
+            console.log("DetailModalVue: error ");
+            console.log(error);
+          });
+
+      },
 
 
 
@@ -127,9 +203,22 @@
         this.map.setCenter(iwPosition);
       },
     },
-    created() {
-      this.houseList();
+    mounted() {
+
+      this.detailHouseModal = new Modal(document.getElementById('detailHouseModal'));
+
+      if (window.kakao && window.kakao.maps) {
+        this.initMap();
+      } else {
+        const script = document.createElement("script");
+        /* global kakao */
+        script.onload = () => kakao.maps.load(this.initMap);
+        script.src =
+          "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0";
+        document.head.appendChild(script);
+      }
     },
+
   };
 </script>
 
@@ -149,7 +238,7 @@
     margin: 0 3px;
   }
 
-  .container {
+  .container2 {
 
 
     margin: 0;
@@ -169,5 +258,19 @@
 
   .item:nth-child(1) {
     flex: 1;
+  }
+
+  #wrapper {
+    position: relative;
+
+  }
+
+  #search {
+    position: absolute;
+
+
+    top: 20%;
+
+
   }
 </style>
