@@ -38,7 +38,7 @@ public class DealServiceImpl implements DealService {
 			//int count = dealDao.ListTotalCnt(dealParamDto.getSearchWord());	
 			
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i).getNo());
+//				System.out.println(list.get(i).getNo());
 			}
 			
 			boardResultDto.setList(list);

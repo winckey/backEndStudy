@@ -29,5 +29,33 @@ public class UserServiceImpl implements UserService{
 		
 		return userResultDto;
 	}
+
+	@Override
+	public UserResultDto userDelete(String userId) {
+		UserResultDto userResultDto = new UserResultDto();
+
+		if( userDao.userDelete(userId) == 1 ) {
+			userResultDto.setResult(SUCCESS);
+		}else {
+			userResultDto.setResult(FAIL);
+
+		}
+		return userResultDto;
+	}
+
+	@Override
+	public UserResultDto userUpdate(UserDto userDto) {
+		UserResultDto userResultDto = new UserResultDto();
+		
+		if( userDao.userUpdate(userDto) == 1 ) {
+			
+			userResultDto.setResult(SUCCESS);
+		}else {
+			userResultDto.setResult(FAIL);
+
+		}
 	
+		
+		return userResultDto;
+	}
 }

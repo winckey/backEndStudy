@@ -25,32 +25,59 @@ import com.my.house.service.UserService;
 		methods = { RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,
 				    RequestMethod.DELETE, RequestMethod.HEAD, RequestMethod.OPTIONS })
 
+
 @RestController
 public class UserController {
 
 	@Autowired
-	UserService userService;
-
+	UserService userService; 
+	
 	private static final int SUCCESS = 1;
-
-	@PostMapping(value = "/register")
-	public ResponseEntity<UserResultDto> register(@RequestBody UserDto dto, HttpSession session) {
-
+	
+	@PostMapping(value="/register")
+	public ResponseEntity<UserResultDto> register(@RequestBody UserDto dto, HttpSession session){
+	
+		
 		UserResultDto userResultDto = userService.userRegister(dto);
-
-		if (userResultDto.getResult() == SUCCESS) {
+		
+		if( userResultDto.getResult() == SUCCESS ) {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
-		} else {
+		}else {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
-	@GetMapping(value = "/user/mypage")
+	
+	@GetMapping(value="/user/mypage")
 	public UserDto mypage(UserDto dto, HttpSession session) {
-
-		UserDto userDto = (UserDto) session.getAttribute("userDto");
-
+		 
+		UserDto userDto = (UserDto) session.getAttribute("userDto")  ;
+		
 		return userDto;
 	}
+	
+	@PutMapping(value="/user/update")
+	public ResponseEntity<UserResultDto> update(UserDto dto, HttpSession session){
 
-}
+		
+		UserResultDto userResultDto = userService.userUpdate(dto);
+		
+		
+		if( userResultDto.getResult() == SUCCESS ) {
+			session.invalidate();
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@DeleteMapping(value="/user/delete")
+	public ResponseEntity<UserResultDto> delete(UserDto dto, HttpSession session){
+		UserDto userDto = (UserDto) session.getAttribute("userDto")  ;
+		UserResultDto userResultDto = userService.userDelete(userDto.getUserId());
+		
+		if( userResultDto.getResult() == SUCCESS ) {
+			session.invalidate();
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}}
