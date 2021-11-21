@@ -1,5 +1,5 @@
-import Vue from "vue";
 import Vuex from "vuex";
+import Vue from "vue";
 
 Vue.use(Vuex);
 
@@ -11,15 +11,21 @@ export default new Vuex.Store({
     // login, NavBar
     login: {
       isLogin: false,
-      userId: 'test',
-      userPassword: 'test',
+      userId: '',
+      userPassword: '',
       userName: '',
-      userProfileImageUrl: ''
+      userProfileImageUrl: '',
     },
 
 
 
     user: {
+      userId: "",
+      userName: "",
+      userProfileImageUrl: "",
+      userPhone: "",
+      userPosition: "",
+      userEmail: "",
       
     },
     //
@@ -76,14 +82,34 @@ export default new Vuex.Store({
     SET_LOGIN(state, payload){
       state.login.isLogin = payload.isLogin;
       state.login.userName = payload.userName;
+      state.login.userPassword = payload.userPassword;
+      state.login.userId = payload.userId;
       state.login.userProfileImageUrl = payload.userProfileImageUrl;
+
+      state.user.userId = payload.userId;
+      state.user.userName = payload.userName;
+      state.user.userProfileImageUrl = payload.userProfileImageUrl;
+      state.user.userPhone = payload.userPhone;
+      state.user.userPosition = payload.userPosition;
+      state.user.userEmail = payload.userEmail;
+
+
     },
+    
     SET_LOGOUT(state) {
       state.login.isLogin = false;
       state.login.userName = "";
       state.login.userProfileImageUrl = "";
       state.login.userId = "";
       state.login.userPassword = "";
+
+
+      state.user.userId = "";
+      state.user.userName = "";
+      state.user.userProfileImageUrl = "";
+      state.user.userPhone = "";
+      state.user.userPosition = "";
+      state.user.userEmail = "";
     },
 
     SET_BOARD_LIST(state, list) {

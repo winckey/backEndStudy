@@ -55,15 +55,29 @@ public class UserController {
 		return userDto;
 	}
 	
-	@PutMapping(value="/user/update")
-	public ResponseEntity<UserResultDto> update(UserDto dto, HttpSession session){
+	
+	@PutMapping(value="/passwordUpdate")
+	public ResponseEntity<UserResultDto> passwordUpdate(@RequestBody UserDto dto, HttpSession session){
+
+		
+		UserResultDto userResultDto = userService.userPasswordUpdate(dto);
+		
+		
+		if( userResultDto.getResult() == SUCCESS ) {
+			session.invalidate();
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@PutMapping(value="/editProfile")
+	public ResponseEntity<UserResultDto> updateProfile(@RequestBody UserDto dto, HttpSession session){
 
 		
 		UserResultDto userResultDto = userService.userUpdate(dto);
 		
 		
 		if( userResultDto.getResult() == SUCCESS ) {
-			session.invalidate();
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);

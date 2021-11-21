@@ -8,7 +8,7 @@ import com.my.house.dto.UserDto;
 public interface UserDao {
 	public int userRegister(UserDto userDto);
 	public int userUpdate(UserDto userDto);
-
+	public int userPasswordUpdate(UserDto userDto);
 	public int userDelete(String userId);
 
 }

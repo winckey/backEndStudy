@@ -35,13 +35,17 @@
 
             <a v-show="$store.state.login.isLogin" class="navbar-brand" href="#">
               <li class="nav-item dropdown">
-                <img src="" alt="Logo" style="width: 24px; height: 24px; border-radius: 50%" />
+                <img
+                  v-bind:src="userProfileImageUrl"
+                  alt="Profile"
+                  style="width: 24px; height: 24px; border-radius: 50%"
+                />
                 {{ $store.state.login.userName }}
                 <!-- 사용자 정보에따른 이미지 출력 -->
 
                 <div class="dropdown-menu">
-                  <div class="dropdown-item">내정보</div>
-                  <div @click="logout" class="dropdown-item">로그아웃</div>
+                  <router-link to="/mypage" class="dropdown-item">Mypage</router-link>
+                  <div @click="logout" class="dropdown-item">logout</div>
                 </div>
               </li>
             </a>
@@ -62,6 +66,11 @@ import http from "@/common/axios.js";
 
 export default {
   name: "Logout",
+  data() {
+    return {
+      userProfileImageUrl: this.$store.state.user.userProfileImageUrl,
+    };
+  },
   methods: {
     logout() {
       http

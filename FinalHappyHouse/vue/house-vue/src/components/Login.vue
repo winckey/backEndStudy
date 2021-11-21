@@ -116,6 +116,11 @@ export default {
             isLogin: true,
             userName: data.userName,
             userProfileImageUrl: data.userProfileImageUrl,
+            userId: data.userId,
+            userPhone: data.userPhone,
+            userEmail: data.userEmail,
+            userPosition: data.userPosition,
+            userPassword: data.userPassword,
           });
 
           //== <route-link :to=”path”>
@@ -125,7 +130,7 @@ export default {
           console.log("LoginVue: error : ");
           console.log(error);
           if (error.response.status == "404") {
-            this.$alertify.error("이메일 또는 비밀번호를 확인하세요.");
+            this.$alertify.error("아이디 또는 비밀번호를 확인하세요.");
           } else {
             this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
           }

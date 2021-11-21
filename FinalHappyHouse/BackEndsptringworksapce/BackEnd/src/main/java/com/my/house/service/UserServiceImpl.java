@@ -58,4 +58,20 @@ public class UserServiceImpl implements UserService{
 		
 		return userResultDto;
 	}
+
+	@Override
+	public UserResultDto userPasswordUpdate(UserDto userDto) {
+		UserResultDto userResultDto = new UserResultDto();
+		System.out.println(userDto);
+		if( userDao.userPasswordUpdate(userDto) == 1 ) {
+			
+			userResultDto.setResult(SUCCESS);
+		}else {
+			userResultDto.setResult(FAIL);
+
+		}
+	
+		
+		return userResultDto;
+	}
 }

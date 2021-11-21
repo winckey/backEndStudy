@@ -233,6 +233,7 @@ export default {
       userId: "test",
       userEmail: "dskim@my.com",
       userPassword: "1234",
+      userPassword2: "",
 
       userPhone: "010-2345-4333",
       userProfileImageUrl: "assets/img/author-1.jpg",

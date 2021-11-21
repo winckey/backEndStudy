@@ -6,6 +6,7 @@ public interface UserService {
 	public UserResultDto userRegister(UserDto userDto);
 	
 	public UserResultDto userUpdate(UserDto userDto);
+	public UserResultDto userPasswordUpdate(UserDto userDto);
 
 	public UserResultDto userDelete(String userId);
 
