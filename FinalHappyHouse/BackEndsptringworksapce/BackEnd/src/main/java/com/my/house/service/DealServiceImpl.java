@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.my.house.dao.DealDao;
 import com.my.house.dto.DealDto;
-import com.my.house.dto.DealParamDto;
-import com.my.house.dto.DealResultDto;
+import com.my.house.dto.HouseParamDto;
+import com.my.house.dto.HouseResultDto;
 
 
 
@@ -16,7 +16,7 @@ import com.my.house.dto.DealResultDto;
 @Service
 public class DealServiceImpl implements DealService {
 	
-	// DealDaoImpl 媛앹껜 媛��졇�삤湲�
+	// DealDaoImpl 
 	@Autowired
 	DealDao dealDao;
 	
@@ -28,10 +28,10 @@ public class DealServiceImpl implements DealService {
 	
 
 	@Override
-	public DealResultDto dealList(DealParamDto dealParamDto) {
+	public HouseResultDto dealList(HouseParamDto dealParamDto) {
 		
 		
-		DealResultDto boardResultDto = new DealResultDto();
+		HouseResultDto boardResultDto = new HouseResultDto();
 		
 		try {
 			List<DealDto> list = dealDao.dealList(dealParamDto);
@@ -60,8 +60,8 @@ public class DealServiceImpl implements DealService {
 	}
 	
 	@Override
-	public DealResultDto dealDetail(DealParamDto dealParamDto) {
-		DealResultDto boardResultDto = new DealResultDto();
+	public HouseResultDto dealDetail(HouseParamDto dealParamDto) {
+		HouseResultDto boardResultDto = new HouseResultDto();
 		
 		try {
 			

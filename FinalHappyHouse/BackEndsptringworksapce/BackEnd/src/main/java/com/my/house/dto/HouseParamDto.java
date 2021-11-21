@@ -1,14 +1,13 @@
 package com.my.house.dto;
 
-public class DealParamDto {
+public class HouseParamDto {
 	
 	private int limit;
 	private int offset;
 	private String searchWord;
 	
-	private int boardId;
-	private int userSeq;
-	
+	private int dealId;
+	private int userNo;
 	public int getLimit() {
 		return limit;
 	}
@@ -27,17 +26,17 @@ public class DealParamDto {
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-	public int getBoardId() {
-		return boardId;
+	public int getDealId() {
+		return dealId;
 	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
+	public void setDealId(int dealId) {
+		this.dealId = dealId;
 	}
-	public int getUserSeq() {
-		return userSeq;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUserSeq(int userSeq) {
-		this.userSeq = userSeq;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 	
 	
