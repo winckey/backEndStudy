@@ -20,6 +20,7 @@ export default new Vuex.Store({
 
 
     user: {
+<<<<<<< HEAD
       userId: "",
       userName: "",
       userProfileImageUrl: "",
@@ -27,6 +28,9 @@ export default new Vuex.Store({
       userPosition: "",
       userEmail: "",
       
+=======
+
+>>>>>>> b07c19c74864a86f1daed5595339a2807fc1573f
     },
     //
     board: {
@@ -53,6 +57,8 @@ export default new Vuex.Store({
       fileList: [],
       sameUser: false,
     },
+
+
     house: {
       // list
       list: [],
@@ -60,26 +66,23 @@ export default new Vuex.Store({
       offset: 0,
       searchWord: "",
 
-      // pagination
-      listRowCount: 10,
-      pageLinkCount: 10,
-      currentPageIndex: 1,
-
-      totalListItemCount: 0,
-
-      // detail, update, delete
-      no: 0,
-      aptName: "",
-      amount: "",
+      houseNo: 0,
       area: "",
-      houseYear: "",
+      code: "",
       dong: "",
+      houseName: "",
+      buildYear: "",
+      lat: "",
+      lng: "",
+      dealList: [],
+      agentName: "",
+      agentNo : 0,
 
     },
   },
   // state 상태를 변경하는 유일한 방법
   mutations: {
-    SET_LOGIN(state, payload){
+    SET_LOGIN(state, payload) {
       state.login.isLogin = payload.isLogin;
       state.login.userName = payload.userName;
       state.login.userPassword = payload.userPassword;
@@ -114,6 +117,7 @@ export default new Vuex.Store({
 
     SET_BOARD_LIST(state, list) {
       state.board.list = list;
+
     },
 
     SET_BOARD_TOTAL_LIST_ITEM_COUNT(state, count) {
@@ -121,6 +125,7 @@ export default new Vuex.Store({
     },
     SET_HOUSE_LIST(state, list) {
       state.house.list = list;
+      console.log("set house list  : " + state.house.list[1].houseName);
     },
 
     SET_HOUSE_TOTAL_LIST_ITEM_COUNT(state, count) {
@@ -147,6 +152,20 @@ export default new Vuex.Store({
       state.board.regDt = payload.regDt;
       state.board.fileList = payload.fileList;
       state.board.sameUser = payload.sameUser;
+    },
+
+    SET_HOUSE_DETAIL(state, payload) {
+      state.house.houseNo = payload.houseNo;
+      state.house.area = payload.area;
+      state.house.code = payload.code;
+      state.house.dong = payload.dong;
+      state.house.houseName = payload.houseName;
+      state.house.buildYear = payload.buildYear;
+      state.house.lat = payload.lat;
+      state.house.lng = payload.lng;
+      state.house.dealList = payload.dealList;
+      state.house.agentName = payload.agentName;
+      state.house.agentNo = payload.agentNo;
     },
     // for UpdateModal title v-modal
     SET_BOARD_TITLE(state, title) {
@@ -186,7 +205,7 @@ export default new Vuex.Store({
           } else {
             context.commit("SET_BOARD_LIST", data.list);
             context.commit("SET_BOARD_TOTAL_LIST_ITEM_COUNT", data.count);
-          
+
           }
         });
     },
@@ -196,11 +215,9 @@ export default new Vuex.Store({
 
     houseList(context) {
       http
-        .get("/deals", {
+        .get("/houses", {
           // get query string
           params: {
-            limit: this.state.house.limit,
-            offset: this.state.house.offset,
             searchWord: this.state.house.searchWord,
           },
         })
@@ -213,7 +230,6 @@ export default new Vuex.Store({
             router.push("/login");
           } else {
             context.commit("SET_HOUSE_LIST", data.list);
-            context.commit("SET_HOUSE_TOTAL_LIST_ITEM_COUNT", data.count);
           }
         });
     },
