@@ -158,8 +158,9 @@ export default new Vuex.Store({
           if (data.result == "login") {
             router.push("/login");
           } else {
-            context.commit("SET_HOUSE_LIST", data.list);
-            context.commit("SET_HOUSE_TOTAL_LIST_ITEM_COUNT", data.count);
+            context.commit("SET_BOARD_LIST", data.list);
+            context.commit("SET_BOARD_TOTAL_LIST_ITEM_COUNT", data.count);
+          
           }
         });
     },
@@ -185,8 +186,8 @@ export default new Vuex.Store({
           if (data.result == "login") {
             router.push("/login");
           } else {
-            context.commit("SET_BOARD_LIST", data.list);
-            context.commit("SET_BOARD_TOTAL_LIST_ITEM_COUNT", data.count);
+            context.commit("SET_HOUSE_LIST", data.list);
+            context.commit("SET_HOUSE_TOTAL_LIST_ITEM_COUNT", data.count);
           }
         });
     },
