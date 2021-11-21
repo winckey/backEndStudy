@@ -5,6 +5,8 @@ import com.my.house.dto.HouseResultDto;
 
 
 
+
+
 public interface DealService {
 	public HouseResultDto dealList(HouseParamDto dealParamDto);
 	public HouseResultDto dealDetail(HouseParamDto dealParamDto);
