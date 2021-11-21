@@ -9,6 +9,7 @@ import Main from '@/components/Main.vue';
 import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
 import Mypage from '@/components/Mypage.vue';
+
 const routes = [
   {
 
