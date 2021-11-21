@@ -5,11 +5,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Login from '@/components/Login.vue';
-import Main from '@/components/Main.vue';
-import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
-
-
+import Deal from '@/components/Deal.vue';
+import Notify from '@/components/Notify.vue';
+import Main from '@/components/Main.vue';
 const routes = [
 
   {
@@ -21,7 +20,7 @@ const routes = [
     path: '/login',
     component: Login
   },
- 
+
   {
     name: 'Main',
     path: '/main',
@@ -33,7 +32,12 @@ const routes = [
     component: Deal
   },
   {
-    name : Register,
+    name: 'Notify',
+    path: '/notify',
+    component: Notify
+  },
+  {
+    name: Register,
     path: '/register',
     component: Register
   },
@@ -41,7 +45,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
- // mode: 'history',
+  // mode: 'history',
   routes,
 });
 

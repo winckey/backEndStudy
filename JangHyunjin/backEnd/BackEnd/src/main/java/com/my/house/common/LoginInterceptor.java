@@ -59,7 +59,7 @@ public class LoginInterceptor implements HandlerInterceptor{
         
         
         if( userDto == null ) {
-        	
+        	System.out.println(" intercetor state => logout ");
 			Gson gson = new Gson();
         	
 			JsonObject jsonObject = new JsonObject();

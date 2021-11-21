@@ -18,9 +18,12 @@ import com.my.house.dto.UserDto;
 import com.my.house.dto.UserResultDto;
 import com.my.house.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:5500", allowCredentials = "true", allowedHeaders = "*", methods = {
-		RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.HEAD,
-		RequestMethod.OPTIONS })
+@CrossOrigin(
+		origins = "http://localhost:5500",
+		allowCredentials = "true",
+		allowedHeaders = "*",
+		methods = { RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,
+				    RequestMethod.DELETE, RequestMethod.HEAD, RequestMethod.OPTIONS })
 
 @RestController
 public class UserController {

@@ -6,7 +6,7 @@
 <!--분리된 SQL문은 SQL mapper 파일에 작성하며 DAO에서는 SqlSession 객체가 SQL mapper 파일을 참조 -->
 
 	<select id="login" parameterType="string" resultType="com.my.house.dto.UserDto">
-		SELECT USER_NO, USER_NAME, USER_ID, USER_PASSWORD, USER_EMAIL,USER_PHONE ,USER_POSITON , USER_ProfileImage_Url
+		SELECT USER_NO, USER_NAME, USER_ID, USER_PASSWORD, USER_EMAIL,USER_PHONE ,USER_POSITON , USER_Profile_Image_Url
 		FROM   USER 
 		WHERE  USER_ID = #{userId};
 	</select>

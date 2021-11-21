@@ -21,18 +21,18 @@ public class WebMvcConfig implements WebMvcConfigurer{/// WebMvcConfigurer : 인
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) { ///// intercetor 등록 함수
-		registry.addInterceptor(loginInterceptor)
-		.addPathPatterns("/**")
-		.excludePathPatterns(/// 이하의 경로로 요청시 interceptor미적용
-				"/", 
-				"/index.html",
-				"favicon.ico",
-				"/css/**",
-				"/js/**",
-				"/login/**",
-				"/logout/**",
-				"/register/**"
-				);
+//		registry.addInterceptor(loginInterceptor)
+//		.addPathPatterns("/**")
+//		.excludePathPatterns(/// 이하의 경로로 요청시 interceptor미적용
+//				"/", 
+//				"/index.html",
+//				"favicon.ico",
+//				"/css/**",
+//				"/js/**",
+//				"/login/**",
+//				"/logout/**",
+//				"/register/**"
+//				);
 	}
 	
 //	@Override
