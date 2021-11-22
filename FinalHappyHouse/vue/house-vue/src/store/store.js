@@ -20,7 +20,6 @@ export default new Vuex.Store({
 
 
     user: {
-<<<<<<< HEAD
       userId: "",
       userName: "",
       userProfileImageUrl: "",
@@ -28,9 +27,6 @@ export default new Vuex.Store({
       userPosition: "",
       userEmail: "",
       
-=======
-
->>>>>>> b07c19c74864a86f1daed5595339a2807fc1573f
     },
     //
     board: {
