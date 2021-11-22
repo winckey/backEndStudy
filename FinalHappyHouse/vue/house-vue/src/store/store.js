@@ -11,8 +11,8 @@ export default new Vuex.Store({
     // login, NavBar
     login: {
       isLogin: false,
-      userId: '',
-      userPassword: '',
+      userId: 'test',
+      userPassword: 'test',
       userName: '',
       userProfileImageUrl: '',
     },
@@ -26,7 +26,8 @@ export default new Vuex.Store({
       userPhone: "",
       userPosition: "",
       userEmail: "",
-      
+      userHouseFavoriteList: [],
+      userAgentFavoriteList: [],
     },
     //
     board: {
@@ -72,9 +73,21 @@ export default new Vuex.Store({
       lng: "",
       dealList: [],
       agentName: "",
-      agentNo : 0,
+      agentNo: 0,
 
     },
+
+    agent: {
+      list: [],
+      
+      agentNo: 0,
+      agentName: "",
+      agentRate: "",
+      agentHouseList: [],
+
+  
+    },
+
   },
   // state 상태를 변경하는 유일한 방법
   mutations: {

@@ -36,7 +36,7 @@
             <a v-show="$store.state.login.isLogin" class="navbar-brand" href="#">
               <li class="nav-item dropdown">
                 <img
-                  v-bind:src="userProfileImageUrl"
+                  v-bind:src="this.$store.state.user.userProfileImageUrl"
                   alt="Profile"
                   style="width: 24px; height: 24px; border-radius: 50%"
                 />
@@ -66,11 +66,7 @@ import http from "@/common/axios.js";
 
 export default {
   name: "Logout",
-  data() {
-    return {
-      userProfileImageUrl: this.$store.state.user.userProfileImageUrl,
-    };
-  },
+
   methods: {
     logout() {
       http
