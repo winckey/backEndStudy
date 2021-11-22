@@ -20,17 +20,14 @@ export default new Vuex.Store({
 
 
     user: {
-<<<<<<< HEAD
+
       userId: "",
       userName: "",
       userProfileImageUrl: "",
       userPhone: "",
       userPosition: "",
       userEmail: "",
-      
-=======
-
->>>>>>> b07c19c74864a86f1daed5595339a2807fc1573f
+    
     },
     //
     board: {
@@ -79,6 +76,10 @@ export default new Vuex.Store({
       agentNo : 0,
 
     },
+
+    
+
+
   },
   // state 상태를 변경하는 유일한 방법
   mutations: {
