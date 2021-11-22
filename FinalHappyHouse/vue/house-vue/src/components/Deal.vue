@@ -117,7 +117,7 @@
           });
 
       },
-     
+      
     },
     mounted() {
       this.detailHouseModal = new Modal(document.getElementById('detailHouseModal'));

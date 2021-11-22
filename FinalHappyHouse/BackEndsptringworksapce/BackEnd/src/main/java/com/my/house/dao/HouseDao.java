@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.my.house.dto.AgentDto;
 import com.my.house.dto.DealDto;
 import com.my.house.dto.HouseDto;
 import com.my.house.dto.HouseParamDto;
@@ -20,6 +21,7 @@ public interface HouseDao {
 	public String agentName(int agentNo);
 	public List<DealDto> dealList(HouseParamDto houseParamDto);
 	public int agentNo(HouseParamDto houseParamDto);
+	public AgentDto agent(HouseParamDto houseParamDto);
 
 }
 

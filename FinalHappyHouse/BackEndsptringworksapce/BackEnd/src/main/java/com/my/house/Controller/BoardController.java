@@ -66,7 +66,7 @@ public class BoardController {
 		System.out.println("boardDetail : " + boardId);
 		BoardResultDto boardResultDto = service.boardDetail(boardParamDto);
 		
-System.out.println("1. board Detail : " + boardResultDto );
+		System.out.println("1. board Detail : " + boardResultDto );
 		
 		// 게시글 작성자와 현 사용자가 동일
 		if( ((UserDto) session.getAttribute("userDto")).getUserNo() == boardResultDto.getDto().getUserNo() ) {

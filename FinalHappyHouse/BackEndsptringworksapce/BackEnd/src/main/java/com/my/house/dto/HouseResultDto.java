@@ -8,8 +8,9 @@ public class HouseResultDto {
 	private List<HouseDto> list;
 	private int count;
 	private List<DealDto> dealList;
-	private String agentName;
-	private int agentNo;
+	private AgentDto agentDto;
+	
+	
 	public int getResult() {
 		return result;
 	}
@@ -40,23 +41,18 @@ public class HouseResultDto {
 	public void setDealList(List<DealDto> dealList) {
 		this.dealList = dealList;
 	}
-	public String getAgentName() {
-		return agentName;
+	public AgentDto getAgentDto() {
+		return agentDto;
 	}
-	public void setAgentName(String agentName) {
-		this.agentName = agentName;
-	}
-	public int getAgentNo() {
-		return agentNo;
-	}
-	public void setAgentNo(int agentNo) {
-		this.agentNo = agentNo;
+	public void setAgentDto(AgentDto agentDto) {
+		this.agentDto = agentDto;
 	}
 	@Override
 	public String toString() {
 		return "HouseResultDto [result=" + result + ", dto=" + dto + ", list=" + list + ", count=" + count
-				+ ", dealList=" + dealList + ", agentName=" + agentName + ", agentNo=" + agentNo + "]";
+				+ ", dealList=" + dealList + ", agentDto=" + agentDto + "]";
 	}
+	
 	
 	
 	

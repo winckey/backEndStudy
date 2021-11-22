@@ -42,19 +42,14 @@
 	</select>
 
 
-	<select id="agentName" parameterType="int" resultType="String">
-		SELECT u.USER_NAME
-		FROM agent a , user u 
-		where a.user_no = u.USER_NO 
-		and a.agent_no = #{agentNo};
-	</select>
-	
-	
-	
-	<select id="agentNo" parameterType="map" resultType="int">
-		SELECT agent_no 
+
+	<select id="agent" parameterType="map" resultType="com.my.house.dto.AgentDto">
+		select a.* , u.user_name as agent_name, u.user_phone as agent_phone, u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
+		from agent a , user u
+		where a.user_no = u .user_no
+        and a.agent_no = (SELECT agent_no 
 		FROM agent_house 
-		where house_no = #{houseNo};
+		where house_no = #{houseNo})
 	</select>
 	
 	

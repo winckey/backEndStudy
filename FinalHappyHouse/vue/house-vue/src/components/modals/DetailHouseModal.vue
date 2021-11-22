@@ -209,11 +209,9 @@
   // 아래 import 사용 X
   // import http from "@/common/axios.js";
   // import util from "@/common/util.js";
+
   export default {
-
-
-
-    methods: {}
+    
   }
 </script>
 

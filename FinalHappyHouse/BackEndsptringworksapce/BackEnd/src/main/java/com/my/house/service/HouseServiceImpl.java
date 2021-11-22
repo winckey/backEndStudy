@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.house.dao.HouseDao;
+import com.my.house.dto.AgentDto;
 import com.my.house.dto.DealDto;
 import com.my.house.dto.HouseDto;
 import com.my.house.dto.HouseParamDto;
@@ -74,15 +75,13 @@ public class HouseServiceImpl implements HouseService {
 			System.out.println("dealDtos ok : "+ dealDtos );
 			HouseDto houseDto = dao.houseDetail(houseParamDto);//
 			System.out.println("houseDto ok : "+ houseDto );
-			int agentNo = dao.agentNo(houseParamDto);//
-			System.out.println("agentNo ok : "+ agentNo );
-			String agentName = dao.agentName(agentNo);//
-			System.out.println("agentName ok : "+ agentName );
+			AgentDto agentDto = dao.agent(houseParamDto);//
+			System.out.println("agentNo ok : "+ agentDto );
 			
 			
 			
-			houseResultDto.setAgentNo(agentNo);
-			houseResultDto.setAgentName(agentName);
+			
+			houseResultDto.setAgentDto(agentDto);
 			houseResultDto.setDealList(dealDtos);
 			houseResultDto.setDto(houseDto);
 			
