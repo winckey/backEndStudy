@@ -102,9 +102,13 @@
                   lat: data.dto.lat,
                   lng: data.dto.lng, 
                   dealList: data.dealList,
-                  agentName: data.agentName,
-                  agentNo: data.agentNo,
-                  img: "assets/img/post-1.jpg",
+                  agentName: data.agentDto.agentName,
+                  agentNo: data.agentDto.agentNo,
+                  agentEmail : data.agentDto.agentEmail,
+                  agentPhone : data.agentDto.agentPhone,
+                  agentRate : data.agentDto.agentRate,
+                  agentDesc : data.agentDto.agentDesc,
+                  img : "assets/img/post-1.jpg",
                 }
               );
               console.log("134Line houseName : " +this.$store.state.house.dealList);

@@ -86,7 +86,7 @@ export default new Vuex.Store({
       agentNo: 0,
       agentName: "",
       agentRate: "",
-      agentPhoen : "",
+      agentPhone : "",
       agentEmail : "",
       agentProfileImageUrl : "",
       agentDesc : "",
@@ -183,8 +183,9 @@ export default new Vuex.Store({
       state.agent.agentName = payload.agentName;
       state.agent.agentNo = payload.agentNo;
       state.agent.agentEmail = payload.agentEmail;
-      state.agent.agentPhoen = payload.agentPhoen;
+      state.agent.agentPhone = payload.agentPhone;
       state.agent.agentRate = payload.agentRate;
+      state.agent.agentDesc = payload.agentDesc;
       state.house.img = payload.img;
     },
     // for UpdateModal title v-modal
