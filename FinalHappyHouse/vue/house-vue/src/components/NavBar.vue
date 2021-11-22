@@ -23,7 +23,9 @@
             <li class="nav-item">
               <router-link to="/deal" class="nav-link">Deal</router-link>
             </li>
-
+            <li class="nav-item">
+              <router-link to="/agent" class="nav-link">Agent</router-link>
+            </li>
             <a v-show="$store.state.login.isLogin" class="navbar-brand" href="#">
               <li class="nav-item dropdown">
                 <img v-bind:src="this.$store.state.user.userProfileImageUrl" alt="Profile"

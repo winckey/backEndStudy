@@ -136,6 +136,10 @@ export default new Vuex.Store({
 
     },
 
+    SET_AGENT_LIST(state, list) {
+      state.agent.list = list;
+    },
+
     SET_BOARD_TOTAL_LIST_ITEM_COUNT(state, count) {
       state.board.totalListItemCount = count;
     },
@@ -251,6 +255,26 @@ export default new Vuex.Store({
             router.push("/login");
           } else {
             context.commit("SET_HOUSE_LIST", data.list);
+          }
+        });
+    },
+
+    agentList(context) {
+      http
+        .get("/agents", {
+          // get query string
+          params: {
+          },
+        })
+        .then(({
+          data
+        }) => {
+          console.log("BoardMainVue: data : ");
+          console.log(data);
+          if (data.result == "login") {
+            router.push("/login");
+          } else {
+            context.commit("SET_AGENT_LIST", data.list);
           }
         });
     },

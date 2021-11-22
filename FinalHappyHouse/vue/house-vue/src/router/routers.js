@@ -70,6 +70,19 @@ const routes = [
       }
     }
   },
+
+  {
+    name: 'Agent',
+    path: '/agent',
+    component: Agent,
+    beforeEnter: (to, from, next) => {
+      if(! store.state.login.isLogin ){
+        next("/login");
+      }else{
+        return next();
+      }
+    }
+  },
   
   {
     name: 'Mypage',
