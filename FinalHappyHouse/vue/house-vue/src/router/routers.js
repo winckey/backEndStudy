@@ -10,6 +10,8 @@ import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
 import Mypage from '@/components/Mypage.vue';
 import Notify from '@/components/Notify.vue';
+import Agent from '@/components/Agent.vue';
+import AgentDetail from '@/components/AgentDetail.vue';
 
 const routes = [
   {
@@ -51,7 +53,18 @@ const routes = [
     name: 'Mypage',
     path: '/mypage',
     component: Mypage
+  },
+  {
+    name: 'Agent',
+    path: '/agent',
+    component: Agent
+  },
+  {
+    name: 'AgentDetail',
+    path: '/agentDetail',
+    component: AgentDetail
   }
+
 ];
 // 여러 컴포넌트 붙일땐  components 
 const router = new VueRouter({

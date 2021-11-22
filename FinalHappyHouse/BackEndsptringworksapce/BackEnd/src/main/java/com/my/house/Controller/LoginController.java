@@ -94,7 +94,7 @@ import com.my.house.service.LoginService;
 		
 		@GetMapping(value="/logout")
 		public ResponseEntity<Integer> logout(HttpSession session) {
-			System.out.println("logout  b invalidate11 : " + session.getAttribute("userDto"));
+			System.out.println("logout invalidate : " + session.getAttribute("userDto"));
 			session.invalidate();
 			
 			return new ResponseEntity<Integer>(1, HttpStatus.OK);

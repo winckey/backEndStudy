@@ -20,14 +20,21 @@ export default new Vuex.Store({
 
 
     user: {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13dd1a7f47744b28b25d8b60d3b0b6928d845c21
       userId: "",
       userName: "",
       userProfileImageUrl: "",
       userPhone: "",
       userPosition: "",
       userEmail: "",
+<<<<<<< HEAD
     
+=======
+      
+>>>>>>> 13dd1a7f47744b28b25d8b60d3b0b6928d845c21
     },
     //
     board: {
