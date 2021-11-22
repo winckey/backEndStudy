@@ -17,15 +17,17 @@ export default new Vuex.Store({
       userProfileImageUrl: '',
     },
 
-
-
+    
     user: {
+
+
       userId: "",
       userName: "",
       userProfileImageUrl: "",
       userPhone: "",
       userPosition: "",
       userEmail: "",
+
       userHouseFavoriteList: [],
       userAgentFavoriteList: [],
     },
