@@ -305,12 +305,12 @@ export default new Vuex.Store({
         return true;
       }
     },
-    getNext: function (getters) {
-      if (getters.getEndPageIndex >= getters.getPageCount) {
+    getNext: function(state, getters){
+      if( ( Math.floor( getters.getPageCount / state.board.pageLinkCount ) * state.board.pageLinkCount ) < state.board.currentPageIndex){
         return false;
-      } else {
+      }else{
         return true;
       }
-    },
+    }
   },
 });
