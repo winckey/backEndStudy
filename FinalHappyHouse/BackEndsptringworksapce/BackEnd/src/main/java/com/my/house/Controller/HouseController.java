@@ -30,7 +30,7 @@ public class HouseController extends HttpServlet {
 	private static final int FAIL = -1;
 
 	@GetMapping(value = "/houses")
-	public ResponseEntity<HouseResultDto> boardList(HouseParamDto houseParamDto) {
+	public ResponseEntity<HouseResultDto> houseList(HouseParamDto houseParamDto) {
 
 		HouseResultDto houseResultDto;
 
@@ -49,19 +49,16 @@ public class HouseController extends HttpServlet {
 	}
 
 	@GetMapping(value = "/houses/{houseNo}")
-	public ResponseEntity<HouseResultDto> boardDetail(@PathVariable int houseNo) {
+	public ResponseEntity<HouseResultDto> houseDetail(@PathVariable int houseNo) {
 
 		
 		HouseParamDto houseParamDto = new HouseParamDto();
 		houseParamDto.setHouseNo(houseNo);
 
 		HouseResultDto houseResultDto = service.dealDetail(houseParamDto);
-		// 게시글 작성자와 현 사용자가 동일
-//		if( ((UserDto) session.getAttribute("userDto")).getUserSeq() == boardResultDto.getDto().getUserSeq() ) {
-//			boardResultDto.setOwner(true);
-//		}				
-
+	
 		if (houseResultDto.getResult() == SUCCESS) {
+			System.out.println("-------houseDetail dto : " + houseResultDto.getResult());
 			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.INTERNAL_SERVER_ERROR);

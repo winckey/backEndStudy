@@ -15,7 +15,7 @@ import com.my.house.dto.HouseResultDto;
 @Service
 public class HouseServiceImpl implements HouseService {
 
-	// DealDaoImpl 객체 가져오기
+	// DealDaoImpl 媛앹껜 媛��졇�삤湲�
 	@Autowired
 	HouseDao dao;
 
@@ -87,6 +87,7 @@ public class HouseServiceImpl implements HouseService {
 			houseResultDto.setDto(houseDto);
 			
 			houseResultDto.setResult(SUCCESS);
+			System.out.println("house setResult : "+houseResultDto.getResult());
 			
 		}catch(Exception e) {
 			e.printStackTrace();

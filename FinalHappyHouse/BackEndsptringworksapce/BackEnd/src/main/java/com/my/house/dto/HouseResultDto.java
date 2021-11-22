@@ -52,6 +52,11 @@ public class HouseResultDto {
 	public void setAgentNo(int agentNo) {
 		this.agentNo = agentNo;
 	}
+	@Override
+	public String toString() {
+		return "HouseResultDto [result=" + result + ", dto=" + dto + ", list=" + list + ", count=" + count
+				+ ", dealList=" + dealList + ", agentName=" + agentName + ", agentNo=" + agentNo + "]";
+	}
 	
 	
 	

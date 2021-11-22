@@ -39,7 +39,7 @@ public class BoardController {
 	public ResponseEntity<BoardResultDto> boardList(BoardParamDto boardParamDto){
 		
 		BoardResultDto boardResultDto;
-
+		
 		if( boardParamDto.getSearchWord().isEmpty() ) {
 			boardResultDto = service.boardList(boardParamDto);
 		}else {
@@ -57,10 +57,17 @@ public class BoardController {
 	@GetMapping(value="/boards/{boardId}")
 	public ResponseEntity<BoardResultDto> boardDetail(@PathVariable int boardId, HttpSession session){
 
+		
+		
 		BoardParamDto boardParamDto = new BoardParamDto();
 		boardParamDto.setBoardId(boardId);
-
+			
+		
+		System.out.println("boardDetail : " + boardId);
 		BoardResultDto boardResultDto = service.boardDetail(boardParamDto);
+		
+System.out.println("1. board Detail : " + boardResultDto );
+		
 		// 게시글 작성자와 현 사용자가 동일
 		if( ((UserDto) session.getAttribute("userDto")).getUserNo() == boardResultDto.getDto().getUserNo() ) {
 			boardResultDto.getDto().setSameUser(true);

@@ -76,6 +76,7 @@ export default new Vuex.Store({
       dealList: [],
       agentName: "",
       agentNo: 0,
+      img : "",
 
     },
 
