@@ -323,7 +323,7 @@ export default {
     validatePassword2() {
       this.isUserPassword2Valid = this.newUserPassword == this.newUserPassword2 ? true : false;
     },
-    profileImageUpload() {
+    btnEditProfile() {
       var formData = new FormData();
       FormData.append("userId", this.userId);
       FormData.append("userName", this.userName);
@@ -369,33 +369,33 @@ export default {
       //   });
     },
 
-    btnEditProfile() {
-      http
-        .put("/editProfile", {
-          userId: this.userId,
-          userName: this.userName,
-          userPhone: this.userPhone,
-          userEmail: this.userEmail,
-        })
-        .then(({ data }) => {
-          console.log("editProfile: data: ");
-          console.log(data);
+    // btnEditProfile() {
+    //   http
+    //     .put("/editProfile", {
+    //       userId: this.userId,
+    //       userName: this.userName,
+    //       userPhone: this.userPhone,
+    //       userEmail: this.userEmail,
+    //     })
+    //     .then(({ data }) => {
+    //       console.log("editProfile: data: ");
+    //       console.log(data);
 
-          let $this = this;
+    //       let $this = this;
 
-          this.$alertify.alert("회원정보가 변경되었습니다. 다시 로그인해주세요.", function () {
-            $this.logout();
-            $this.$router.push("/login");
-          });
-        })
-        .catch((error) => {
-          console.log("EditProfile: error: ");
-          console.log(error);
-          if (error.response.status == "404") {
-            this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
-          }
-        });
-    },
+    //       this.$alertify.alert("회원정보가 변경되었습니다. 다시 로그인해주세요.", function () {
+    //         $this.logout();
+    //         $this.$router.push("/login");
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.log("EditProfile: error: ");
+    //       console.log(error);
+    //       if (error.response.status == "404") {
+    //         this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+    //       }
+    //     });
+    // },
 
     btnChangePassword() {
       if (!this.isUserPasswordValid || !this.isUserPassword2Valid || !this.userCurrentPassword)

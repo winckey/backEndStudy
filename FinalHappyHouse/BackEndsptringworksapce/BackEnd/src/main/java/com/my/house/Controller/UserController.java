@@ -73,33 +73,33 @@ public class UserController {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@PutMapping(value="/editProfile")
-	public ResponseEntity<UserResultDto> updateProfile(@RequestBody UserDto dto, HttpSession session){
-
-		
-		UserResultDto userResultDto = userService.userUpdate(dto);
-		
-		
-		if( userResultDto.getResult() == SUCCESS ) {
-			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
-		}else {
-			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-//	@PostMapping(value="editProfile")
-//	public ResponseEntity<UserResultDto> updateProfile(@RequestBody
-//			UserDto dto, 
-//			MultipartHttpServletRequest request) {
-//		
-//		
-//		UserResultDto userResultDto = userService.userUpdate(dto , request);
+//	@PutMapping(value="/editProfile")
+//	public ResponseEntity<UserResultDto> updateProfile(@RequestBody UserDto dto, HttpSession session){
 //
+//		
+//		UserResultDto userResultDto = userService.userUpdate(dto);
+//		
+//		
 //		if( userResultDto.getResult() == SUCCESS ) {
 //			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
 //		}else {
 //			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 //		}
 //	}
+	@PostMapping(value="editProfile")
+	public ResponseEntity<UserResultDto> updateProfile(@RequestBody
+			UserDto dto, 
+			MultipartHttpServletRequest request) {
+		
+		
+		UserResultDto userResultDto = userService.userUpdate(dto , request);
+
+		if( userResultDto.getResult() == SUCCESS ) {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	
 	@DeleteMapping(value="/user/delete")

@@ -13,8 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.my.house.dao.UserDao;
-import com.my.house.dto.BoardFileDto;
 import com.my.house.dto.UserDto;
+import com.my.house.dto.UserFileDto;
 import com.my.house.dto.UserResultDto;
 
 
@@ -31,13 +31,16 @@ public class UserServiceImpl implements UserService{
 	// F:\SSAFY\ssafy5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWebFileUpload\
 	
 	/* for eclipse development code */
-	String uploadPath = "C:" + File.separator + "SSAFY" + File.separator + "ssafy6_sts3_boot_live" 
-			+ File.separator + "fianlSpringBootVue" 
+	String uploadPath = "/Users" + File.separator + "sac" + File.separator + "ssafy" 
+			+ File.separator + "code" 
+			+ File.separator + "Final_project"
+			+ File.separator + "FinalHappyHouse" 
+			+ File.separator + "BackEnd" 
 			+ File.separator + "src" 
 			+ File.separator + "main"
 			+ File.separator + "resources"
 			+ File.separator + "static";
-
+	
 	private static final int SUCCESS = 1;
 	private static final int FAIL = -1;
 	
@@ -67,85 +70,87 @@ public class UserServiceImpl implements UserService{
 	}
 
 	// img없이 업데이트 하는 코드
-	@Override
-	public UserResultDto userUpdate(UserDto userDto) {
-		UserResultDto userResultDto = new UserResultDto();
-		
-		if( userDao.userUpdate(userDto) == 1 ) {
-			
-			userResultDto.setResult(SUCCESS);
-		}else {
-			userResultDto.setResult(FAIL);
-
-		}
-	
-		
-		return userResultDto;
-	}
-//
 //	@Override
-//	@Transactional
-//	public UserResultDto userUpdate(UserDto userDto, MultipartHttpServletRequest request) {
+//	public UserResultDto userUpdate(UserDto userDto) {
 //		UserResultDto userResultDto = new UserResultDto();
 //		
-//		try {
-//			userDao.userUpdate(userDto);
-//
-//			List<MultipartFile> fileList = request.getFiles("file");
+//		if( userDao.userUpdate(userDto) == 1 ) {
 //			
-//			File uploadDir = new File(uploadPath + File.separator + uploadFolder);
-//			if (!uploadDir.exists()) uploadDir.mkdir();
-//			
-//	    	List<String> fileUrlList = userDao.userFileUrlDeleteList(userDto.getUserId());	
-//			for(String fileUrl : fileUrlList) {	
-//				File file = new File(uploadPath + File.separator, fileUrl);
-//				if(file.exists()) {
-//					file.delete();
-//				}
-//			}
-//
-//		userDao.userFileDelete(userDto.getUserId()); // �뜝�룞�삕�뜝�떛釉앹삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
-//	    	
-//	    	
-//			for (MultipartFile part : fileList) {
-//				String boardId = userDto.getUserId();
-//				
-//				String fileName = part.getOriginalFilename();
-//				
-//				//Random File Id
-//				UUID uuid = UUID.randomUUID();
-//				
-//				//file extension
-//				String extension = FilenameUtils.getExtension(fileName); // vs FilenameUtils.getBaseName()
-//			
-//				String savingFileName = uuid + "." + extension;
-//			
-//				File destFile = new File(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
-//				
-//				System.out.println(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
-//				part.transferTo(destFile);
-//		    
-//			    // Table Insert
-//			    BoardFileDto boardFileDto = new BoardFileDto();
-//			    boardFileDto.setBoardId(boardId);
-//			    boardFileDto.setFileName(fileName);
-//			    boardFileDto.setFileSize(part.getSize());
-//				boardFileDto.setFileContentType(part.getContentType());
-//				String boardFileUrl = uploadFolder + "/" + savingFileName;
-//				boardFileDto.setFileUrl(boardFileUrl);
-//				
-//				userDao.boardFileInsert(boardFileDto);
-//			}
-//
 //			userResultDto.setResult(SUCCESS);
-//			
-//		}catch(IOException e) {
-//			e.printStackTrace();
+//		}else {
 //			userResultDto.setResult(FAIL);
+//
 //		}
+//	
 //		
 //		return userResultDto;
 //	}
+
+	@Override
+	@Transactional
+	public UserResultDto userUpdate(UserDto userDto, MultipartHttpServletRequest request) {
+		UserResultDto userResultDto = new UserResultDto();
+		
+		try {
+			userDao.userUpdate(userDto);
+	System.out.println("기존 정보만 업데이트 userDto: "+ userDto);
+			List<MultipartFile> fileList = request.getFiles("file");
+			
+			File uploadDir = new File(uploadPath + File.separator + uploadFolder);
+			if (!uploadDir.exists()) uploadDir.mkdir();
+			
+			
+	    	List<String> fileUrlList = userDao.userFileUrlDeleteList(userDto.getUserId());	
+			for(String fileUrl : fileUrlList) {	
+				File file = new File(uploadPath + File.separator, fileUrl);
+				if(file.exists()) {
+					file.delete();
+				}
+			}
+
+			userDao.userFileDelete(userDto.getUserId()); // 
+		
+	    		
+			for (MultipartFile part : fileList) {
+				String userId = userDto.getUserId();
+				
+				String fileName = part.getOriginalFilename();
+				
+				//Random File Id
+				UUID uuid = UUID.randomUUID();
+				
+				//file extension
+				String extension = FilenameUtils.getExtension(fileName); // vs FilenameUtils.getBaseName()
+			
+				String savingFileName = uuid + "." + extension;
+			
+				File destFile = new File(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
+				
+				System.out.println(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
+				part.transferTo(destFile);
+		    
+			    // Table Insert
+			    UserFileDto userFileDto = new UserFileDto();
+			    userFileDto.setUserId(userId);
+			    userFileDto.setFileName(fileName);
+			    userFileDto.setFileSize(part.getSize());
+			    userFileDto.setFileContentType(part.getContentType());
+				String userFileUrl = uploadFolder + "/" + savingFileName;
+				userFileDto.setFileUrl(userFileUrl);
+				
+				userDao.userFileInsert(userFileDto);
+//				userDao.userFileUrlInsert()
+			}
+
+			userResultDto.setResult(SUCCESS);
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+			userResultDto.setResult(FAIL);
+		}
+		
+		return userResultDto;
+	}
 
 	@Override
 	public UserResultDto userPasswordUpdate(UserDto userDto) {

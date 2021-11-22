@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.my.house.dto.UserDto;
+import com.my.house.dto.UserFileDto;
 
 @Mapper
 public interface UserDao {
@@ -14,7 +15,8 @@ public interface UserDao {
 	public int userDelete(String userId);
 
 	public int userFileDelete(String userId);
-
 	public List<String> userFileUrlDeleteList(String userId);
+
+	public int userFileInsert(UserFileDto dto);
 
 }

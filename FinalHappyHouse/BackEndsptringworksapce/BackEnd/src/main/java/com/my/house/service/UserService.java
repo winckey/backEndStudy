@@ -7,8 +7,8 @@ import com.my.house.dto.UserResultDto;
 public interface UserService {
 	public UserResultDto userRegister(UserDto userDto);
 	
-	public UserResultDto userUpdate(UserDto userDto);
-//	public UserResultDto userUpdate(UserDto userDto, MultipartHttpServletRequest request);
+//	public UserResultDto userUpdate(UserDto userDto);
+	public UserResultDto userUpdate(UserDto userDto, MultipartHttpServletRequest request);
 	
 	public UserResultDto userPasswordUpdate(UserDto userDto);
 

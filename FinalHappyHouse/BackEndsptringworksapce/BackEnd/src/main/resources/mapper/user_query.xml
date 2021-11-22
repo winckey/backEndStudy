@@ -22,5 +22,18 @@
 		 WHERE USER_ID = #{userId}
 	</delete>
 	
+	
+	<insert id="userFileInsert" parameterType="com.my.house.dto.UserFileDto">
+		INSERT INTO USER_FILE ( UESR_ID, FILE_NAME, FILE_SIZE, FILE_CONTENT_TYPE, FILE_URL )
+		            VALUES ( #{userId}, #{fileName}, #{fileSize}, #{fileContentType}, #{fileUrl} )
+	</insert>
+	
+	<delete id="userFileDelete" parameterType="int">
+		DELETE FROM USER_FILE WHERE USER_ID = #{userId}
+	</delete>
+	
+	<select id="userFileUrlDeleteList" parameterType="int" resultType="string">
+		SELECT FILE_URL FROM BOARD_FILE WHERE BOARD_ID = #{boardId}
+	</select>
 
 </mapper>
