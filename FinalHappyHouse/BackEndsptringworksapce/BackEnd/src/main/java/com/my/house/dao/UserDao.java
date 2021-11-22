@@ -1,5 +1,7 @@
 package com.my.house.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.my.house.dto.UserDto;
@@ -10,5 +12,9 @@ public interface UserDao {
 	public int userUpdate(UserDto userDto);
 	public int userPasswordUpdate(UserDto userDto);
 	public int userDelete(String userId);
+
+	public int userFileDelete(String userId);
+
+	public List<String> userFileUrlDeleteList(String userId);
 
 }

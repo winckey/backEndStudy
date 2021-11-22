@@ -19,7 +19,7 @@
           >Estate<span class="color-b">Agency</span></router-link
         >
 
-        <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
           <ul class="navbar-nav">
             <li class="nav-item">
               <router-link to="/main" class="nav-link">Main</router-link>

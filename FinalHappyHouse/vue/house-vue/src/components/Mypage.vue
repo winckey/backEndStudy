@@ -86,7 +86,9 @@
                   </div>
 
                   <div class="text-center mt-3">
-                    <button @click="btnUserDelete" class="btn btn-outline-danger">회원탈퇴</button>
+                    <button @click="btnUserDelete" class="btn btn-sm btn-outline-danger">
+                      회원탈퇴
+                    </button>
                   </div>
                 </div>
 
@@ -99,12 +101,12 @@
                     <div class="col-md-8 col-lg-9">
                       <img v-bind:src="userProfileImageUrl" alt="Profile" width="100" />
                       <div class="pt-2">
-                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"
-                          ><i class="bi bi-upload"></i
-                        ></a>
-                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"
-                          ><i class="bi bi-trash"></i
-                        ></a>
+                        <input
+                          @change="changeFile"
+                          class="form-control form-control-sm"
+                          type="file"
+                          id="inputFileUploadInsert"
+                        />
                       </div>
                     </div>
                   </div>
@@ -321,6 +323,52 @@ export default {
     validatePassword2() {
       this.isUserPassword2Valid = this.newUserPassword == this.newUserPassword2 ? true : false;
     },
+    profileImageUpload() {
+      var formData = new FormData();
+      FormData.append("userId", this.userId);
+      FormData.append("userName", this.userName);
+      FormData.append("userPhone", this.userPhone);
+      FormData.append("userEmail", this.userEmail);
+
+      var attachFile = document.querySelector("#userImageFileUpload");
+
+      formData.append("file", attachFile.files);
+      http
+        .post("/editProfile", formData, { headers: { "Content-Type": "multipart/form-data" } })
+
+        .then(({ data }) => {
+          console.log("editProfile: data: ");
+          console.log(data);
+
+          let $this = this;
+
+          this.$alertify.alert("회원정보가 변경되었습니다. 다시 로그인해주세요.", function () {
+            $this.logout();
+            $this.$router.push("/");
+          });
+        })
+        .catch((error) => {
+          console.log("EditProfile: error: ");
+          console.log(error);
+          if (error.response.status == "404") {
+            this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+          }
+        });
+      // http
+      //   .post("/imageFileUpload", formData, { headers: { "Content-Type": "multipart/form-data" } })
+      //   .then(({ data }) => {
+      //     if (data.result == "login") {
+      //       this.$router.push("/login");
+      //     } else {
+      //       this.$alertify.success("회원정보가 변경되었습니다. 다시 로그인해주세요.");
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     console.log("InsertModalVue: error ");
+      //     console.log(error);
+      //   });
+    },
+
     btnEditProfile() {
       http
         .put("/editProfile", {
@@ -337,7 +385,7 @@ export default {
 
           this.$alertify.alert("회원정보가 변경되었습니다. 다시 로그인해주세요.", function () {
             $this.logout();
-            $this.$router.push("/");
+            $this.$router.push("/login");
           });
         })
         .catch((error) => {

@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.my.house.dto.BoardDto;
+import com.my.house.dto.BoardResultDto;
 import com.my.house.dto.UserDto;
 import com.my.house.dto.UserResultDto;
 import com.my.house.service.UserService;
@@ -83,6 +86,22 @@ public class UserController {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+//	@PostMapping(value="editProfile")
+//	public ResponseEntity<UserResultDto> updateProfile(@RequestBody
+//			UserDto dto, 
+//			MultipartHttpServletRequest request) {
+//		
+//		
+//		UserResultDto userResultDto = userService.userUpdate(dto , request);
+//
+//		if( userResultDto.getResult() == SUCCESS ) {
+//			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+//		}else {
+//			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
+	
+	
 	@DeleteMapping(value="/user/delete")
 	public ResponseEntity<UserResultDto> delete(UserDto dto, HttpSession session){
 		UserDto userDto = (UserDto) session.getAttribute("userDto")  ;
