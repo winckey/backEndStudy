@@ -15,5 +15,6 @@
 		<mapper resource="mapper/user_query.xml" />
 		<mapper resource="mapper/board_query.xml" />
 		<mapper resource="mapper/house_query.xml" />
+		<mapper resource="mapper/agent_query.xml" />
 	</mappers>
 </configuration>

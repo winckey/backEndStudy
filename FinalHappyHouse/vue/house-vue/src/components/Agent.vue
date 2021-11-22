@@ -32,7 +32,7 @@
         <div class="container">
           <div class="row">
             <!-- agent -->
-            <div class="col-md-4" v-for="(index) in 10" v-bind:key="index">
+            <div class="col-md-4" v-for="(agent, index) in this.$store.state.agent.list"  v-bind:key="index">
               <div class="card-box-d">
                 <div class="card-img-d">
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
@@ -41,21 +41,20 @@
                   <div class="card-header-d">
                     <div class="card-title-d align-self-center">
                       <h3 class="title-d">
-                        <router-link to="" class="nav-link">DealMargaret Sotillo
-                          <br> Escala</router-link>
+                        <div @click="agentDetail(agent.houseNo)">{{agent.agentName}}</div>
                       </h3>
                     </div>
                   </div>
                   <div class="card-body-d">
                     <p class="content-d color-text-a">
-                      Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                     {{agent.agentDesc}}
                     </p>
                     <div class="info-agents color-a">
                       <p>
-                        <strong>Phone: </strong> +54 356 945234
+                        <strong>Phone: </strong>{{agent.agentPhone}}
                       </p>
                       <p>
-                        <strong>Email: </strong> agents@example.com
+                        <strong>Email: </strong> {{agent.agentEmail}}
                       </p>
                     </div>
                   </div>
@@ -105,6 +104,9 @@
     methods: {
       agentList() {
         this.$store.dispatch('agentList');
+      },
+       agentDetail(agentNo) {
+         this.$store.commit('SET_AGENT_NO' , agentNo);
       },
     },
 

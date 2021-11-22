@@ -140,6 +140,10 @@ export default new Vuex.Store({
       state.agent.list = list;
     },
 
+    SET_AGENT_NO(state, agentNo) {
+      state.agent.agentNo = agentNo;
+    },
+
     SET_BOARD_TOTAL_LIST_ITEM_COUNT(state, count) {
       state.board.totalListItemCount = count;
     },

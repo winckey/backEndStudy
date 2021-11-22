@@ -27,6 +27,7 @@ public interface BoardDao {
 	
 	public int boardReadCountUpdate(int boardId);
 	
+
 	
 	public int boardDelete(int boardId);	
 	public int boardFileDelete(int boardId);
