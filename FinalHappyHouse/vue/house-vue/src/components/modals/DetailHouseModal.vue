@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
 
-          <img v-bind:src="this.$store.state.user.userProfileImageUrl">
+          <img v-bind:src="this.$store.state.house.img">
 
           <table class="table table-hover">
             <tbody>

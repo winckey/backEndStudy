@@ -127,8 +127,11 @@
                   dealList: data.dto.dealList,
                   agentName: data.dto.agentName,
                   agentNo: data.dto.agentNo,
+                  img: "assets/img/post-1.jpg",
+
                 }
               );
+              console.log("134Line houseName : " +this.$store.state.house.img);
               this.detailHouseModal.show();
             }
           })

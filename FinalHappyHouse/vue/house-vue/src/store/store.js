@@ -178,6 +178,7 @@ export default new Vuex.Store({
       state.house.dealList = payload.dealList;
       state.house.agentName = payload.agentName;
       state.house.agentNo = payload.agentNo;
+      state.house.img = payload.img;
     },
     // for UpdateModal title v-modal
     SET_BOARD_TITLE(state, title) {
