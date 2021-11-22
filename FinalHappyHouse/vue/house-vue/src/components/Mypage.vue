@@ -84,6 +84,10 @@
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8">{{ userEmail }}</div>
                   </div>
+
+                  <div class="text-center mt-3">
+                    <button @click="btnUserDelete" class="btn btn-outline-danger">회원탈퇴</button>
+                  </div>
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -368,6 +372,32 @@ export default {
               $this.$router.push("/");
             }
           );
+        })
+        .catch((error) => {
+          console.log("ChangePassword: error: ");
+          console.log(error);
+          if (error.response.status == "404") {
+            this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+          }
+        });
+    },
+    btnUserDelete() {
+      let $this = this;
+      this.$alertify.confirm("정말로 탈퇴하시겠습니까?", function () {
+        $this.$alertify.success("정상처리 되었습니다.");
+        $this.userDelete();
+      });
+    },
+    userDelete() {
+      http
+        .delete("/user/delete", {
+          userId: this.userId,
+        })
+        .then(({ data }) => {
+          console.log("userDelete : data: ");
+          console.log(data);
+          this.$store.commit("SET_LOGOUT");
+          this.$router.push("/");
         })
         .catch((error) => {
           console.log("ChangePassword: error: ");
