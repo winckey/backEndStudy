@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <h4 class="text-center">공지사항</h4>       
+    <h4 class="text-center mt-5">공지사항</h4>       
   <div class="input-group mb-3">
     <!-- store 사용 -->
     <input v-model="$store.state.board.searchWord" @keydown.enter="boardList" type="text" class="form-control">
