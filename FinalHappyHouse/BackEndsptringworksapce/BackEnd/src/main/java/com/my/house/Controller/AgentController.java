@@ -1,5 +1,7 @@
 package com.my.house.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.my.house.dto.AgentResultDto;
-import com.my.house.dto.HouseParamDto;
-import com.my.house.dto.HouseResultDto;
 import com.my.house.service.AgentService;
-import com.my.house.service.HouseService;
 
 @CrossOrigin(/////
 		origins = "http://localhost:5500", allowCredentials = "true", allowedHeaders = "*", methods = {
@@ -47,6 +46,7 @@ public class AgentController extends HttpServlet {
 		}
 	}
 
+	
 	@GetMapping(value = "/agents/{agentNo}")
 	public ResponseEntity<AgentResultDto> agentDetail(@PathVariable int agentNo) {
 

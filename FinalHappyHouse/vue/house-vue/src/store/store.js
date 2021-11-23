@@ -92,6 +92,7 @@ export default new Vuex.Store({
       agentDesc : "",
       agentHouseList: [],
 
+
   
     },
 
@@ -287,6 +288,25 @@ export default new Vuex.Store({
           console.log(data);
           if (data.result == "login") {
             router.push("/login");
+          } else {
+            context.commit("SET_AGENT_LIST", data.list);
+          }
+        });
+    },
+    agentFavoriteList(context) {
+      http
+        .get("/agentsFavorite", {
+          // get query string
+          params: {
+          },
+        })
+        .then(({
+          data
+        }) => {
+          console.log("BoardMainVue: data : ");
+          console.log(data);
+          if (data.result == "login") {
+            router.push("/logi n");
           } else {
             context.commit("SET_AGENT_LIST", data.list);
           }

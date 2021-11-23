@@ -41,8 +41,8 @@
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid" />
                 </div>
                 <div class="card-overlay card-overlay-hover">
-                  <button type="button" class="btn btn-warning justify-contents-end">
-                    <i class="bi bi-star me-1"></i>
+                  <button type="button" class="btn btn-warning">
+                    <i class="bi bi-star"></i>
                   </button>
                   <div class="card-header-d">
                     <div class="card-title-d align-self-center">

@@ -43,4 +43,8 @@
 		SELECT FILE_URL FROM BOARD_FILE WHERE BOARD_ID = #{boardId}
 	</select>
 
+	<select id="userFavoriteAgentList" parameterType="int" resultType="int">
+		SELECT agent_no FROM user_agent_favorite WHERE user_no = #{userNo}
+	</select>
+
 </mapper>

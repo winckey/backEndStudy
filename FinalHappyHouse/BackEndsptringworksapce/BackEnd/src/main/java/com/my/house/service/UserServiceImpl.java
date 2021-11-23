@@ -70,23 +70,6 @@ public class UserServiceImpl implements UserService{
 		return userResultDto;
 	}
 
-	// img없이 업데이트 하는 코드
-//	@Override
-//	public UserResultDto userUpdate(UserDto userDto) {
-//		UserResultDto userResultDto = new UserResultDto();
-//		
-//		if( userDao.userUpdate(userDto) == 1 ) {
-//			
-//			userResultDto.setResult(SUCCESS);
-//		}else {
-//			userResultDto.setResult(FAIL);
-//
-//		}
-//	
-//		
-//		return userResultDto;
-//	}
-
 	@Override
 	@Transactional
 	public UserResultDto userUpdate(UserDto userDto, MultipartHttpServletRequest request) {
@@ -169,5 +152,19 @@ public class UserServiceImpl implements UserService{
 	
 		
 		return userResultDto;
+	}
+
+	@Override
+	public UserResultDto userFavoriteAgentList(int userNo) {
+		UserResultDto userResultDto = new UserResultDto();
+		
+		if( userDao.userFavoriteAgentList(userNo) == 1 ) {
+			
+			userResultDto.setResult(SUCCESS);
+		}else {
+			userResultDto.setResult(FAIL);
+
+		}
+		return null;
 	}
 }

@@ -15,5 +15,7 @@ public interface UserService {
 
 	public UserResultDto userDelete(String userId);
 
+	public UserResultDto userFavoriteAgentList(int userNo);
+
 
 }
