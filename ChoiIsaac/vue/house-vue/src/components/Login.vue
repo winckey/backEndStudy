@@ -36,18 +36,22 @@
                   <div class="col-12">
                     <label for="Id" class="form-label">ID</label>
                     <div class="input-group has-validation">
-                      <input type="text" v-model="$store.state.login.userId" class="form-control" />
+                      <input
+                        type="text"
+                        v-model="$store.state.login.userId"
+                        class="form-control"
+                      />
                       <div class="invalid-feedback">Please enter your Id.</div>
                     </div>
                   </div>
-
+                  
                   <div class="col-12">
                     <label for="yourPassword" class="form-label">Password</label>
 
                     <input
                       type="password"
                       class="form-control"
-                      v-model="$store.state.login.userPassword"
+                      v-model="$store.state.login.userPassword"                     
                     />
                     <div class="invalid-feedback">Please enter your password!</div>
                   </div>
@@ -117,9 +121,9 @@ export default {
             userName: data.userName,
             userProfileImageUrl: data.userProfileImageUrl,
           });
-
+          console.log("to Main");
           //== <route-link :to=”path”>
-          this.$router.push("/main");
+          this.$router.push("/Main");
         })
         .catch((error) => {
           console.log("LoginVue: error : ");

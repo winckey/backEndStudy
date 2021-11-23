@@ -89,11 +89,7 @@ const routes = [
     path: '/mypage',
     component: Mypage
   },
-  {
-    name: 'Agent',
-    path: '/agent',
-    component: Agent
-  },
+  
   {
     name: 'AgentDetail',
     path: '/agentDetail',

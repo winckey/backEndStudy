@@ -5,17 +5,22 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Login from '@/components/Login.vue';
-import Main from '@/components/Main.vue';
-import Deal from '@/components/Deal.vue';
 import Register from '@/components/Register.vue';
-import Mypage from '@/components/Mypage.vue';
-
+import Deal from '@/components/Deal.vue';
+import Notify from '@/components/Notify.vue';
+import Main from '@/components/Main.vue';
 const routes = [
-  {
 
+  {
     path: '/',
     component: Login
   },
+  {
+    name: 'Login',
+    path: '/login',
+    component: Login
+  },
+
   {
     name: 'Main',
     path: '/main',
@@ -24,31 +29,23 @@ const routes = [
   {
     name: 'Deal',
     path: '/deal',
-    component:  Deal
-    
+    component: Deal
   },
-  
   {
-    name: 'Login',
-    path: '/login',
-    component: Login
+    name: 'Notify',
+    path: '/notify',
+    component: Notify
   },
-  
   {
-    name: 'Register',
+    name: Register,
     path: '/register',
     component: Register
   },
-  
-  {
-    name: 'Mypage',
-    path: '/mypage',
-    component: Mypage
-  }
+
 ];
-// 여러 컴포넌트 붙일땐  components 
+
 const router = new VueRouter({
-  // mode: history,
+  // mode: 'history',
   routes,
 });
 

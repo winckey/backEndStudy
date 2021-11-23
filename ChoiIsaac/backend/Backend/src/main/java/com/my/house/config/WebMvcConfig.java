@@ -22,11 +22,11 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(loginInterceptor)
-		.addPathPatterns("/**") // 모두 적용
-		//.excludePathPatterns("/login/**", "/register/**"); // static folder // jsp 사용할 경우
-		.excludePathPatterns("/login.html", "/register.html")
-		.excludePathPatterns("/login/**","/logout/**", "/register/**","/css/**","/js/**","/img/**"); // 미적용 
+//		registry.addInterceptor(loginInterceptor)
+//		.addPathPatterns("/**") // 모두 적용
+//		//.excludePathPatterns("/login/**", "/register/**"); // static folder // jsp 사용할 경우
+//		.excludePathPatterns("/login.html", "/register.html")
+//		.excludePathPatterns("/login/**","/logout/**", "/register/**","/css/**","/js/**","/img/**"); // 미적용 
 	}
 	
 //	@Override
