@@ -32,7 +32,7 @@
                     <div class="agent-title">
                       <div class="title-box-d">
                         <h3 class="title-d">{{$store.state.agent.agentName}}
-                        
+
                         </h3>
                       </div>
                     </div>
@@ -45,7 +45,7 @@
                           <strong>Phone: </strong>
                           <span class="color-text-a">{{$store.state.agent.agentPhone}}</span>
                         </p>
-                      
+
                         <p>
                           <strong>Email: </strong>
                           <span class="color-text-a">{{$store.state.agent.agentEmail}}</span>
@@ -94,44 +94,26 @@
               <div class="col-md-4" v-for="(house ,index) in this.$store.state.agent.agentHouseList" v-bind:key="index">
                 <div class="card-box-a card-shadow">
                   <div class="img-box-a">
-                    <img src="assets/img/property-1.jpg" alt="" class="img-a img-fluid">
+                    <img src="assets/img/property-2.jpg" alt="" class="img-a img-fluid">
                   </div>
                   <div class="card-overlay">
                     <div class="card-overlay-a-content">
                       <div class="card-header-a">
                         <h2 class="card-title-a">
                           <a href="#">No. {{ house.houseNo }}
-                            <br/> {{ house.houseName }}</a>
+                            <br /> {{ house.houseName }}</a>
                         </h2>
                       </div>
                       <div class="card-body-a">
                         <div class="price-box d-flex">
                           <span class="price-a">buildYear | {{ house.buildYear }}</span>
                         </div>
-                        <a href="#" class="link-a">Click here to view
+                        <div id="detail" @click="houseDetail(house.houseNo)">Click here to view
                           <span class="bi bi-chevron-right"></span>
-                        </a>
+                        </div>
                       </div>
                       <div class="card-footer-a">
                         <ul class="card-info d-flex justify-content-around">
-                          <li>
-                            <h4 class="card-info-title">Area</h4>
-                            <span>{{ house.house }}
-                              
-                            </span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Beds</h4>
-                            <span>2</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Baths</h4>
-                            <span>4</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Garages</h4>
-                            <span>1</span>
-                          </li>
                         </ul>
                       </div>
                     </div>
@@ -147,15 +129,29 @@
       </section><!-- End Agent Single -->
 
     </main><!-- End #main -->
-
+    <house-modal></house-modal>
   </div>
 </template>
 
 <script>
+  import {
+    Modal
+  } from 'bootstrap';
+
+  import HouseModal from './modals/HouseModal.vue';
   import http from "@/common/axios.js";
+
   export default {
 
 
+    components : {
+      HouseModal,
+    },
+    data() {
+      return {
+        houseModal: null,
+      }
+    },
     methods: {
       agentDetail() {
         // store 변경
@@ -171,17 +167,17 @@
             console.log("agentDetail : data : ");
             console.log(data);
 
-            
+
             this.$store.commit(
               'SET_AGENT_DETAIL', {
-                agentName : data.agentDto.agentName,
-                agentNo : data.agentDto.agentNo,
-                agentEmail : data.agentDto.agentEmail,
-                agentPhone : data.agentDto.agentPhone,
-                agentRate : data.agentDto.agentRate,
-                agentDesc : data.agentDto.agentDesc,
-                agentHouseList : data.houselist,
-                agentProfileImageUrl : data.agentDto.agentProfileImageUrl, // not data.dto.sameUser
+                agentName: data.agentDto.agentName,
+                agentNo: data.agentDto.agentNo,
+                agentEmail: data.agentDto.agentEmail,
+                agentPhone: data.agentDto.agentPhone,
+                agentRate: data.agentDto.agentRate,
+                agentDesc: data.agentDto.agentDesc,
+                agentHouseList: data.houselist,
+                agentProfileImageUrl: data.agentDto.agentProfileImageUrl, // not data.dto.sameUser
               }
             );
 
@@ -192,11 +188,66 @@
           });
       },
 
-    },
 
+      houseDetail(houseNo) {
+        http.get(
+            '/houses/' + houseNo, // props variable
+          )
+          .then(({
+            data
+          }) => {
+            console.log("DetailHouseModalVue: data : ");
+            console.log(data);
+
+            if (data.result == 'login') {
+              this.$router.push("/login")
+            } else {
+              this.$store.commit(
+                'SET_HOUSE_DETAIL', {
+                  houseNo: data.dto.houseNo,
+                  area: data.dto.area,
+                  code: data.dto.code,
+                  dong: data.dto.dong,
+                  houseName: data.dto.houseName,
+                  buildYear: data.dto.buildYear,
+                  lat: data.dto.lat,
+                  lng: data.dto.lng,
+                  dealList: data.dealList,
+                  agentName: data.agentDto.agentName,
+                  agentNo: data.agentDto.agentNo,
+                  agentEmail: data.agentDto.agentEmail,
+                  agentPhone: data.agentDto.agentPhone,
+                  agentRate: data.agentDto.agentRate,
+                  agentDesc: data.agentDto.agentDesc,
+                  img: "assets/img/post-1.jpg",
+                }
+              );
+              console.log("134Line houseName : " + this.$store.state.house.dealList);
+              this.houseModal.show();
+            }
+          })
+          .catch((error) => {
+            console.log("DetailModalVue: error ");
+            console.log(error);
+          });
+
+      },
+
+    },
+    mounted() {
+      this.houseModal = new Modal(document.getElementById('houseModal'));
+
+    },
     created() {
       this.agentDetail();
     },
 
   };
 </script>
+
+<style>
+  #detail {
+    color: wheat;
+    font-weight: bold;
+  }
+</style>

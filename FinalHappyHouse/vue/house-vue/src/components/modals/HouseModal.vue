@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" tabindex="-1" id="detailHouseModal">
+  <div class="modal" tabindex="-1" id="houseModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -136,14 +136,13 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
-                        <img src="assets/img/agent-4.jpg" alt="" class="img-fluid"
-                          @click="agentDetail($store.state.agent.agentNo)">
+                        <img src="assets/img/agent-4.jpg" alt="" class="img-fluid">
                       </div>
                       <div class="col-md-6 col-lg-4">
                         <div class="property-agent">
                           <h4 class="title-agent">{{ $store.state.agent.agentName }}</h4>
                           <p class="color-text-a">
-                            {{ $store.state.agent.agentDesc }}
+                           {{ $store.state.agent.agentDesc }}
                           </p>
                           <ul class="list-unstyled">
                             <li class="d-flex justify-content-between">
@@ -154,7 +153,7 @@
                               <strong>Email:</strong>
                               <span class="color-text-a">{{ $store.state.agent.agentEmail }}</span>
                             </li>
-
+                           
                           </ul>
                           <div class="socials-a">
                             <ul class="list-inline">
@@ -202,14 +201,7 @@
   // import util from "@/common/util.js";
 
   export default {
-    methods: {
-      agentDetail(agentNo) {
-        console.log("local agentNO : " +agentNo);
-        this.$store.commit("SET_AGENT_NO", agentNo);
-        console.log("store agentNO : " +this.$store.state.agent.agentNo);
-        this.$emit( 'call-parent-close' );
-      },
-    },
+    
   }
 </script>
 

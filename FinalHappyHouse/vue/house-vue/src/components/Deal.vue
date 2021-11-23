@@ -18,8 +18,8 @@
       <div v-show="textCondition">
         검색결과가 없습니다!!!!!!!!!!!!!!!
       </div>
-      <div >
-        <ul v-show="liCondition" class="list-group" >
+      <div>
+        <ul v-show="liCondition" class="list-group">
           <li style="cursor:pointer" v-for="(house, index) in this.$store.state.house.list"
             @click="houseDetail(house.houseNo)" v-bind:key="index" class="list-group-item">
             <div class="card mb-3" style="max-width: 540px;">
@@ -44,7 +44,7 @@
     </div>
 
 
-    <detail-house-modal></detail-house-modal>
+    <detail-house-modal v-on:call-parent-close="closeModal"></detail-house-modal>
   </div>
 </template>
 
@@ -170,13 +170,17 @@
 
       },
 
-
+      closeModal() {
+        this.detailHouseModal.hide();
+        this.$router.push("/agentDetail");
+      },
 
       makeOverListener(map, marker, infowindow) {
 
         return function () {
 
           infowindow.open(map, marker);
+        
         };
       },
 
@@ -287,6 +291,7 @@
     flex: 1;
     height: 100px;
   }
+
   #list-group {
     overflow: auto;
     height: 500px;
