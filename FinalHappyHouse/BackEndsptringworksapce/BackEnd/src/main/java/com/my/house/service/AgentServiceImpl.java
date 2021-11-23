@@ -59,14 +59,16 @@ public class AgentServiceImpl implements AgentService {
 		AgentResultDto agentResultDto = new AgentResultDto();
 
 		try {
-			AgentDto dto = dao.agentdDetail(agentNo);
+			AgentDto dto = dao.agentDetail(agentNo);
 			List<HouseDto> list = dao.agentHouseList(agentNo);
 			
 			
 			agentResultDto.setAgentDto(dto);
 			agentResultDto.setHouselist(list);
 			agentResultDto.setResult(SUCCESS);
-
+			
+			
+			System.out.println("agentResultDto : " + agentResultDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			agentResultDto.setResult(FAIL);

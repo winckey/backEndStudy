@@ -8,8 +8,8 @@
           <div class="row">
             <div class="col-md-12 col-lg-8">
               <div class="title-single-box">
-                <h1 class="title-single">Margaret Stone</h1>
-                <span class="color-text-a">Agent Immobiliari</span>
+                <h1 class="title-single">{{$store.state.agent.agentName}}</h1>
+                <span class="color-text-a">Agent</span>
               </div>
             </div>
           </div>
@@ -31,38 +31,28 @@
                   <div class="agent-info-box">
                     <div class="agent-title">
                       <div class="title-box-d">
-                        <h3 class="title-d">Margaret Stone
-                          <br> Escala
+                        <h3 class="title-d">{{$store.state.agent.agentName}}
+                        
                         </h3>
                       </div>
                     </div>
                     <div class="agent-content mb-3">
                       <p class="content-d color-text-a">
-                        Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non
-                        nisi.
-                        Vivamus suscipit tortor
-                        eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat.
+                        {{$store.state.agent.agentDesc}}
                       </p>
                       <div class="info-agents color-a">
                         <p>
                           <strong>Phone: </strong>
-                          <span class="color-text-a"> +54 356 945234 </span>
+                          <span class="color-text-a">{{$store.state.agent.agentPhone}}</span>
                         </p>
-                        <p>
-                          <strong>Mobile: </strong>
-                          <span class="color-text-a"> 999 123 456 789</span>
-                        </p>
+                      
                         <p>
                           <strong>Email: </strong>
-                          <span class="color-text-a"> agents@example.com</span>
+                          <span class="color-text-a">{{$store.state.agent.agentEmail}}</span>
                         </p>
                         <p>
-                          <strong>skype: </strong>
-                          <span class="color-text-a"> Margaret.Es</span>
-                        </p>
-                        <p>
-                          <strong>Email: </strong>
-                          <span class="color-text-a"> agents@example.com</span>
+                          <strong>rate: </strong>
+                          <span class="color-text-a">{{$store.state.agent.agentRate}}</span>
                         </p>
                       </div>
                     </div>
@@ -96,24 +86,12 @@
             </div>
             <div class="col-md-12 section-t8">
               <div class="title-box-d">
-                <h3 class="title-d">My Properties (6)</h3>
+                <h3 class="title-d">My Properties ({{$store.state.agent.agentHouseList.length}})</h3>
               </div>
             </div>
             <div class="row property-grid grid">
-              <div class="col-sm-12">
-                <div class="grid-option">
-                  <form>
-                    <select class="custom-select">
-                      <option selected>All</option>
-                      <option value="1">New to Old</option>
-                      <option value="2">For Rent</option>
-                      <option value="3">For Sale</option>
-                    </select>
-                  </form>
-                </div>
-              </div>
               <!-- agent house -->
-              <div class="col-md-4" v-for="(index) in 10" v-bind:key="index">>
+              <div class="col-md-4" v-for="(house ,index) in this.$store.state.agent.agentHouseList" v-bind:key="index">
                 <div class="card-box-a card-shadow">
                   <div class="img-box-a">
                     <img src="assets/img/property-1.jpg" alt="" class="img-a img-fluid">
@@ -122,13 +100,13 @@
                     <div class="card-overlay-a-content">
                       <div class="card-header-a">
                         <h2 class="card-title-a">
-                          <a href="#">204 Mount
-                            <br /> Olive Road Two</a>
+                          <a href="#">No. {{ house.houseNo }}
+                            <br/> {{ house.houseName }}</a>
                         </h2>
                       </div>
                       <div class="card-body-a">
                         <div class="price-box d-flex">
-                          <span class="price-a">rent | $ 12.000</span>
+                          <span class="price-a">buildYear | {{ house.buildYear }}</span>
                         </div>
                         <a href="#" class="link-a">Click here to view
                           <span class="bi bi-chevron-right"></span>
@@ -138,8 +116,8 @@
                         <ul class="card-info d-flex justify-content-around">
                           <li>
                             <h4 class="card-info-title">Area</h4>
-                            <span>340m
-                              <sup>2</sup>
+                            <span>{{ house.house }}
+                              
                             </span>
                           </li>
                           <li>
@@ -177,38 +155,43 @@
   import http from "@/common/axios.js";
   export default {
 
-    agentDetail() {
-      // store 변경
-      // this.boardId = boardId;
-      // this.$store.commit('mutateSetBoardBoardId', boardId);
 
-      http.get(
-          '/agents/' + this.$store.state.agent.agentNo, // props variable
-        )
-        .then(({
-          data
-        }) => {
-          console.log("agentDetail : data : ");
-          console.log(data);
+    methods: {
+      agentDetail() {
+        // store 변경
+        // this.boardId = boardId;
+        // this.$store.commit('mutateSetBoardBoardId', boardId);
 
+        http.get(
+            '/agents/' + this.$store.state.agent.agentNo, // props variable
+          )
+          .then(({
+            data
+          }) => {
+            console.log("agentDetail : data : ");
+            console.log(data);
 
-          this.$store.commit(
-            'SET_AGENT_DETAIL', {
-              boardId: data.dto.boardId,
-              title: data.dto.title,
-              content: data.dto.content,
-              userName: data.dto.userName,
-              
-              fileList: data.dto.fileList,
-              sameUser: data.dto.sameUser, // not data.dto.sameUser
+            
+            this.$store.commit(
+              'SET_AGENT_DETAIL', {
+                agentName : data.agentDto.agentName,
+                agentNo : data.agentDto.agentNo,
+                agentEmail : data.agentDto.agentEmail,
+                agentPhone : data.agentDto.agentPhone,
+                agentRate : data.agentDto.agentRate,
+                agentDesc : data.agentDto.agentDesc,
+                agentHouseList : data.houselist,
+                agentProfileImageUrl : data.agentDto.agentProfileImageUrl, // not data.dto.sameUser
+              }
+            );
 
-            }
-          );
-        })
-        .catch((error) => {
-          console.log("agent Detail : error ");
-          console.log(error);
-        });
+          })
+          .catch((error) => {
+            console.log("agent Detail : error ");
+            console.log(error);
+          });
+      },
+
     },
 
     created() {

@@ -11,6 +11,7 @@ public class AgentDto {
 	private String agentEmail;
 	private String agentPhone;;
 	private String agentProfileImageUrl;
+	
 	private int agentRate;
 	public int getAgentNo() {
 		return agentNo;
@@ -48,17 +49,18 @@ public class AgentDto {
 	public void setAgentPhone(String agentPhone) {
 		this.agentPhone = agentPhone;
 	}
-	public String getAgentProfileImageUrl() {
-		return agentProfileImageUrl;
-	}
-	public void setAgentProfileImageUrl(String agentProfileImageUrl) {
-		this.agentProfileImageUrl = agentProfileImageUrl;
-	}
+
 	public int getAgentRate() {
 		return agentRate;
 	}
 	public void setAgentRate(int agentRate) {
 		this.agentRate = agentRate;
+	}
+	public String getAgentProfileImageUrl() {
+		return agentProfileImageUrl;
+	}
+	public void setAgentProfileImageUrl(String agentProfileImageUrl) {
+		this.agentProfileImageUrl = agentProfileImageUrl;
 	}
 
 

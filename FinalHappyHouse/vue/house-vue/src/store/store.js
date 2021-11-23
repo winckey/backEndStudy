@@ -143,6 +143,16 @@ export default new Vuex.Store({
     SET_AGENT_NO(state, agentNo) {
       state.agent.agentNo = agentNo;
     },
+    SET_AGENT_DETAIL(state, payload) {
+      state.agent.agentName = payload.agentName;
+      state.agent.agentNo = payload.agentNo;
+      state.agent.agentEmail = payload.agentEmail;
+      state.agent.agentPhone = payload.agentPhone;
+      state.agent.agentRate = payload.agentRate;
+      state.agent.agentDesc = payload.agentDesc;
+      state.agent.agentHouseList = payload.agentHouseList;
+      state.agent.agentProfileImageUrl = payload.agentProfileImageUrl;
+    },
 
     SET_BOARD_TOTAL_LIST_ITEM_COUNT(state, count) {
       state.board.totalListItemCount = count;
