@@ -102,10 +102,10 @@
                       <img v-bind:src="userProfileImageUrl" alt="Profile" width="100" />
                       <div class="pt-2">
                         <input
-                          @change="changeFile"
                           class="form-control form-control-sm"
                           type="file"
-                          id="inputFileUploadInsert"
+                          id="userImageFileUpload"
+                          multiple
                         />
                       </div>
                     </div>
@@ -323,16 +323,28 @@ export default {
     validatePassword2() {
       this.isUserPassword2Valid = this.newUserPassword == this.newUserPassword2 ? true : false;
     },
+
+    // changeFile(fileEvent) {
+    //   if (fileEvent.target.files && fileEvent.target.files.length > 0) {
+    //     for (var i = 0; i < fileEvent.target.files.length; i++) {
+    //       const file = fileEvent.target.files[i];
+    //       this.fileList.push(URL.createObjectURL(file));
+    //     }
+    //   }
+    // },
     btnEditProfile() {
       var formData = new FormData();
-      FormData.append("userId", this.userId);
-      FormData.append("userName", this.userName);
-      FormData.append("userPhone", this.userPhone);
-      FormData.append("userEmail", this.userEmail);
+      formData.append("userId", this.userId);
+      formData.append("userName", this.userName);
+      formData.append("userPhone", this.userPhone);
+      formData.append("userEmail", this.userEmail);
 
-      var attachFile = document.querySelector("#userImageFileUpload");
+      var attachFiles = document.querySelector("#userImageFileUpload");
+      var cnt = attachFiles.files.length;
+      for (var i = 0; i < cnt; i++) {
+        formData.append("file", attachFiles.files[i]);
+      }
 
-      formData.append("file", attachFile.files);
       http
         .post("/editProfile", formData, { headers: { "Content-Type": "multipart/form-data" } })
 

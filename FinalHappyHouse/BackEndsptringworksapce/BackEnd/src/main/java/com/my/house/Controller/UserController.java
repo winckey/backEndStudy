@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.my.house.dto.BoardDto;
-import com.my.house.dto.BoardResultDto;
 import com.my.house.dto.UserDto;
+import com.my.house.dto.UserFileDto;
 import com.my.house.dto.UserResultDto;
 import com.my.house.service.UserService;
 
@@ -87,13 +86,13 @@ public class UserController {
 //		}
 //	}
 	@PostMapping(value="editProfile")
-	public ResponseEntity<UserResultDto> updateProfile(@RequestBody
-			UserDto dto, 
+	public ResponseEntity<UserResultDto> updateProfile(UserDto userDto, 
 			MultipartHttpServletRequest request) {
+		System.out.println("controller , before service"  + userDto);
 		
+		UserResultDto userResultDto = userService.userUpdate(userDto , request);
+		System.out.println("controller , after service");
 		
-		UserResultDto userResultDto = userService.userUpdate(dto , request);
-
 		if( userResultDto.getResult() == SUCCESS ) {
 			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
 		}else {

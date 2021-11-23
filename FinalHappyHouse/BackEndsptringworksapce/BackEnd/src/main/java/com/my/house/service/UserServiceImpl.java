@@ -92,8 +92,10 @@ public class UserServiceImpl implements UserService{
 		UserResultDto userResultDto = new UserResultDto();
 		
 		try {
+			System.out.println("기존 정보만 업데이트 전 userDto: "+ userDto);
 			userDao.userUpdate(userDto);
-	System.out.println("기존 정보만 업데이트 userDto: "+ userDto);
+			System.out.println("기존 정보만 업데이트 후 userDto: "+ userDto);
+
 			List<MultipartFile> fileList = request.getFiles("file");
 			
 			File uploadDir = new File(uploadPath + File.separator + uploadFolder);
