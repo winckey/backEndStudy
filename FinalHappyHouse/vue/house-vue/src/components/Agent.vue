@@ -32,7 +32,7 @@
         <div class="container">
           <div class="row">
             <!-- agent -->
-            <div class="col-md-4" v-for="(agent, index) in this.$store.state.agent.list"  v-bind:key="index">
+            <div class="col-md-4" v-for="(agent, index) in this.$store.state.agent.list" v-bind:key="index">
               <div class="card-box-d">
                 <div class="card-img-d">
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
@@ -41,13 +41,13 @@
                   <div class="card-header-d">
                     <div class="card-title-d align-self-center">
                       <h3 class="title-d">
-                        <div @click="agentDetail(agent.houseNo)">{{agent.agentName}}</div>
+                        <div @click="agentDetail(agent.agentNo)">{{agent.agentName}}</div>
                       </h3>
                     </div>
                   </div>
                   <div class="card-body-d">
                     <p class="content-d color-text-a">
-                     {{agent.agentDesc}}
+                      {{agent.agentDesc}}
                     </p>
                     <div class="info-agents color-a">
                       <p>
@@ -91,9 +91,9 @@
 
           </div>
         </div>
-      </section><!-- End Agents Grid-->
+      </section>
 
-    </main><!-- End #main -->
+    </main>
 
   </div>
 </template>
@@ -105,8 +105,9 @@
       agentList() {
         this.$store.dispatch('agentList');
       },
-       agentDetail(agentNo) {
-         this.$store.commit('SET_AGENT_NO' , agentNo);
+      agentDetail(agentNo) {
+        this.$store.commit('SET_AGENT_NO', agentNo);
+        this.$router.push("/agentDetail");
       },
     },
 

@@ -9,6 +9,9 @@ import com.my.house.dao.AgentDao;
 import com.my.house.dao.HouseDao;
 import com.my.house.dto.AgentDto;
 import com.my.house.dto.AgentResultDto;
+import com.my.house.dto.BoardDto;
+import com.my.house.dto.BoardFileDto;
+import com.my.house.dto.BoardResultDto;
 import com.my.house.dto.DealDto;
 import com.my.house.dto.HouseDto;
 import com.my.house.dto.HouseParamDto;
@@ -17,7 +20,7 @@ import com.my.house.dto.HouseResultDto;
 @Service
 public class AgentServiceImpl implements AgentService {
 
-	// DealDaoImpl 媛앹껜 媛��졇�삤湲�
+	// DealDaoImpl 揶쏆빘猿� 揶쏉옙占쎌죬占쎌궎疫뀐옙
 	@Autowired
 	AgentDao dao;
 
@@ -44,6 +47,27 @@ public class AgentServiceImpl implements AgentService {
 		} catch (
 
 		Exception e) {
+			e.printStackTrace();
+			agentResultDto.setResult(FAIL);
+		}
+
+		return agentResultDto;
+	}
+
+	@Override
+	public AgentResultDto agentDetail(int agentNo) {
+		AgentResultDto agentResultDto = new AgentResultDto();
+
+		try {
+			AgentDto dto = dao.agentdDetail(agentNo);
+			List<HouseDto> list = dao.agentHouseList(agentNo);
+			
+			
+			agentResultDto.setAgentDto(dto);
+			agentResultDto.setHouselist(list);
+			agentResultDto.setResult(SUCCESS);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			agentResultDto.setResult(FAIL);
 		}

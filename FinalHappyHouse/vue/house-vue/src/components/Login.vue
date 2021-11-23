@@ -32,7 +32,7 @@
                   <p class="text-center small">Enter your ID & password to login</p>
                 </div>
 
-                <form class="row g-3 needs-validation" novalidate>
+                <div class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
                     <label for="Id" class="form-label">ID</label>
                     <div class="input-group has-validation">
@@ -73,7 +73,7 @@
                       <router-link to="/register">Create an account</router-link>
                     </p>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
 

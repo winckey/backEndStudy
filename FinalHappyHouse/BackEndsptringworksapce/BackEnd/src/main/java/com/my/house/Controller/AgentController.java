@@ -47,5 +47,19 @@ public class AgentController extends HttpServlet {
 		}
 	}
 
-	
+	@GetMapping(value = "/agents/{agentNo}")
+	public ResponseEntity<AgentResultDto> agentDetail(@PathVariable int agentNo) {
+
+		AgentResultDto agentResultDto;
+
+		
+		agentResultDto = service.agentDetail(agentNo);
+		
+		if (agentResultDto.getResult() == SUCCESS) {
+
+			return new ResponseEntity<AgentResultDto>(agentResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<AgentResultDto>(agentResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

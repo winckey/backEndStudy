@@ -16,5 +16,9 @@ public interface AgentDao {
 	
 	public List<AgentDto> agentList();
 
+	public AgentDto agentdDetail(int agentNo);
+
+	public List<HouseDto> agentHouseList(int agentNo);
+
 }
 

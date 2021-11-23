@@ -9,6 +9,8 @@ import com.my.house.dto.HouseResultDto;
 public interface AgentService {
 
 	AgentResultDto agentList();
+
+	AgentResultDto agentDetail(int agentNo);
 	
 	
 	
