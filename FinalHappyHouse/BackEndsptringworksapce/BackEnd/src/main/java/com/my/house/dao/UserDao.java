@@ -19,5 +19,5 @@ public interface UserDao {
 	public List<String> userFileUrlDeleteList(String userId);
 
 	public int userFileInsert(UserFileDto userFiledto);
-
+	public int userFileUrlInsert(UserFileDto userFil);
 }

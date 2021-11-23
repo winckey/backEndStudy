@@ -356,7 +356,7 @@ export default {
 
           this.$alertify.alert("회원정보가 변경되었습니다. 다시 로그인해주세요.", function () {
             $this.logout();
-            $this.$router.push("/");
+            $this.$router.push("/login");
           });
         })
         .catch((error) => {
@@ -429,7 +429,7 @@ export default {
             "비밀번호가 변경되었습니다. 로그인 페이지로 이동합니다.",
             function () {
               $this.logout();
-              $this.$router.push("/");
+              $this.$router.push("/login");
             }
           );
         })
@@ -474,7 +474,7 @@ export default {
           this.$store.commit("SET_LOGOUT");
           console.log(this.$store.state.login.userName);
           //== <route-link :to=”path”>
-          this.$router.push("/");
+          this.$router.push("/login");
         })
         .catch((error) => {
           console.log("LoginVue: error : ");

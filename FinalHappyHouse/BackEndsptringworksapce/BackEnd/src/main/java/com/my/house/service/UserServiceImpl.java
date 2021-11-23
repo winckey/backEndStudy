@@ -142,7 +142,7 @@ public class UserServiceImpl implements UserService{
 				userFileDto.setFileUrl(userFileUrl);
 				
 				userDao.userFileInsert(userFileDto);
-//				userDao.userFileUrlInsert();
+				userDao.userFileUrlInsert(userFileDto);
 			}
 
 			userResultDto.setResult(SUCCESS);
