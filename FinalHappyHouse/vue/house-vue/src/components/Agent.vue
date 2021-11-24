@@ -31,7 +31,8 @@
         <div class="container">
           <div class="row">
             <!-- favorite 토글 스위치  -->
-            <div class="form-check form-switch">
+            <div class="col-10"></div>
+            <div class="col-2 form-check form-switch">
               <input
                 @click="changeToggleData()"
                 class="form-check-input"
@@ -55,8 +56,17 @@
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid" />
                 </div>
                 <div class="card-overlay card-overlay-hover">
-                  <button type="button" class="btn btn-warning">
-                    <i class="bi bi-star"></i>
+                  <button
+                    @click="changeFavorite(agent)"
+                    type="button"
+                    class="btn btn-sm btn-warning mt-2"
+                  >
+                    <div v-if="agent.userFavoriteCheck != 0">
+                      <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div v-else>
+                      <i class="bi bi-star"></i>
+                    </div>
                   </button>
                   <div class="card-header-d">
                     <div class="card-title-d align-self-center">
@@ -143,12 +153,5 @@ export default {
   created() {
     this.agentList();
   },
-  // computed() {
-  //   testfunc: function() {
-  //         agent.userFavoriteCheck != 0
-
-  //       return false;
-  //     }
-  // }
 };
 </script>
