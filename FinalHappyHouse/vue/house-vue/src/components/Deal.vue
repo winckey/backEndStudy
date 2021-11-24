@@ -4,20 +4,24 @@
       <div id="warpper">
         <div id="map"></div>
 
-        <div class="input-group"  id="search" >
-          <div class="form-outline" >
+        <div class="input-group" id="search">
+          <div class="form-outline">
             <input type="search" id="form1" class="form-control" />
           </div>
-          <button type="button" class="btn btn-primary ms-1" style="border-radius : 10px ">
+          <button type="button" class="btn btn-primary ms-1" style="border-radius: 10px">
             <i class="bi bi-search"></i>
           </button>
+          <div class="col-9"></div>
+          <div class="form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="asdf asf"/>
+          </div>
         </div>
 
       </div>
     </div>
     <div class="item">
 
-      <div class="searchTitle" >검색결과</div>
+      <div class="searchTitle">검색결과</div>
       <div v-show="textCondition">
         검색결과가 없습니다!!!!!!!!!!!!!!!
       </div>
@@ -292,7 +296,7 @@
     top: 20vh;
     left: 2vh;
     z-index: 100;
-   
+
   }
 
   .card {

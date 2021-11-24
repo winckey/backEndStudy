@@ -311,9 +311,7 @@
     font-weight: 600;
     font-size: 15px;
   }
-  #listDiv {
-  
-  }
+
    
   .form-control {
     border-radius: 7px;
