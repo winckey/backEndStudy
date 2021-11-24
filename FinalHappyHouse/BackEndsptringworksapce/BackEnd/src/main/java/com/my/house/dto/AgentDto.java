@@ -1,7 +1,5 @@
 package com.my.house.dto;
 
-import java.util.List;
-
 public class AgentDto {
 
 	private int agentNo;
@@ -13,6 +11,14 @@ public class AgentDto {
 	private String agentProfileImageUrl;
 	
 	private int agentRate;
+	private int userFavoriteCheck;
+	
+	public int getUserFavoriteCheck() {
+		return userFavoriteCheck;
+	}
+	public void setUserFavoriteCheck(int userFavoriteCheck) {
+		this.userFavoriteCheck = userFavoriteCheck;
+	}
 	public int getAgentNo() {
 		return agentNo;
 	}
