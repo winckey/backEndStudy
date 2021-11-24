@@ -3,28 +3,23 @@
     <div class="item">
       <div id="wrapper">
         <div id="map"></div>
-
         <div class="input-group" id="search">
-<<<<<<< HEAD
-          <div class="form-outline">
-            <input type="search" id="form1" class="form-control" />
-          </div>
-          <button type="button" class="btn btn-primary ms-1" style="border-radius: 10px">
-            <i class="bi bi-search"></i>
-          </button>
-          <div class="col-9"></div>
-          <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="asdf asf"/>
-          </div>
-        </div>
-=======
           <div class="form-outline mt-2 ms-2">
-            <input type="search" id="form1" class="form-control" />
+            <input
+              id="form1"
+              class="form-control"
+              v-model="$store.state.house.searchWord"
+              @keydown.enter="houseList"
+            />
           </div>
-          <button type="button" class="btn btn-primary mt-2 ms-1" style="border-radius: 10px">
+          <button
+            @click="houseList"
+            class="btn btn-primary mt-2 ms-1"
+            type="button"
+            style="border-radius: 10px"
+          >
             <i class="bi bi-search"></i>
           </button>
->>>>>>> b97a1b19da75a165de0644f225c3ba0c64d87143
 
           <div class="form-outline">
             <div
@@ -33,53 +28,85 @@
               id="form1"
               class="form-control text-center lh-1 m-2"
               style="height: 1.7rem; width: 12.7rem"
-            ></div>
+            >
+              <div v-if="isFilter">{{ min }}만 &nbsp;&nbsp; ~ &nbsp; &nbsp;{{ max }}만</div>
+            </div>
           </div>
-          <button type="button" class="btn btn-sm btn-primary" style="border-radius: 10px">
+          <button
+            @click="btnPriceRange()"
+            type="button"
+            class="btn btn-sm btn-primary"
+            style="border-radius: 10px"
+          >
             <i class="bi bi-gear"></i>
           </button>
+          <div v-show="isBtnSet" class="mx-2 mt-1 mb-2 row">
+            <div class="form-check ms-1">
+              <input
+                @click="manShow()"
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault"> 필터적용 </label>
+            </div>
+            <input
+              type="text"
+              placeholder="Min"
+              class="form-control col-5"
+              id="customRange1"
+              style="width: 6.3rem"
+              v-model="min"
+            />
+            <div class="col-2 text-center" style="font-size: 1.8rem">~</div>
+            <input
+              type="text"
+              placeholder="Max"
+              class="form-control col-5"
+              id="customRange2"
+              style="width: 6.3rem"
+              v-model="max"
+            />
+          </div>
         </div>
       </div>
     </div>
     <div class="item">
-<<<<<<< HEAD
-
-      <div class="searchTitle">검색결과</div>
-      <div v-show="textCondition">
-        검색결과가 없습니다!!!!!!!!!!!!!!!
+      <div class="row">
+        <div class="searchTitle m-3" style="font-size: 2rem">검색결과</div>
+        <div v-show="textCondition">검색결과가 없습니다!!!!!!!!!!!!!!!</div>
       </div>
-=======
-      <div class="searchTitle">검색결과</div>
-      <div v-show="textCondition">검색결과가 없습니다!!!!!!!!!!!!!!!</div>
->>>>>>> b97a1b19da75a165de0644f225c3ba0c64d87143
-      <div id="listDiv">
-        <ul v-show="liCondition" class="list-group">
-          <li
-            style="cursor: pointer"
-            v-for="(house, index) in this.$store.state.house.list"
-            @click="houseDetail(house.houseNo)"
-            v-bind:key="index"
-            class="list-group-item"
-          >
-            <div id="pCard" class="card mb-3" style="text-align: center">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img id="cardImg" src="../assets/img/agent-4.jpg" alt="" />
-                </div>
-                <div class="col-md-8" style="text-align: left">
-                  <div class="card-body">
-                    <h5 id="text" class="card-title">{{ house.title }}</h5>
-                    <p id="text" class="card-text">
-                      name : {{ house.houseName }}<br />
-                      지역 : {{ house.dong }}<br />
-                      건축연도 : {{ house.buildYear }}<br />
-                    </p>
+      <div class="row">
+        <div id="listDiv">
+          <ul v-show="liCondition" class="list-group">
+            <li
+              style="cursor: pointer"
+              v-for="(house, index) in this.$store.state.house.list"
+              @click="houseDetail(house.houseNo)"
+              v-bind:key="index"
+              class="list-group-item"
+            >
+              <div id="pCard" class="card mb-3" style="text-align: center">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img id="cardImg" src="../assets/img/agent-4.jpg" alt="" />
+                  </div>
+                  <div class="col-md-8" style="text-align: left">
+                    <div class="card-body">
+                      <h5 id="text" class="card-title">{{ house.title }}</h5>
+                      <p id="text" class="card-text">
+                        name : {{ house.houseName }}<br />
+                        지역 : {{ house.dong }}<br />
+                        건축연도 : {{ house.buildYear }}<br />
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -110,6 +137,12 @@ export default {
       liCondition: false,
       textCondition: true,
       detailHouseModal: null,
+      isBtnSet: false,
+      isFilter: false,
+
+      min: "",
+      max: "",
+      minPlusMax: this.min + this.max,
     };
   },
 
@@ -230,6 +263,16 @@ export default {
           console.log(error);
         });
     },
+    btnPriceRange() {
+      if (this.isBtnSet) {
+        this.isBtnSet = false;
+      } else this.isBtnSet = true;
+    },
+    manShow() {
+      if (this.isFilter) {
+        this.isFilter = false;
+      } else this.isFilter = true;
+    },
   },
   mounted() {
     this.detailHouseModal = new Modal(document.getElementById("detailHouseModal"));
@@ -250,72 +293,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-<<<<<<< HEAD
-  #map {
-    width: 100%;
-    height: 100vh;
-  }
-
-  #pCard {
-    margin: auto;
-    height: 100px;
-    border-radius: 1000px;
-  }
-
-  #searchTitle {
-    text-align: center;
-    margin: 10px;
-    height: 2000px;
-  }
-
-  .button-group {
-    margin: 10px 0px;
-  }
-
-  button {
-    margin: 0 3px;
-  }
-
-  .container2 {
-
-
-    margin: 0;
-    padding: 0;
-
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: white;
-
-  }
-
-
-
-  .item:nth-child(1) {
-    flex: 3;
-  }
-
-  .item:nth-child(2) {
-    flex: 1;
-    height: 100vh;
-  }
-
-
-
-  #wrapper {
-    position: relative;
-  }
-
-  #search {
-    position: absolute;
-    top: 20vh;
-    left: 2vh;
-    z-index: 100;
-
-  }
-
-=======
 #map {
   width: 100%;
   height: 100vh;
@@ -328,11 +305,11 @@ export default {
 }
 
 #searchTitle {
+  font-size: large;
   text-align: center;
   margin: 10px;
-  height: 2000px;
+  height: 100vh;
 }
-
 .button-group {
   margin: 10px 0px;
 }
@@ -353,12 +330,14 @@ button {
 }
 
 .item:nth-child(1) {
-  flex: 3;
+  flex: 4;
 }
 
 .item:nth-child(2) {
   flex: 1;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #wrapper {
@@ -372,6 +351,9 @@ button {
   z-index: 100;
   background: #e3e6ed;
   width: 22vh;
+  border: solid 1px;
+  border-color: #9fb3e6;
+  border-radius: 5px;
 }
 
 .card {
@@ -389,10 +371,7 @@ button {
   font-weight: 600;
   font-size: 15px;
 }
-
 #listDiv {
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .form-control {
@@ -448,7 +427,6 @@ h5 span {
 }
 
 @media screen and (max-width: 450px) {
->>>>>>> b97a1b19da75a165de0644f225c3ba0c64d87143
   .card {
     display: flex;
     justify-content: center;
