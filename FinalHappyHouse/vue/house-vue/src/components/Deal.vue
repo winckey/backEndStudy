@@ -10,28 +10,28 @@
           <button class="btn btn-success" type="button">필터</button>
           <!-- enter나 버튼 클릭시 search 동작 -->
         </div>
-       
+
       </div>
     </div>
     <div class="item">
-      지역 목록
-      <h1>List Group</h1>
+
+      <div class="searchTitle">검색결과</div>
       <div v-show="textCondition">
         검색결과가 없습니다!!!!!!!!!!!!!!!
       </div>
-      <div>
+      <div id="listDiv">
         <ul v-show="liCondition" class="list-group">
           <li style="cursor:pointer" v-for="(house, index) in this.$store.state.house.list"
             @click="houseDetail(house.houseNo)" v-bind:key="index" class="list-group-item">
-            <div class="card mb-3">
+            <div id="pCard" class="card mb-3" style="text-align : center;">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="" alt="">
+                  <img id="cardImg" src="../assets/img/agent-4.jpg" alt="">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" style="text-align : left;">
                   <div class="card-body">
-                    <h5 class="card-title">{{house.title}}</h5>
-                    <p class="card-text">name : {{ house.houseName }}<br>
+                    <h5 id="text" class="card-title">{{house.title}}</h5>
+                    <p id="text" class="card-text">name : {{ house.houseName }}<br>
                       지역 : {{ house.dong }}<br>
                       건축연도 : {{ house.buildYear }}<br></p>
                   </div>
@@ -234,6 +234,18 @@
     height: 100vh;
   }
 
+  #pCard {
+    margin: auto;
+    height: 100px;
+    border-radius: 1000px;
+  }
+
+  #searchTitle {
+    text-align: center;
+    margin: 10px;
+    height: 2000px;
+  }
+
   .button-group {
     margin: 10px 0px;
   }
@@ -259,19 +271,15 @@
 
 
   .item:nth-child(1) {
-    flex: 5;
+    flex: 3;
   }
 
   .item:nth-child(2) {
     flex: 1;
-    overflow-x: hidden;
-    overflow-y: scroll;
+     height: 100vh;
   }
 
-  #list-group {
-    overflow: auto;
 
-  }
 
   #wrapper {
     position: relative;
@@ -291,6 +299,21 @@
     border-radius: 20px
   }
 
+  #cardImg {
+    width: 150px;
+    height: 11vh;
+
+  }
+
+  #text {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  #listDiv {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+   
   .form-control {
     border-radius: 7px;
     border: 1.5px solid #E3E6ED
@@ -354,5 +377,11 @@
       border: none;
       margin: 0 auto
     }
+  }
+
+  .li {
+    width: 100px;
+    /* 정렬하려는 요소의 넓이를 반드시 지정 */
+    margin: 0 auto;
   }
 </style>

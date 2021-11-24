@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+
+
+  <style scoped>
+    #map {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .button-group {
+      margin: 10px 0px;
+    }
+
+    button {
+      margin: 0 3px;
+    }
+
+    .container2 {
+
+
+      margin: 0;
+      padding: 0;
+
+      overflow-x: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      background: white;
+
+    }
+
+
+
+    .item:nth-child(1) {
+      flex: 5;
+    }
+
+    .item:nth-child(2) {
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    #list-group {
+      overflow: auto;
+
+    }
+
+    #wrapper {
+      position: relative;
+    }
+
+    #search {
+      position: absolute;
+      top: 20vh;
+      left: 2vh;
+      z-index: 100;
+      background: white;
+    }
+
+    .card {
+      width: 500px;
+      border: none;
+      border-radius: 20px
+    }
+
+    #cardImg {
+      width: 150px;
+      height: 120px;
+      margin: auto;
+    }
+    #pCard {
+      margin: auto;
+    }
+
+
+    .form-control {
+      border-radius: 7px;
+      border: 1.5px solid #E3E6ED
+    }
+
+    input.form-control:focus {
+      box-shadow: none;
+      border: 1.5px solid #E3E6ED;
+      background-color: #F7F8FD;
+      letter-spacing: 1px
+    }
+
+    .btn-primary {
+      background-color: #5878FF !important;
+      border-radius: 7px
+    }
+
+    .btn-primary:focus {
+      box-shadow: none
+    }
+
+    .text {
+      font-size: 13px;
+      color: #9CA1A4
+    }
+
+    .price {
+      background: #F5F8FD;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      width: 97px
+    }
+
+    .flex-row {
+      border: 1px solid #F2F2F4;
+      border-radius: 10px;
+      margin: 0 1px 0
+    }
+
+    .flex-column p {
+      font-size: 14px
+    }
+
+    span.mb-2 {
+      font-size: 12px;
+      color: #8896BD
+    }
+
+    h5 span {
+      color: #869099
+    }
+
+    @media screen and (max-width: 450px) {
+      .card {
+        display: flex;
+        justify-content: center;
+        text-align: center
+      }
+
+      .price {
+        border: none;
+        margin: 0 auto
+      }
+    }
+
+    .li {
+      width: 100px;
+      /* 정렬하려는 요소의 넓이를 반드시 지정 */
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <ul v-show="liCondition" class="list-group">
+      <li class="list-group-item">
+        <div id="pCard" class="card mb-3" style="text-align : center;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img id="cardImg" src="../assets/img/agent-4.jpg" alt="" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{house.title}}</h5>
+                <p class="card-text">name : {{ house.houseName }}<br>
+                  지역 : {{ house.dong }}<br>
+                  건축연도 : {{ house.buildYear }}<br></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+</body>
+
+</html>
