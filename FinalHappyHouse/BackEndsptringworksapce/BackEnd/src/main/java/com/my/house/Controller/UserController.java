@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.my.house.dto.AgentResultDto;
 import com.my.house.dto.UserDto;
 import com.my.house.dto.UserResultDto;
 import com.my.house.service.UserService;
@@ -89,14 +88,12 @@ public class UserController {
 		}
 	}
 
-	// 파라미터에 어노테이션 붙여야하나?
-	@GetMapping(value = "/user/favoriteAgents")
-	public ResponseEntity<UserResultDto> userFavoriteAgentList(int userNo) {
+	@GetMapping(value = "/user/favoriteAgents/{userNo}")
+	public ResponseEntity<UserResultDto> userFavoriteAgentList(@PathVariable int userNo) {
 
 		UserResultDto userFavoriteResultDto = userService.userFavoriteAgentList(userNo);
 		
 		if (userFavoriteResultDto.getResult() == SUCCESS) {
-
 			return new ResponseEntity<UserResultDto>(userFavoriteResultDto, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<UserResultDto>(userFavoriteResultDto, HttpStatus.INTERNAL_SERVER_ERROR);

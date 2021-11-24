@@ -158,13 +158,16 @@ public class UserServiceImpl implements UserService{
 	public UserResultDto userFavoriteAgentList(int userNo) {
 		UserResultDto userResultDto = new UserResultDto();
 		
-		if( userDao.userFavoriteAgentList(userNo) == 1 ) {
-			
+		try {
+			List<Integer> userFavoriteAgentList =  userDao.userFavoriteAgentList(userNo);  
+			userResultDto.setUserFavoriteAgentList(userFavoriteAgentList);			
 			userResultDto.setResult(SUCCESS);
-		}else {
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 			userResultDto.setResult(FAIL);
 
 		}
-		return null;
+		return userResultDto;
 	}
 }

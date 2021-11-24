@@ -4,13 +4,13 @@ import java.util.List;
 
 public class UserResultDto {
 	private int result;
-	private List<Integer> userFavoriteList;
+	private List<Integer> userFavoriteAgentList;
 	
-	public List<Integer> getUserFavoriteList() {
-		return userFavoriteList;
+	public List<Integer> getUserFavoriteAgentList() {
+		return userFavoriteAgentList;
 	}
-	public void setUserFavoriteList(List<Integer> userFavoriteList) {
-		this.userFavoriteList = userFavoriteList;
+	public void setUserFavoriteAgentList(List<Integer> userFavoriteAgentList) {
+		this.userFavoriteAgentList = userFavoriteAgentList;
 	}
 	public int getResult() {
 		return result;

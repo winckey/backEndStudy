@@ -114,6 +114,7 @@ export default {
 
           this.$store.commit("SET_LOGIN", {
             isLogin: true,
+            userNo: data.userNo,
             userName: data.userName,
             userProfileImageUrl: data.userProfileImageUrl,
             userId: data.userId,
@@ -124,6 +125,7 @@ export default {
           });
 
           //== <route-link :to=”path”>
+
           this.$router.push("/main");
         })
         .catch((error) => {

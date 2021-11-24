@@ -28,8 +28,8 @@ export default new Vuex.Store({
       userPosition: "",
       userEmail: "",
 
-      userHouseFavoriteList: [],
-      userAgentFavoriteList: [],
+      userFavoriteHouseList: [],
+      userFavoriteAgentList: [],
     },
     //
     board: {
@@ -105,7 +105,8 @@ export default new Vuex.Store({
       state.login.userPassword = payload.userPassword;
       state.login.userId = payload.userId;
       state.login.userProfileImageUrl = payload.userProfileImageUrl;
-
+      
+      state.user.userNo = payload.userNo;
       state.user.userId = payload.userId;
       state.user.userName = payload.userName;
       state.user.userProfileImageUrl = payload.userProfileImageUrl;
@@ -124,6 +125,7 @@ export default new Vuex.Store({
       state.login.userPassword = "";
 
 
+      state.user.userNo = "";
       state.user.userId = "";
       state.user.userName = "";
       state.user.userProfileImageUrl = "";
@@ -140,7 +142,9 @@ export default new Vuex.Store({
     SET_AGENT_LIST(state, list) {
       state.agent.list = list;
     },
-
+    SET_FAVORITE_AGENT_LIST(state, list) {
+      state.user.userFavoriteAgentList = list;
+    },
     SET_AGENT_NO(state, agentNo) {
       state.agent.agentNo = agentNo;
     },
@@ -293,25 +297,9 @@ export default new Vuex.Store({
           }
         });
     },
-    agentFavoriteList(context) {
-      http
-        .get("/agentsFavorite", {
-          // get query string
-          params: {
-          },
-        })
-        .then(({
-          data
-        }) => {
-          console.log("BoardMainVue: data : ");
-          console.log(data);
-          if (data.result == "login") {
-            router.push("/logi n");
-          } else {
-            context.commit("SET_AGENT_LIST", data.list);
-          }
-        });
-    },
+
+    
+    
     // setMessage(context, message){
     //   context.commit('mutateSetMessage', message)
     // },
@@ -324,7 +312,6 @@ export default new Vuex.Store({
     getBoardList: function (state) {
       return state.board.list;
     },
-
     // pagination
     getPageCount: function (state) {
       return Math.ceil(

@@ -30,12 +30,19 @@
       <section class="agents-grid grid">
         <div class="container">
           <div class="row">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+              <label class="form-check-label" for="flexSwitchCheckDefault">Favorite</label>
+            </div>
             <!-- agent -->
             <div
               class="col-md-4"
               v-for="(agent, index) in this.$store.state.agent.list"
               v-bind:key="index"
             >
+              <!-- v-for="(favoriteAgentNo, index2) in this.$store.state.user.userFavoriteAgentList"
+                v-show="agent.agentNo == favoriteAgentNo"
+                v-bind:key="index2" -->
               <div class="card-box-d">
                 <div class="card-img-d">
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid" />
@@ -98,6 +105,8 @@
 </template>
 
 <script>
+import http from "@/common/axios.js";
+
 export default {
   methods: {
     agentList() {
@@ -107,10 +116,39 @@ export default {
       this.$store.commit("SET_AGENT_NO", agentNo);
       this.$router.push("/agentDetail");
     },
+
+    userFavoriteAgentList(userNo) {
+      http
+        .get("/user/favoriteAgents/" + userNo, {
+          // get query string
+        })
+        .then(({ data }) => {
+          console.log("AgentVue userFavoriteAgentNo : data : ");
+          console.log(data);
+          if (data.result == "login") {
+            this.$router.push("/login");
+          } else {
+            this.$store.commit("SET_FAVORITE_AGENT_LIST", data.list);
+          }
+        });
+    },
   },
 
   created() {
     this.agentList();
   },
+  // computed() {
+  //   testfunc: function() {
+
+  //     for(){
+
+  //       if (this.$store.agent.list.agentNo != ) {
+  //           return true;
+  //         }
+  //       return false;
+  //     }
+
+  //   }
+  // }
 };
 </script>

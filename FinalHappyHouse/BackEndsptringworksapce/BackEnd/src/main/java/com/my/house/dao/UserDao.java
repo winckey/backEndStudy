@@ -20,5 +20,5 @@ public interface UserDao {
 
 	public int userFileInsert(UserFileDto userFiledto);
 	public int userFileUrlInsert(UserFileDto userFil);
-	public int userFavoriteAgentList(int userNo);
+	public List<Integer> userFavoriteAgentList(int userNo);
 }
