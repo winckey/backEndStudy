@@ -1,12 +1,12 @@
 package com.my.house.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDao userDao;
 	String uploadFolder = "upload";
-	
-	/* for production code */
-	//uploadPath = getServletContext().getRealPath("/");
-	// F:\SSAFY\ssafy5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWebFileUpload\
-	
+//	
+//	/* for production code */
+//	//uploadPath = getServletContext().getRealPath("/");
+//	// F:\SSAFY\ssafy5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWebFileUpload\
+//	
 	/* for eclipse development code */
 	String uploadPath = "/Users" + File.separator + "sac" + File.separator + "ssafy" 
 			+ File.separator + "code" 
@@ -42,6 +42,12 @@ public class UserServiceImpl implements UserService{
 			+ File.separator + "resources"
 			+ File.separator + "static";
 	
+	
+//	@Value("${app.fileupload.uploadDir}")
+//    String uploadFolder;
+//    
+//    @Value("${app.fileupload.uploadPath}")
+//    String uploadPath;
 	private static final int SUCCESS = 1;
 	private static final int FAIL = -1;
 	

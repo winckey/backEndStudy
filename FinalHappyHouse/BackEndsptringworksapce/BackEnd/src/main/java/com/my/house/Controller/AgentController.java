@@ -30,13 +30,29 @@ public class AgentController extends HttpServlet {
 	private static final int SUCCESS = 1;
 	private static final int FAIL = -1;
 
-	@GetMapping(value = "/agents")
-	public ResponseEntity<AgentResultDto> agentList() {
+//	@GetMapping(value = "/agents")
+//	public ResponseEntity<AgentResultDto> agentList2() {
+//
+//		AgentResultDto agentResultDto;
+//
+//		
+//		agentResultDto = service.agentList();
+//		
+//		if (agentResultDto.getResult() == SUCCESS) {
+//
+//			return new ResponseEntity<AgentResultDto>(agentResultDto, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<AgentResultDto>(agentResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
+
+	@GetMapping(value = "/agents/list/{userNo}")
+	public ResponseEntity<AgentResultDto> agentList(@PathVariable int userNo) {
 
 		AgentResultDto agentResultDto;
 
 		
-		agentResultDto = service.agentList();
+		agentResultDto = service.agentList(userNo);
 		
 		if (agentResultDto.getResult() == SUCCESS) {
 
@@ -45,7 +61,6 @@ public class AgentController extends HttpServlet {
 			return new ResponseEntity<AgentResultDto>(agentResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
 	
 	@GetMapping(value = "/agents/{agentNo}")
 	public ResponseEntity<AgentResultDto> agentDetail(@PathVariable int agentNo) {

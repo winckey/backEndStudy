@@ -33,12 +33,12 @@ public class AgentServiceImpl implements AgentService {
 	}
 
 	@Override
-	public AgentResultDto agentList() {
+	public AgentResultDto agentList(int userNo) {
 		AgentResultDto agentResultDto = new AgentResultDto();
 
 		try {
 
-			List<AgentDto> agentDtos = dao.agentList();
+			List<AgentDto> agentDtos = dao.agentList(userNo);
 			//
 			System.out.println("agentDtos ok : " + agentDtos);
 			agentResultDto.setList(agentDtos);

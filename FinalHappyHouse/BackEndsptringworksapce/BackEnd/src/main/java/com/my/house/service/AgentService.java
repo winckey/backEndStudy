@@ -8,8 +8,10 @@ import com.my.house.dto.HouseResultDto;
 
 public interface AgentService {
 
-	AgentResultDto agentList();
-
+//	AgentResultDto agentList();
+	
+	// 즐겨찾기 기능
+	AgentResultDto agentList(int userNo);
 	AgentResultDto agentDetail(int agentNo);
 	
 	

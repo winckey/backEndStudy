@@ -14,7 +14,7 @@ import com.my.house.dto.HouseParamDto;
 @Mapper
 public interface AgentDao {
 	
-	public List<AgentDto> agentList();
+	public List<AgentDto> agentList(int userNo);
 
 	public AgentDto agentDetail(int agentNo);
 

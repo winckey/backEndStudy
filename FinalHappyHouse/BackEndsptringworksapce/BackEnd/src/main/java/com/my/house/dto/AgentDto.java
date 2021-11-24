@@ -68,6 +68,12 @@ public class AgentDto {
 	public void setAgentProfileImageUrl(String agentProfileImageUrl) {
 		this.agentProfileImageUrl = agentProfileImageUrl;
 	}
+	@Override
+	public String toString() {
+		return "AgentDto [agentNo=" + agentNo + ", userNo=" + userNo + ", agentName=" + agentName + ", agentDesc="
+				+ agentDesc + ", agentEmail=" + agentEmail + ", agentPhone=" + agentPhone + ", agentProfileImageUrl="
+				+ agentProfileImageUrl + ", agentRate=" + agentRate + ", userFavoriteCheck=" + userFavoriteCheck + "]";
+	}
 
 
 }

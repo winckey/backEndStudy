@@ -2,12 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.house.dao.AgentDao">
 
-	<select id="agentList" parameterType="map"
+	<select id="agentList" parameterType="int"
 		resultType="com.my.house.dto.AgentDto">
+		select a.* , u.agent_no as user_favorite_check
+		from
+		(
 		select a.* , u.user_name as agent_name, u.user_phone as agent_phone,
-			   u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
-		from agent a , user u
-		where a.user_no = u .user_no
+		            u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
+		      from agent a , user u
+		      where a.user_no = u .user_no
+		) a
+		left outer join
+		(
+		    select agent_no
+		      from user_agent_favorite
+		     where user_no = #{userNo}
+		) u 
+		on a.agent_no = u.agent_no
 	</select>
 	
 	

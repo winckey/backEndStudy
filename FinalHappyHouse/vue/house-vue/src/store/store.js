@@ -280,7 +280,7 @@ export default new Vuex.Store({
 
     agentList(context) {
       http
-        .get("/agents", {
+        .get("/agents/list/"+this.state.user.userNo, {
           // get query string
           params: {
           },
