@@ -10,6 +10,7 @@
           <button class="btn btn-success" type="button">필터</button>
           <!-- enter나 버튼 클릭시 search 동작 -->
         </div>
+       
       </div>
     </div>
     <div class="item">
@@ -22,7 +23,7 @@
         <ul v-show="liCondition" class="list-group">
           <li style="cursor:pointer" v-for="(house, index) in this.$store.state.house.list"
             @click="houseDetail(house.houseNo)" v-bind:key="index" class="list-group-item">
-            <div class="card mb-3" >
+            <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img src="" alt="">
@@ -255,18 +256,21 @@
 
   }
 
+
+
   .item:nth-child(1) {
     flex: 5;
   }
 
   .item:nth-child(2) {
     flex: 1;
-    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   #list-group {
     overflow: auto;
-   
+
   }
 
   #wrapper {
@@ -279,5 +283,76 @@
     left: 2vh;
     z-index: 100;
     background: white;
+  }
+
+  .card {
+    width: 500px;
+    border: none;
+    border-radius: 20px
+  }
+
+  .form-control {
+    border-radius: 7px;
+    border: 1.5px solid #E3E6ED
+  }
+
+  input.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #E3E6ED;
+    background-color: #F7F8FD;
+    letter-spacing: 1px
+  }
+
+  .btn-primary {
+    background-color: #5878FF !important;
+    border-radius: 7px
+  }
+
+  .btn-primary:focus {
+    box-shadow: none
+  }
+
+  .text {
+    font-size: 13px;
+    color: #9CA1A4
+  }
+
+  .price {
+    background: #F5F8FD;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 97px
+  }
+
+  .flex-row {
+    border: 1px solid #F2F2F4;
+    border-radius: 10px;
+    margin: 0 1px 0
+  }
+
+  .flex-column p {
+    font-size: 14px
+  }
+
+  span.mb-2 {
+    font-size: 12px;
+    color: #8896BD
+  }
+
+  h5 span {
+    color: #869099
+  }
+
+  @media screen and (max-width: 450px) {
+    .card {
+      display: flex;
+      justify-content: center;
+      text-align: center
+    }
+
+    .price {
+      border: none;
+      margin: 0 auto
+    }
   }
 </style>

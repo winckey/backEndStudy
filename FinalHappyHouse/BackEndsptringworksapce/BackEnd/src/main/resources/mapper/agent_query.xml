@@ -8,7 +8,6 @@
 			   u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
 		from agent a , user u
 		where a.user_no = u .user_no
-		
 	</select>
 	
 	
