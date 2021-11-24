@@ -22,7 +22,7 @@
         <ul v-show="liCondition" class="list-group">
           <li style="cursor:pointer" v-for="(house, index) in this.$store.state.house.list"
             @click="houseDetail(house.houseNo)" v-bind:key="index" class="list-group-item">
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" >
               <div class="row g-0">
                 <div class="col-md-4">
                   <img src="" alt="">
@@ -90,33 +90,6 @@
         this.map = new kakao.maps.Map(container, options);
       },
 
-      displayMarker(markerPositions) {
-        if (this.markers.length > 0) {
-          this.markers.forEach((marker) => marker.setMap(null));
-        }
-
-        const positions = markerPositions.map(
-          (position) => new kakao.maps.LatLng(...position)
-        );
-
-        if (positions.length > 0) {
-          this.markers = positions.map(
-            (position) =>
-            new kakao.maps.Marker({
-              map: this.map,
-              position,
-            })
-          );
-
-          const bounds = positions.reduce(
-            (bounds, latlng) => bounds.extend(latlng),
-            new kakao.maps.LatLngBounds()
-          );
-
-          this.map.setBounds(bounds);
-        }
-      },
-
 
       houseList() {
         this.$store.dispatch('houseList');
@@ -144,6 +117,8 @@
           });
         }
 
+
+
         for (var i = 0; i < positions.length; i++) {
           // 마커를 생성합니다
           var marker = new kakao.maps.Marker({
@@ -160,12 +135,9 @@
 
 
 
-          // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-          // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-          // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
           kakao.maps.event.addListener(marker, 'mouseover', this.makeOverListener(this.map, marker, infowindow));
           kakao.maps.event.addListener(marker, 'mouseout', this.makeOutListener(infowindow));
-          kakao.maps.event.addListener(marker, 'click', this.houseDetail(positions[i].houseNo));
+
         }
 
       },
@@ -180,7 +152,7 @@
         return function () {
 
           infowindow.open(map, marker);
-        
+
         };
       },
 
@@ -279,7 +251,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    background: lightblue;
+    background: white;
 
   }
 
@@ -294,7 +266,7 @@
 
   #list-group {
     overflow: auto;
-    height: 500px;
+   
   }
 
   #wrapper {
