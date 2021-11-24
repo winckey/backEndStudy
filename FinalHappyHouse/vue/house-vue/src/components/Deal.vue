@@ -3,19 +3,21 @@
     <div class="item">
       <div id="warpper">
         <div id="map"></div>
-        <div id="search">
-          <!-- store 사용 -->
-          <input v-model="$store.state.house.searchWord" @keydown.enter="houseList" type="text" class="form-control">
-          <button @click="houseList" class="btn btn-success" type="button">Search</button>
-          <button class="btn btn-success" type="button">필터</button>
-          <!-- enter나 버튼 클릭시 search 동작 -->
+
+        <div class="input-group"  id="search" >
+          <div class="form-outline" >
+            <input type="search" id="form1" class="form-control" />
+          </div>
+          <button type="button" class="btn btn-primary ms-1" style="border-radius : 10px ">
+            <i class="bi bi-search"></i>
+          </button>
         </div>
 
       </div>
     </div>
     <div class="item">
 
-      <div class="searchTitle">검색결과</div>
+      <div class="searchTitle" >검색결과</div>
       <div v-show="textCondition">
         검색결과가 없습니다!!!!!!!!!!!!!!!
       </div>
@@ -276,7 +278,7 @@
 
   .item:nth-child(2) {
     flex: 1;
-     height: 100vh;
+    height: 100vh;
   }
 
 
@@ -290,7 +292,7 @@
     top: 20vh;
     left: 2vh;
     z-index: 100;
-    background: white;
+   
   }
 
   .card {
@@ -309,11 +311,12 @@
     font-weight: 600;
     font-size: 15px;
   }
+
   #listDiv {
     overflow-x: hidden;
     overflow-y: scroll;
   }
-   
+
   .form-control {
     border-radius: 7px;
     border: 1.5px solid #E3E6ED
