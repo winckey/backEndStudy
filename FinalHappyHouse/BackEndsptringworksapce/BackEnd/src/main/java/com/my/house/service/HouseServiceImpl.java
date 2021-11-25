@@ -65,6 +65,8 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public HouseResultDto houseListSearchWord(HouseParamDto houseParamDto, int min, int max) {
 		
+		
+		
 		HouseResultDto houseResultDto = new HouseResultDto();
 		try {
 			List<HouseDto> list = dao.houseListSearchWordWithFilter(houseParamDto);
