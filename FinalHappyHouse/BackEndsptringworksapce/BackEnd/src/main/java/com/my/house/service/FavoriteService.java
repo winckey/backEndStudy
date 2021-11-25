@@ -1,11 +1,10 @@
 package com.my.house.service;
 
-import com.my.house.dto.UserDto;
-import com.my.house.dto.UserResultDto;
+import com.my.house.dto.FavoriteResultDto;
 public interface FavoriteService {
-	public FavoriteResultDto userRegister(UserDto userDto);
+	public FavoriteResultDto addFavorite(int userNo, int agentNo);
 	
-	public FavoriteResultDto userDelete(String userId);
+	public FavoriteResultDto removeFavorite(int userNo, int agentNo);
 
 
 }

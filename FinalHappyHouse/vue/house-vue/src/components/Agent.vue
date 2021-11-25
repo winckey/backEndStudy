@@ -151,14 +151,10 @@ export default {
       if (agent.userFavoriteCheck == 0) {
         // login Id , agentNo로 추가
         this.addFavorite(this.$store.state.user.userNo, agent.agentNo);
-        // 혹시 바로 적용 안되면 다시 agentList로드
-        // this.agentList();
       }
       // 즐겨찾기 O -> 해당 agent 삭제
       else {
         this.removeFavorite(this.$store.state.user.userNo, agent.agentNo);
-        // 혹시 바로 적용 안되면 다시 agentList로드
-        // this.agentList();
       }
     },
 
@@ -166,13 +162,11 @@ export default {
       // console.log("Adduserno : " + userNo);
       // console.log("AddagentNo : " + agentNo);
       http
-        .post("/addFavorite", {
-          userNo: userNo,
-          agentNo: agentNo,
-        })
+        .post("/addFavorite/" + userNo + "/" + agentNo, {})
         .then(({ data }) => {
           console.log("addThisAgentFavorite: data : ");
           console.log(data);
+          this.agentList();
         })
         .catch((error) => {
           console.log("addThisAgentFavorite: error : ");
@@ -185,13 +179,11 @@ export default {
       // console.log("rmAgentNo : " + agentNo);
 
       http
-        .delete("/removeFavorite", {
-          userNo: userNo,
-          agentNo: agentNo,
-        })
+        .delete("/removeFavorite/" + userNo + "/" + agentNo, {})
         .then(({ data }) => {
           console.log("removeThisAgentFavorite: data : ");
           console.log(data);
+          this.agentList();
         })
         .catch((error) => {
           console.log("removeThisAgentFavorite: error : ");

@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.my.house.dao.FavoriteDao">
-<!-- 
+<mapper namespace="com.my.house.dao.UserDao">
+
  	<insert id="userRegister" parameterType="com.my.house.dto.UserDto">
 		insert into user (  user_id,    user_name,   user_password,   user_email,   user_phone,   user_position ) 
 		          values (  #{userId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{userPosition} )
 	</insert>
  
+	<update id="userUpdate" parameterType="com.my.house.dto.UserDto">
+		UPDATE USER SET USER_EMAIL = #{userEmail}, USER_NAME = #{userName}, USER_PHONE = #{userPhone} 
+		 WHERE USER_ID = #{userId}  
+	</update>
+	
+	<update id="userPasswordUpdate" parameterType="com.my.house.dto.UserDto">
+		UPDATE USER SET USER_PASSWORD = #{userPassword}
+		 WHERE USER_ID = #{userId}  
+	</update>
 	
 	<delete id="userDelete" parameterType="String">
 		DELETE FROM user
 		 WHERE USER_ID = #{userId}
-	</delete> -->
+	</delete>
 	
 	
+	<insert id="userFileInsert" parameterType="map" >
+		INSERT INTO USER_FILE ( USER_ID, FILE_NAME, FILE_SIZE, FILE_CONTENT_TYPE, FILE_URL )
+		            VALUES ( #{userId}, #{fileName}, #{fileSize}, #{fileContentType}, #{fileUrl} )
+	</insert>
+	
+	
+	<update id="userFileUrlInsert" parameterType="map" >
+		UPDATE USER SET user_profile_Image_url = #{fileUrl} 
+		 WHERE USER_ID = #{userId}  
+	</update>
+	
+	
+	<delete id="userFileDelete" parameterType="String">
+		DELETE FROM USER_FILE WHERE USER_ID = #{userId}
+	</delete>
+	
+	<select id="userFileUrlDeleteList" parameterType="String" resultType="string">
+		SELECT FILE_URL FROM BOARD_FILE WHERE BOARD_ID = #{boardId}
+	</select>
+
+	<select id="userFavoriteAgentList" parameterType="int" resultType="int">
+		SELECT agent_no FROM user_agent_favorite WHERE user_no = #{userNo}
+	</select>
+
 </mapper>

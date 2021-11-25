@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.my.house.dto.FavoriteResultDto;
+import com.my.house.service.FavoriteService;
 
 @CrossOrigin(/////
 		origins = "http://localhost:5500", allowCredentials = "true", allowedHeaders = "*", methods = {
@@ -28,13 +30,13 @@ public class FavoriteController extends HttpServlet {
 	private static final int FAIL = -1;
 
 
-	@PostMapping(value = "/addFavorite")
-	public ResponseEntity<FavoriteResultDto> agentList(int userNo , int agentNo) {
+	@PostMapping(value = "/addFavorite/{userNo}/{agentNo}")
+	public ResponseEntity<FavoriteResultDto> addFavorite(@PathVariable int userNo ,@PathVariable int agentNo) {
 
 		FavoriteResultDto favoriteResultDto;
 
-		
-		favoriteResultDto = favoriteService.agentList(userNo);
+		System.out.println(userNo);
+		favoriteResultDto = favoriteService.addFavorite(userNo, agentNo);
 		
 		if (favoriteResultDto.getResult() == SUCCESS) {
 
@@ -44,13 +46,13 @@ public class FavoriteController extends HttpServlet {
 		}
 	}
 	
-	@DeleteMapping(value = "/removeFavorite")
-	public ResponseEntity<FavoriteResultDto> agentDetail(int userNo , int agentNo) {
+	@DeleteMapping(value = "/removeFavorite/{userNo}/{agentNo}")
+	public ResponseEntity<FavoriteResultDto> removeFavorite(@PathVariable int userNo ,@PathVariable int agentNo) {
 
 		FavoriteResultDto favoriteResultDto;
 
 		
-		favoriteResultDto = favoriteService.agentDetail(agentNo);
+		favoriteResultDto = favoriteService.removeFavorite(userNo, agentNo);
 		
 		if (favoriteResultDto.getResult() == SUCCESS) {
 
