@@ -10,6 +10,7 @@
               class="form-control"
               v-model="$store.state.house.searchWord"
               @keydown.enter="houseList"
+              style="height: 38.5px; width: 168px"
             />
           </div>
           <button
@@ -27,7 +28,7 @@
               placeholder="price range"
               id="form1"
               class="form-control text-center lh-1 m-2"
-              style="height: 1.7rem; width: 12.7rem"
+              style="height: 30px; width: 177px"
             >
               <div v-if="isFilter">{{ min }}만 &nbsp;&nbsp; ~ &nbsp; &nbsp;{{ max }}만</div>
             </div>
@@ -41,7 +42,7 @@
             <i class="bi bi-gear"></i>
           </button>
           <div v-show="isBtnSet" class="mx-2 mt-1 mb-2 row">
-            <div class="form-check ms-1">
+            <div class="form-check ms-1 mt-1">
               <input
                 @click="manShow()"
                 class="form-check-input"
@@ -51,23 +52,25 @@
               />
               <label class="form-check-label" for="flexCheckDefault"> 필터적용 </label>
             </div>
-            <input
-              type="text"
-              placeholder="Min"
-              class="form-control col-5"
-              id="customRange1"
-              style="width: 6.3rem"
-              v-model="min"
-            />
-            <div class="col-2 text-center" style="font-size: 1.8rem">~</div>
-            <input
-              type="text"
-              placeholder="Max"
-              class="form-control col-5"
-              id="customRange2"
-              style="width: 6.3rem"
-              v-model="max"
-            />
+            <div class="d-flex justify-content-center mt-1">
+              <input
+                type="text"
+                placeholder="   Min"
+                class="form-control col-5"
+                id="customRange1"
+                style="height: 38px; width: 85px"
+                v-model="min"
+              />
+              <div class="col-2" style="font-size: 1.8rem">&nbsp;~</div>
+              <input
+                type="text"
+                placeholder="   Max"
+                class="form-control col-5"
+                id="customRange2"
+                style="height: 38px; width: 85px"
+                v-model="max"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -360,7 +363,7 @@ button {
   left: 2vh;
   z-index: 100;
   background: #e3e6ed;
-  width: 22vh;
+  width: 233px;
   border: solid 1px;
   border-color: #9fb3e6;
   border-radius: 5px;

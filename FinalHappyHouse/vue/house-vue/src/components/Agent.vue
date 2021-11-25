@@ -32,7 +32,7 @@
           <div class="row">
             <!-- favorite 토글 스위치  -->
             <div class="col-10"></div>
-            <div class="col-2 form-check form-switch">
+            <div class="col-2 form-check form-switch mb-2" style="font-size: 1.3rem">
               <input
                 @click="changeToggleData()"
                 class="form-check-input"
@@ -53,16 +53,12 @@
                   <img v-bind:src="agent.agentProfileImageUrl" alt="" class="img-d img-fluid" />
                 </div>
                 <div class="card-overlay card-overlay-hover">
-                  <button
-                    @click="changeFavorite(agent)"
-                    type="button"
-                    class="btn btn-sm btn-warning mt-2"
-                  >
+                  <button @click="changeFavorite(agent)" type="button" class="btn mt-1">
                     <div v-if="agent.userFavoriteCheck != 0">
-                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill" style="color: DarkOrange; font-size: 1.3rem"></i>
                     </div>
                     <div v-else>
-                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star" style="color: DarkOrange; font-size: 1.3rem"></i>
                     </div>
                   </button>
                   <div class="card-header-d">
