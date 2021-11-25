@@ -11,8 +11,10 @@ public class HouseDto {
 	private String jibun;
 	private String lat;
 	private String lng; 
+	private String img;
 	
 	
+
 	public HouseDto() {
 		super();
 	}
@@ -83,7 +85,12 @@ public class HouseDto {
 	public void setLng(String lng) {
 		this.lng = lng;
 	}
-	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	
 
 

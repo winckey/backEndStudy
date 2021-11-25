@@ -277,7 +277,7 @@
   .item:nth-child(2) {
     flex: 1;
     height: 100vh;
-      overflow-x: hidden;
+    overflow-x: hidden;
     overflow-y: scroll;
   }
 
@@ -311,7 +311,9 @@
     font-weight: 600;
     font-size: 15px;
   }
-
+  #listDiv {
+  
+  }
    
   .form-control {
     border-radius: 7px;

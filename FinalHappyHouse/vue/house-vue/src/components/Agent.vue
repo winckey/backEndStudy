@@ -50,7 +50,7 @@
             >
               <div class="card-box-d">
                 <div class="card-img-d">
-                  <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid" />
+                  <img v-bind:src="agent.agentProfileImageUrl" alt="" class="img-d img-fluid" />
                 </div>
                 <div class="card-overlay card-overlay-hover">
                   <button

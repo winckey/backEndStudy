@@ -39,6 +39,12 @@ public class AgentServiceImpl implements AgentService {
 		try {
 
 			List<AgentDto> agentDtos = dao.agentList(userNo);
+			for (int i = 0; i < agentDtos.size(); i++) {
+				if(agentDtos.get(i).getAgentProfileImageUrl() ==null)
+				{
+					agentDtos.get(i).setAgentProfileImageUrl("assets/img/noImage.gif");
+				}
+			}
 			//
 			System.out.println("agentDtos ok : " + agentDtos);
 			agentResultDto.setList(agentDtos);
