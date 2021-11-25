@@ -10,4 +10,5 @@ public interface HouseService {
 	public HouseResultDto dealDetail(HouseParamDto houseParamDto);
 	public int ListTotalCnt(String searchWord); // �??��?�� ?��?�� ?��
 	public HouseResultDto houseListSearchWord(HouseParamDto houseParamDto);
+	public HouseResultDto houseListSearchWord(HouseParamDto houseParamDto, int min, int max);
 }

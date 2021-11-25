@@ -13,15 +13,19 @@ import com.my.house.dto.HouseParamDto;
 
 @Mapper
 public interface HouseDao {
+
+	public List<HouseDto> houseListSearchWord(HouseParamDto houseParamDto);
+	public List<HouseDto> houseListSearchWordWithFilter(HouseParamDto houseParamDto);
+
+	
 	public List<HouseDto> houseList(HouseParamDto houseParamDto);
 	public HouseDto houseDetail(HouseParamDto houseParamDto);
 	//public int ListTotalCnt(String searchWord);
 	//public HouseDto houseDetail(String aptName);
-	public List<HouseDto> houseListSearchWord(HouseParamDto houseParamDto);
 	public String agentName(int agentNo);
 	public List<DealDto> dealList(HouseParamDto houseParamDto);
 	public int agentNo(HouseParamDto houseParamDto);
 	public AgentDto agent(HouseParamDto houseParamDto);
-
+	
 }
 
