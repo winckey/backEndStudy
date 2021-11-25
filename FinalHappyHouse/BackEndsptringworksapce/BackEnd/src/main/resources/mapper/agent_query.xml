@@ -24,9 +24,9 @@
 	
 	<select id="agentDetail" parameterType="int"
 		resultType="com.my.house.dto.AgentDto">
-		select a.* , u.user_name as agent_name, u.user_phone as agent_phone, u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
-		from agent a , user u
-		where a.user_no = u .user_no
+		select a.agent_no, uf.agent_rate , a.user_no, a.agent_desc , u.user_name as agent_name, u.user_phone as agent_phone, u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
+      from agent a , user u , (SELECT count(user_no) as agent_rate FROM user_agent_favorite where user_no = #{agentNo} group by user_no) uf
+      where a.user_no = u .user_no
         and a.agent_no = #{agentNo}
 	</select>
 	
