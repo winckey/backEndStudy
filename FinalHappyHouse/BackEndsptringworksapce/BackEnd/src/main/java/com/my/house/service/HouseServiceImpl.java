@@ -1,6 +1,5 @@
 package com.my.house.service;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,54 +44,65 @@ public class HouseServiceImpl implements HouseService {
 
 		return houseResultDto;
 	}
-	
+
 	@Override
 	public HouseResultDto houseListSearchWord(HouseParamDto houseParamDto) {
 		HouseResultDto houseResultDto = new HouseResultDto();
-		
+
 		try {
 			List<HouseDto> list = dao.houseListSearchWord(houseParamDto);
 			houseResultDto.setList(list);
 			houseResultDto.setResult(SUCCESS);
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			houseResultDto.setResult(FAIL);
 		}
-		
+
 		return houseResultDto;
 	}
-	
+
+	@Override
+	public HouseResultDto houseListSearchWord(HouseParamDto houseParamDto, int min, int max) {
+		
+		HouseResultDto houseResultDto = new HouseResultDto();
+		try {
+			List<HouseDto> list = dao.houseListSearchWordWithFilter(houseParamDto);
+			houseResultDto.setList(list);
+			houseResultDto.setResult(SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			houseResultDto.setResult(FAIL);
+		}
+
+		return houseResultDto;
+	}
 
 	@Override
 	public HouseResultDto dealDetail(HouseParamDto houseParamDto) {
 		HouseResultDto houseResultDto = new HouseResultDto();
-		
+
 		try {
-			
-			
+
 			List<DealDto> dealDtos = dao.dealList(houseParamDto);//
-			System.out.println("dealDtos ok : "+ dealDtos );
+			System.out.println("dealDtos ok : " + dealDtos);
 			HouseDto houseDto = dao.houseDetail(houseParamDto);//
-			System.out.println("houseDto ok : "+ houseDto );
+			System.out.println("houseDto ok : " + houseDto);
 			AgentDto agentDto = dao.agent(houseParamDto);//
-			System.out.println("agentNo ok : "+ agentDto );
-			
-			
-			
-			
+			System.out.println("agentNo ok : " + agentDto);
+
 			houseResultDto.setAgentDto(agentDto);
 			houseResultDto.setDealList(dealDtos);
 			houseResultDto.setDto(houseDto);
-			
+
 			houseResultDto.setResult(SUCCESS);
-			System.out.println("house setResult : "+houseResultDto.getResult());
-			
-		}catch(Exception e) {
+			System.out.println("house setResult : " + houseResultDto.getResult());
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			houseResultDto.setResult(FAIL);
 		}
-		
+
 		return houseResultDto;
 	}
 
@@ -101,7 +111,5 @@ public class HouseServiceImpl implements HouseService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 
 }

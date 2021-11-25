@@ -164,7 +164,7 @@ export default new Vuex.Store({
     },
     SET_HOUSE_LIST(state, list) {
       state.house.list = list;
-      console.log("set house list  : " + state.house.list[1].houseName);
+      
     },
 
     SET_HOUSE_TOTAL_LIST_ITEM_COUNT(state, count) {
@@ -260,6 +260,29 @@ export default new Vuex.Store({
     houseList(context) {
       http
         .get("/houses", {
+          // get query string
+          params: {
+            searchWord: this.state.house.searchWord,
+          },
+        })
+        .then(({
+          data
+        }) => {
+          console.log("house: data : ");
+          console.log(data);
+          if (data.result == "login") {
+            router.push("/login");
+          } else {
+            context.commit("SET_HOUSE_LIST", data.list);
+          }
+        });
+    },
+
+    houseListWithFilter(context,payload) {
+
+     
+      http
+        .get("/houses/"+payload.min+"/"+payload.max, {
           // get query string
           params: {
             searchWord: this.state.house.searchWord,

@@ -28,6 +28,26 @@
 		and g.code = h.code
 	</select>
 	
+	<select id="houseListSearchWordWithFilter" parameterType="map" resultType="com.my.house.dto.HouseDto">
+		select * 
+		from (	select *
+				from house_info
+				where house_name LIKE CONCAT('%', #{searchWord} ,'%') OR dong LIKE CONCAT('%', #{searchWord} ,'%')
+				union
+				select h.*
+				from house_info h, gugun_code g
+				where g.name LIKE CONCAT('%', #{searchWord} ,'%')
+				and g.code = h.code
+			) h,
+			(
+				SELECT avg(cast( replace(dealAmount, ',', '') as decimal)) as amount, house_no 
+				FROM house_deal 
+				group by house_no
+			) d
+		where h.house_no = d.house_no
+		and  d.amount BETWEEN  #{min} and  #{max} ; 
+	</select>
+	
 	<select id="dealList" parameterType="map"  resultType="com.my.house.dto.DealDto">
 		SELECT house_no , dealAmount , dealDay , dealMonth , dealYear , area , floor 
 		FROM finalhouse.house_deal 

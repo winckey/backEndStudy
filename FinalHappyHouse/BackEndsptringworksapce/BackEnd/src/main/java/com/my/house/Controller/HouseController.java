@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,11 +34,32 @@ public class HouseController extends HttpServlet {
 	public ResponseEntity<HouseResultDto> houseList(HouseParamDto houseParamDto) {
 
 		HouseResultDto houseResultDto;
-
+		System.out.println(houseParamDto.getSearchWord());
 		if (houseParamDto.getSearchWord().isEmpty()) {
 			houseResultDto = service.houseList(houseParamDto);
 		} else {
 			houseResultDto = service.houseListSearchWord(houseParamDto);
+		}
+
+		if (houseResultDto.getResult() == SUCCESS) {
+
+			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<HouseResultDto>(houseResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@GetMapping(value = "/houses/{min}/{max}")
+	public ResponseEntity<HouseResultDto> houseListFilter(HouseParamDto houseParamDto , @PathVariable int min,@PathVariable int max) {
+
+		HouseResultDto houseResultDto;
+		System.out.println(min);
+		System.out.println(max);
+		System.out.println(houseParamDto.getSearchWord());
+		
+		if (houseParamDto.getSearchWord().isEmpty()) {
+			houseResultDto = service.houseList(houseParamDto);
+		} else {
+			houseResultDto = service.houseListSearchWord(houseParamDto,min,max);
 		}
 
 		if (houseResultDto.getResult() == SUCCESS) {
