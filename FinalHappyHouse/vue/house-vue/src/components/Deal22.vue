@@ -219,72 +219,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-<<<<<<< HEAD
-  #map {
-    width: 100%;
-    height: 100vh;
-  }
 
-  #pCard {
-    margin: auto;
-    height: 100px;
-    border-radius: 1000px;
-  }
-
-  #searchTitle {
-    text-align: center;
-    margin: 10px;
-    height: 2000px;
-  }
-
-  .button-group {
-    margin: 10px 0px;
-  }
-
-  button {
-    margin: 0 3px;
-  }
-
-  .container2 {
-
-
-    margin: 0;
-    padding: 0;
-
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: white;
-
-  }
-
-
-
-  .item:nth-child(1) {
-    flex: 3;
-  }
-
-  .item:nth-child(2) {
-    flex: 1;
-    height: 100vh;
-  }
-
-
-
-  #wrapper {
-    position: relative;
-  }
-
-  #search {
-    position: absolute;
-    top: 20vh;
-    left: 2vh;
-    z-index: 100;
-
-  }
-
-=======
 #map {
   width: 100%;
   height: 100vh;
@@ -417,7 +352,7 @@ h5 span {
 }
 
 @media screen and (max-width: 450px) {
->>>>>>> b97a1b19da75a165de0644f225c3ba0c64d87143
+
   .card {
     display: flex;
     justify-content: center;
