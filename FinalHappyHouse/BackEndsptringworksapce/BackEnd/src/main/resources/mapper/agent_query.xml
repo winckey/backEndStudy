@@ -24,10 +24,19 @@
 	
 	<select id="agentDetail" parameterType="int"
 		resultType="com.my.house.dto.AgentDto">
-		select a.agent_no, uf.agent_rate , a.user_no, a.agent_desc , u.user_name as agent_name, u.user_phone as agent_phone, u.user_email as agent_email, u.USER_Profile_Image_Url as agent_profile_image_url
-      from agent a , user u , (SELECT count(user_no) as agent_rate FROM user_agent_favorite where user_no = #{agentNo} group by user_no) uf
-      where a.user_no = u .user_no
-        and a.agent_no = #{agentNo}
+		select *
+	from (select a.agent_no , a.agent_desc , a.user_no ,u.user_name as agent_name , u.USER_EMAIL as agent_email , u.USER_PHONE as agent_phone ,u.USER_Profile_Image_Url  as agent_profile_image_url
+	    from agent a , user u
+	     where a.user_no = u.user_no
+	     and a.agent_no = #{agentNo}
+	     )a 
+	     left outer join
+	     (
+	     SELECT count(agent_no) as agent_rate , agent_no
+	     FROM user_agent_favorite 
+	      where user_agent_favorite.agent_no = #{agentNo}
+	      group by agent_no) uf
+	    on a.agent_no= uf.agent_no
 	</select>
 	
 	<select id="agentHouseList" parameterType="int"
