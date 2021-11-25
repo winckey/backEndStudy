@@ -219,7 +219,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 #map {
   width: 100%;
   height: 100vh;
@@ -352,7 +351,6 @@ h5 span {
 }
 
 @media screen and (max-width: 450px) {
-
   .card {
     display: flex;
     justify-content: center;

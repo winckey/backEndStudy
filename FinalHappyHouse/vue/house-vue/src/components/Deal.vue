@@ -5,7 +5,10 @@
         <div id="map"></div>
         <div class="input-group" id="search">
           <div class="form-outline mt-2 ms-2">
-            <input id="form1" class="form-control" v-model="$store.state.house.searchWord" @keydown.enter="houseList" />
+
+            <input id="form1" class="form-control" v-model="$store.state.house.searchWord" @keydown.enter="houseList"
+              style="height: 38.5px; width: 168px" />
+
           </div>
           <button @click="houseList" class="btn btn-primary mt-2 ms-1" type="button" style="border-radius: 10px">
             <i class="bi bi-search"></i>
@@ -13,7 +16,8 @@
 
           <div class="form-outline">
             <div type="text" placeholder="price range" id="form1" class="form-control text-center lh-1 m-2"
-              style="height: 1.7rem; width: 12.7rem">
+              style="height: 30px; width: 177px">
+
               <div v-if="isFilter">{{ min }}만 &nbsp;&nbsp; ~ &nbsp; &nbsp;{{ max }}만</div>
             </div>
           </div>
@@ -21,15 +25,19 @@
             <i class="bi bi-gear"></i>
           </button>
           <div v-show="isBtnSet" class="mx-2 mt-1 mb-2 row">
-            <div class="form-check ms-1">
+
+            <div class="form-check ms-1 mt-1">
               <input @click="manShow()" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
               <label class="form-check-label" for="flexCheckDefault"> 필터적용 </label>
             </div>
-            <input type="text" placeholder="Min" class="form-control col-5" id="customRange1" style="width: 6.3rem"
-              v-model="min" />
-            <div class="col-2 text-center" style="font-size: 1.8rem">~</div>
-            <input type="text" placeholder="Max" class="form-control col-5" id="customRange2" style="width: 6.3rem"
-              v-model="max" />
+            <div class="d-flex justify-content-center mt-1">
+              <input type="text" placeholder="   Min" class="form-control col-5" id="customRange1"
+                style="height: 38px; width: 85px" v-model="min" />
+              <div class="col-2" style="font-size: 1.8rem">&nbsp;~</div>
+              <input type="text" placeholder="   Max" class="form-control col-5" id="customRange2"
+                style="height: 38px; width: 85px" v-model="max" />
+            </div>
+
           </div>
         </div>
       </div>
@@ -157,7 +165,7 @@
           var marker = new kakao.maps.Marker({
             map: this.map, // 마커를 표시할 지도
             position: positions[i].latlng, // 마커의 위치
-            
+
           });
 
           // 마커에 표시할 인포윈도우를 생성합니다
@@ -247,7 +255,7 @@
     mounted() {
       this.detailHouseModal = new Modal(document.getElementById("detailHouseModal"));
 
-      
+
     },
     created() {
       if (window.kakao && window.kakao.maps) {
@@ -266,156 +274,157 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #map {
-    width: 100%;
-    height: 100vh;
-  }
+#map {
+  width: 100%;
+  height: 100vh;
+}
 
-  #pCard {
-    margin: auto;
-    height: 100px;
-    border-radius: 1000px;
-  }
+#pCard {
+  margin: auto;
+  height: 100px;
+  border-radius: 1000px;
+}
 
-  #searchTitle {
-    font-size: large;
-    text-align: center;
-    margin: 10px;
-    height: 100vh;
-  }
+#searchTitle {
+  font-size: large;
+  text-align: center;
+  margin: 10px;
+  height: 100vh;
+}
 
-  .button-group {
-    margin: 10px 0px;
-  }
+.button-group {
+  margin: 10px 0px;
+}
 
-  button {
-    margin: 0 3px;
-  }
+button {
+  margin: 0 3px;
+}
 
-  .container2 {
-    margin: 0;
-    padding: 0;
+.container2 {
+  margin: 0;
+  padding: 0;
 
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: white;
-  }
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: white;
+}
 
-  .item:nth-child(1) {
-    flex: 4;
-  }
+.item:nth-child(1) {
+  flex: 4;
+}
 
-  .item:nth-child(2) {
-    flex: 1;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
+.item:nth-child(2) {
+  flex: 1;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
-  #wrapper {
-    position: relative;
-  }
+#wrapper {
+  position: relative;
+}
 
-  #search {
-    position: absolute;
-    top: 3vh;
-    left: 2vh;
-    z-index: 100;
-    background: #e3e6ed;
-    width: 22vh;
-    border: solid 1px;
-    border-color: #9fb3e6;
-    border-radius: 5px;
-  }
+#search {
+  position: absolute;
+  top: 3vh;
+  left: 2vh;
+  z-index: 100;
+  background: #e3e6ed;
+  width: 233px;
+  border: solid 1px;
+  border-color: #9fb3e6;
+  border-radius: 5px;
+}
 
+.card {
+  width: 500px;
+  border: none;
+  border-radius: 20px;
+}
+
+#cardImg {
+  width: 150px;
+  height: 11vh;
+}
+
+#text {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+#listDiv {
+}
+
+.form-control {
+  border-radius: 7px;
+  border: 1.5px solid #e3e6ed;
+}
+
+input.form-control:focus {
+  box-shadow: none;
+  border: 1.5px solid #e3e6ed;
+  background-color: #f7f8fd;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background-color: #5878ff !important;
+  border-radius: 7px;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.text {
+  font-size: 13px;
+  color: #9ca1a4;
+}
+
+.price {
+  background: #f5f8fd;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 97px;
+}
+
+.flex-row {
+  border: 1px solid #f2f2f4;
+  border-radius: 10px;
+  margin: 0 1px 0;
+}
+
+.flex-column p {
+  font-size: 14px;
+}
+
+span.mb-2 {
+  font-size: 12px;
+  color: #8896bd;
+}
+
+h5 span {
+  color: #869099;
+}
+
+@media screen and (max-width: 450px) {
   .card {
-    width: 500px;
-    border: none;
-    border-radius: 20px;
-  }
-
-  #cardImg {
-    width: 150px;
-    height: 11vh;
-  }
-
-  #text {
-    font-weight: 600;
-    font-size: 15px;
-  }
-
-  #listDiv {}
-
-  .form-control {
-    border-radius: 7px;
-    border: 1.5px solid #e3e6ed;
-  }
-
-  input.form-control:focus {
-    box-shadow: none;
-    border: 1.5px solid #e3e6ed;
-    background-color: #f7f8fd;
-    letter-spacing: 1px;
-  }
-
-  .btn-primary {
-    background-color: #5878ff !important;
-    border-radius: 7px;
-  }
-
-  .btn-primary:focus {
-    box-shadow: none;
-  }
-
-  .text {
-    font-size: 13px;
-    color: #9ca1a4;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 
   .price {
-    background: #f5f8fd;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    width: 97px;
-  }
-
-  .flex-row {
-    border: 1px solid #f2f2f4;
-    border-radius: 10px;
-    margin: 0 1px 0;
-  }
-
-  .flex-column p {
-    font-size: 14px;
-  }
-
-  span.mb-2 {
-    font-size: 12px;
-    color: #8896bd;
-  }
-
-  h5 span {
-    color: #869099;
-  }
-
-  @media screen and (max-width: 450px) {
-    .card {
-      display: flex;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .price {
-      border: none;
-      margin: 0 auto;
-    }
-  }
-
-  .li {
-    width: 100px;
-    /* 정렬하려는 요소의 넓이를 반드시 지정 */
+    border: none;
     margin: 0 auto;
   }
+}
+
+.li {
+  width: 100px;
+  /* 정렬하려는 요소의 넓이를 반드시 지정 */
+  margin: 0 auto;
+}
 </style>

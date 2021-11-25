@@ -1,5 +1,4 @@
 <template>
-  <!-- ======= Intro Section ======= -->
   <div class="intro intro-carousel swiper position-relative">
     <div class="swiper-wrapper">
       <div
