@@ -1,4 +1,3 @@
-
 <template>
   <div class="container2">
     <div class="item">
@@ -446,4 +445,3 @@ h5 span {
   margin: 0 auto;
 }
 </style>
->>>>>>> 48dbfb030f04dedef92c42cc1eac6d004844e16e

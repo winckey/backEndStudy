@@ -48,9 +48,6 @@
               v-bind:key="index"
               v-show="checkFavorite(agent, toggle)"
             >
-              <!-- v-for="(favoriteAgentNo, index2) in this.$store.state.user.userFavoriteAgentList"
-                v-show="agent.agentNo == favoriteAgentNo"
-                v-bind:key="index2" -->
               <div class="card-box-d">
                 <div class="card-img-d">
                   <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid" />
@@ -122,6 +119,7 @@
 </template>
 
 <script>
+import http from "@/common/axios.js";
 export default {
   data() {
     return {
@@ -147,6 +145,59 @@ export default {
     changeToggleData() {
       if (this.toggle == true) this.toggle = false;
       else this.toggle = true;
+    },
+    changeFavorite(agent) {
+      // 즐겨찾기 추가  X
+      if (agent.userFavoriteCheck == 0) {
+        // login Id , agentNo로 추가
+        this.addFavorite(this.$store.state.user.userNo, agent.agentNo);
+        // 혹시 바로 적용 안되면 다시 agentList로드
+        // this.agentList();
+      }
+      // 즐겨찾기 O -> 해당 agent 삭제
+      else {
+        this.removeFavorite(this.$store.state.user.userNo, agent.agentNo);
+        // 혹시 바로 적용 안되면 다시 agentList로드
+        // this.agentList();
+      }
+    },
+
+    addFavorite(userNo, agentNo) {
+      // console.log("Adduserno : " + userNo);
+      // console.log("AddagentNo : " + agentNo);
+      http
+        .post("/addFavorite", {
+          userNo: userNo,
+          agentNo: agentNo,
+        })
+        .then(({ data }) => {
+          console.log("addThisAgentFavorite: data : ");
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log("addThisAgentFavorite: error : ");
+          console.log(error);
+          this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+        });
+    },
+    removeFavorite(userNo, agentNo) {
+      // console.log("rmUserNo : " + userNo);
+      // console.log("rmAgentNo : " + agentNo);
+
+      http
+        .delete("/removeFavorite", {
+          userNo: userNo,
+          agentNo: agentNo,
+        })
+        .then(({ data }) => {
+          console.log("removeThisAgentFavorite: data : ");
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log("removeThisAgentFavorite: error : ");
+          console.log(error);
+          this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+        });
     },
   },
 
