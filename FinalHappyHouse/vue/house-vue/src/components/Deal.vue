@@ -90,7 +90,7 @@
               <div id="pCard" class="card mb-3" style="text-align: center">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img id="cardImg" src="../assets/img/agent-4.jpg" alt="" />
+                    <img id="cardImg" v-bind:src="house.img" alt="" />
                   </div>
                   <div class="col-md-8" style="text-align: left">
                     <div class="card-body">

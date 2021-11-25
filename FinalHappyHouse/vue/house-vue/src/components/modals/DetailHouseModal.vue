@@ -136,7 +136,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
-                        <img src="assets/img/agent-4.jpg" alt="" class="img-fluid"
+                        <img src="assets/img/agent-1.jpg" alt="" class="img-fluid"
                           @click="agentDetail($store.state.agent.agentNo)">
                       </div>
                       <div class="col-md-6 col-lg-4">

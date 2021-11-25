@@ -318,12 +318,12 @@ a:hover {
 }
 .title-box-d .title-d {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .title-box-d .title-d:after {
   content: "";
   position: absolute;
-  width: 70px;
+  width: 80px;
   height: 4px;
   background-color: #2eca6a;
   bottom: 20px;
@@ -786,7 +786,7 @@ a:hover {
 }
 @media (max-width: 575px) {
   .box-collapse .title-box-d .title-d {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1014,7 +1014,7 @@ a:hover {
 }
 @media (min-width: 992px) {
   .intro-single .title-single-box .title-single {
-    font-size: 2.5rem;
+    font-size: 5.0rem;
   }
 }
 .intro-single .breadcrumb-box {

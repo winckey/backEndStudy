@@ -9,7 +9,7 @@
             <div class="col-md-12 col-lg-8">
               <div class="title-single-box">
                 <h1 class="title-single">{{$store.state.agent.agentName}}</h1>
-                <span class="color-text-a">Agent</span>
+                <span class="color-text-a mt-2" style="font-size : 22px;">Agent</span>
               </div>
             </div>
           </div>
@@ -27,36 +27,36 @@
                     <img v-bind:src="$store.state.agent.agentProfileImageUrl" alt="" class="agent-avatar img-fluid">
                   </div>
                 </div>
-                <div class="col-md-5 section-md-t3">
+                <div class="col-md-5 section-md-t3 ms-3">
                   <div class="agent-info-box">
                     <div class="agent-title">
                       <div class="title-box-d">
-                        <h3 class="title-d">{{$store.state.agent.agentName}}
+                        <h3 class="title-d" >{{$store.state.agent.agentName}}
 
                         </h3>
                       </div>
                     </div>
-                    <div class="agent-content mb-3">
-                      <p class="content-d color-text-a">
+                    <div class="agent-content mb-3" >
+                      <p class="content-d color-text-a mt-5 mb-5" style="font-size : 22px;">
                         {{$store.state.agent.agentDesc}}
                       </p>
-                      <div class="info-agents color-a">
+                      <div class="info-agents color-a" >
                         <p>
-                          <strong>Phone: </strong>
-                          <span class="color-text-a">{{$store.state.agent.agentPhone}}</span>
+                          <strong style="font-size : 22px;" >Phone : </strong>
+                          <span class="color-text-a" style="font-size : 22px;">{{$store.state.agent.agentPhone}}</span>
                         </p>
 
                         <p>
-                          <strong>Email: </strong>
-                          <span class="color-text-a">{{$store.state.agent.agentEmail}}</span>
+                          <strong style="font-size : 22px;">Email : </strong>
+                          <span class="color-text-a" style="font-size : 22px;">{{$store.state.agent.agentEmail}}</span>
                         </p>
                         <p>
-                          <strong>rate: </strong>
-                          <span class="color-text-a">{{$store.state.agent.agentRate}}</span>
+                          <strong style="font-size : 22px;">rate : </strong>
+                          <span class="color-text-a" style="font-size : 22px;">{{$store.state.agent.agentRate}}</span>
                         </p>
                       </div>
                     </div>
-                    <div class="socials-footer">
+                    <div class="socials-footer mt-5">
                       <ul class="list-inline">
                         <li class="list-inline-item">
                           <a href="#" class="link-one">
@@ -246,6 +246,7 @@
 </script>
 
 <style>
+
   #detail {
     color: wheat;
     font-weight: bold;
