@@ -49,8 +49,8 @@
                         </div>
                         <div class="copyright-footer">
                             <p class="copyright color-text-a">
-                                &copy; Copyright
-                                <span class="color-a">EstateAgency</span> All Rights Reserved.
+                                &copy; 
+                                <span class="color-a">최이삭장현진</span> All Rights Reserved.
                             </p>
                         </div>
                         <div class="credits">
@@ -60,7 +60,7 @@
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
           -->
-                            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            Designed by <a href="https://bootstrapmade.com/">최이삭장현진</a>
                         </div>
                     </div>
                 </div>
