@@ -17,6 +17,12 @@
           <div
             class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
           >
+            <div class="d-flex justify-content-center py-4">
+              <a href="index.html" class="d-flex align-items-center">
+                <i class="bi bi-house" style="font-size: 1.5rem">&nbsp;</i>
+                <span class="d-none d-lg-block" style="font-size: 1.7rem">HappyHouse</span>
+              </a>
+            </div>
             <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">

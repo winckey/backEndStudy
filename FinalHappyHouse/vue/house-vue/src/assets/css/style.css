@@ -8,11 +8,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+@font-face {
+  font-family: "Gamja Flower", cursive;
+  unicode-range: U+0020-007E;
+  font-style: normal;
+}
 body {
   font-family: "Poppins", sans-serif;
   color: #555555;
 }
-
 h1,
 h2,
 h3,
@@ -199,7 +204,9 @@ a:hover {
   padding: 0.5rem 0.8rem;
   color: #000000;
 }
-.pagination-a .pagination .page-link:hover, .pagination-a .pagination .page-link:active, .pagination-a .pagination .page-link:focus {
+.pagination-a .pagination .page-link:hover,
+.pagination-a .pagination .page-link:active,
+.pagination-a .pagination .page-link:focus {
   background-color: #2eca6a;
 }
 .pagination-a .pagination .page-link span {
@@ -343,7 +350,9 @@ a:hover {
 }
 
 /*------/ Ul Resect /------*/
-.ul-resect ul, .box-comments ul, .list-a ul {
+.ul-resect ul,
+.box-comments ul,
+.list-a ul {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
@@ -352,7 +361,12 @@ a:hover {
 /*------/ Overlay /------*/
 .overlay-a {
   text-decoration: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 27%,
+    rgba(0, 0, 0, 0.65) 90%
+  );
 }
 
 .overlay {
@@ -508,7 +522,8 @@ a:hover {
 .btn {
   transition: 0.5s ease;
 }
-.btn.btn-a, .btn.btn-b {
+.btn.btn-a,
+.btn.btn-b {
   border-radius: 0;
   padding: 1rem 3rem;
   letter-spacing: 0.05rem;
@@ -570,22 +585,26 @@ a:hover {
 .navbar-default.navbar-reduce {
   box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
 }
-.navbar-default.navbar-trans, .navbar-default.navbar-reduce {
+.navbar-default.navbar-trans,
+.navbar-default.navbar-reduce {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.navbar-default.navbar-trans .nav-item, .navbar-default.navbar-reduce .nav-item {
+.navbar-default.navbar-trans .nav-item,
+.navbar-default.navbar-reduce .nav-item {
   position: relative;
   padding-right: 10px;
   padding-bottom: 8px;
   margin-left: 0;
 }
 @media (min-width: 768px) {
-  .navbar-default.navbar-trans .nav-item, .navbar-default.navbar-reduce .nav-item {
+  .navbar-default.navbar-trans .nav-item,
+  .navbar-default.navbar-reduce .nav-item {
     margin-left: 15px;
   }
 }
-.navbar-default.navbar-trans .nav-link, .navbar-default.navbar-reduce .nav-link {
+.navbar-default.navbar-trans .nav-link,
+.navbar-default.navbar-reduce .nav-link {
   font-size: 1.1rem;
   color: #000000;
   font-weight: 600;
@@ -595,7 +614,8 @@ a:hover {
   padding-left: 0;
   padding-right: 0;
 }
-.navbar-default.navbar-trans .nav-link:before, .navbar-default.navbar-reduce .nav-link:before {
+.navbar-default.navbar-trans .nav-link:before,
+.navbar-default.navbar-reduce .nav-link:before {
   content: "";
   position: absolute;
   bottom: 5px;
@@ -608,17 +628,20 @@ a:hover {
   transform-origin: right;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out 0.3s;
 }
-.navbar-default.navbar-trans .nav-link:hover, .navbar-default.navbar-reduce .nav-link:hover {
+.navbar-default.navbar-trans .nav-link:hover,
+.navbar-default.navbar-reduce .nav-link:hover {
   color: #000000;
 }
-.navbar-default.navbar-trans .nav-link:hover:before, .navbar-default.navbar-reduce .nav-link:hover:before {
+.navbar-default.navbar-trans .nav-link:hover:before,
+.navbar-default.navbar-reduce .nav-link:hover:before {
   transform: scaleX(1);
   transform-origin: left;
 }
 .navbar-default.navbar-trans .show > .nav-link:before,
 .navbar-default.navbar-trans .active > .nav-link:before,
 .navbar-default.navbar-trans .nav-link.show:before,
-.navbar-default.navbar-trans .nav-link.active:before, .navbar-default.navbar-reduce .show > .nav-link:before,
+.navbar-default.navbar-trans .nav-link.active:before,
+.navbar-default.navbar-reduce .show > .nav-link:before,
 .navbar-default.navbar-reduce .active > .nav-link:before,
 .navbar-default.navbar-reduce .nav-link.show:before,
 .navbar-default.navbar-reduce .nav-link.active:before {
@@ -668,7 +691,8 @@ a:hover {
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.3, 0.65, 0.355, 1) 0s, opacity 0.31s ease 0s, height 0s linear 0.36s;
+  transition: all 0.5s cubic-bezier(0.3, 0.65, 0.355, 1) 0s, opacity 0.31s ease 0s,
+    height 0s linear 0.36s;
   margin: 0;
   border-radius: 0;
   padding: 12px 0;
@@ -1031,9 +1055,9 @@ a:hover {
 --------------------------------------------------------------*/
 @media (max-width: 767px) {
   .card-box-a,
-.card-box-b,
-.card-box-c,
-.card-box-d {
+  .card-box-b,
+  .card-box-c,
+  .card-box-d {
     margin-bottom: 2.5rem;
   }
 }
@@ -1046,9 +1070,9 @@ a:hover {
 
 @media (min-width: 768px) {
   .grid .card-box-a,
-.grid .card-box-b,
-.grid .card-box-c,
-.grid .card-box-d {
+  .grid .card-box-b,
+  .grid .card-box-c,
+  .grid .card-box-d {
     margin-bottom: 2.5rem;
   }
 }
@@ -1070,21 +1094,21 @@ a:hover {
 }
 @media (min-width: 768px) {
   .card-box-a:hover .img-a,
-.card-box-a:hover .img-b,
-.card-box-b:hover .img-a,
-.card-box-b:hover .img-b {
+  .card-box-a:hover .img-b,
+  .card-box-b:hover .img-a,
+  .card-box-b:hover .img-b {
     transform: scale(1.2);
   }
 }
 @media (min-width: 768px) {
   .card-box-a .price-a,
-.card-box-b .price-a {
+  .card-box-b .price-a {
     font-size: 0.9rem;
   }
 }
 @media (min-width: 992px) {
   .card-box-a .price-a,
-.card-box-b .price-a {
+  .card-box-b .price-a {
     font-size: 1rem;
   }
 }
@@ -1109,7 +1133,12 @@ a:hover {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 27%,
+    rgba(0, 0, 0, 0.65) 90%
+  );
 }
 
 /*======================================
@@ -1254,7 +1283,9 @@ a:hover {
   width: 200px;
   border-color: #313131;
 }
-.property-grid .grid-option .custom-select:hover, .property-grid .grid-option .custom-select:active, .property-grid .grid-option .custom-select:focus {
+.property-grid .grid-option .custom-select:hover,
+.property-grid .grid-option .custom-select:active,
+.property-grid .grid-option .custom-select:focus {
   border-color: #313131;
 }
 .property-grid .grid-option .custom-select option {
@@ -1445,7 +1476,7 @@ a:hover {
 }
 .box-comments .list-comments span {
   display: block;
-  color: #2B2A2A;
+  color: #2b2a2a;
   font-style: italic;
 }
 .box-comments .comment-children {
@@ -1783,7 +1814,9 @@ a:hover {
   font-weight: 600;
   margin-bottom: 15px;
 }
-.form-as #sendmessage.show, .form-as #errormessage.show, .form-as .show {
+.form-as #sendmessage.show,
+.form-as #errormessage.show,
+.form-as .show {
   display: block;
 }
 .form-as .validation {

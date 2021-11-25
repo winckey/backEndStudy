@@ -50,6 +50,7 @@
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-sm btn-outline-success" @click="showInsertModal">글쓰기</button>
 
     <!-- props 사용 X -->
     <!-- <pagination 
@@ -62,8 +63,6 @@
     <pagination v-on:call-parent="movePage"></pagination>
     <!-- v-on:call-parent="@" 자식이 @이라는 부모의 메소드를 호출할것임
                                             방법은 this.$emit("@")이렇게 -->
-
-    <button class="btn btn-sm btn-success" @click="showInsertModal">글쓰기</button>
 
     <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
     <!-- props 제거 -->

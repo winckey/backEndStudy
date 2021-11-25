@@ -1,10 +1,10 @@
 <template>
   <main id="main" class="main">
-    <div class="pagetitle">
+    <div class="pagetitle m-3">
       <h1>Mypage</h1>
-      <hr />
     </div>
     <!-- End Page Title -->
+    <hr />
 
     <section class="section profile">
       <div class="row">
@@ -18,7 +18,7 @@
                 width="150"
               />
               <h2 v-once>{{ userName }}</h2>
-              <h4>POSITION :</h4>
+              <h4>{{ userPosition }}</h4>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -85,8 +85,9 @@
                     <div class="col-lg-9 col-md-8">{{ userEmail }}</div>
                   </div>
 
-                  <div class="text-center mt-3">
-                    <button @click="btnUserDelete" class="btn btn-sm btn-outline-danger">
+                  <div class="text-center mt-3 row">
+                    <div class="col-11"></div>
+                    <button @click="btnUserDelete" class="btn btn-sm btn-outline-danger me-2 col">
                       회원탈퇴
                     </button>
                   </div>
@@ -267,6 +268,7 @@ export default {
 
       userPhone: this.$store.state.user.userPhone,
       userProfileImageUrl: this.$store.state.user.userProfileImageUrl,
+      userPosition: this.$store.state.user.userPosition,
 
       newUserPassword: "",
       newUserPassword2: "",
@@ -482,6 +484,9 @@ export default {
           this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
         });
     },
+  },
+  created() {
+    this.userPosition = this.userPosition == 1 ? "Member" : "Estate Agent";
   },
 };
 </script>

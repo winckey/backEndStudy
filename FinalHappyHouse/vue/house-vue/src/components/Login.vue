@@ -4,7 +4,7 @@
       class="
         section
         register
-        min-vh-100
+        min-vh-75
         d-flex
         flex-column
         align-items-center
@@ -19,8 +19,8 @@
           >
             <div class="d-flex justify-content-center py-4">
               <a href="index.html" class="d-flex align-items-center">
-                <i class="bi bi-house"></i>
-                <span class="d-none d-lg-block">HappyHouse</span>
+                <i class="bi bi-house" style="font-size: 1.5rem">&nbsp;</i>
+                <span class="d-none d-lg-block" style="font-size: 1.7rem">HappyHouse</span>
               </a>
             </div>
             <!-- End Logo -->
@@ -67,11 +67,14 @@
                   <div class="col-12 mt-4">
                     <button @click="login" class="btn btn-success w-100">Login</button>
                   </div>
-                  <div class="col-12">
-                    <p class="small mb-0">
-                      Don't have account?
-                      <router-link to="/register">Create an account</router-link>
-                    </p>
+                  <div>
+                    <p class="small mb-0">Don't have account?</p>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <router-link to="/register" class=""> Create an account</router-link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -82,7 +85,7 @@
               <!-- You can delete the links only if you purchased the pro version. -->
               <!-- Licensing information: https://bootstrapmade.com/license/ -->
               <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-              Designed by Ssafy
+              Designed by Sac and Jin
             </div>
           </div>
         </div>
