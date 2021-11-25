@@ -8,7 +8,7 @@
           <span></span>
           <span></span>
         </button>
-        <router-link to="/main" class="navbar-brand text-brand">Estate<span class="color-b">Agency</span></router-link>
+        <router-link to="/main" class="navbar-brand text-brand">최이삭<span class="color-b">장현진</span></router-link>
 
         <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
           <ul class="navbar-nav">
