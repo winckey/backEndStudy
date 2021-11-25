@@ -224,7 +224,8 @@ export default {
               agentPhone: data.agentDto.agentPhone,
               agentRate: data.agentDto.agentRate,
               agentDesc: data.agentDto.agentDesc,
-              img: "assets/img/post-1.jpg",
+              agentProfileImageUrl : data.agentDto.agentProfileImageUrl,
+              img: data.dto.img,
             });
             console.log("134Line houseName : " + this.$store.state.house.dealList);
             this.houseModal.show();

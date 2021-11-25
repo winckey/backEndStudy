@@ -209,6 +209,7 @@ export default new Vuex.Store({
       state.agent.agentPhone = payload.agentPhone;
       state.agent.agentRate = payload.agentRate;
       state.agent.agentDesc = payload.agentDesc;
+      state.agent.agentProfileImageUrl = payload.agentProfileImageUrl;
       state.house.img = payload.img;
     },
     // for UpdateModal title v-modal

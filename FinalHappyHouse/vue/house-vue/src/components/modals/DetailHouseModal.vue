@@ -2,8 +2,8 @@
   <div class="modal" tabindex="-1" id="detailHouseModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">상세정보</h5>
+        <div class="modal-header" style=" background-color : rgb(95, 220, 200);">
+          <h5 class="modal-title" >상세정보</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -30,7 +30,7 @@
 
                     <div>
 
-                      <img class="image-thumbnail" src="assets/img/slide-1.jpg" alt="">
+                      <img class="image-thumbnail" v-bind:src="$store.state.house.img" alt="">
 
                     </div>
 
@@ -136,7 +136,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
-                        <img src="assets/img/agent-1.jpg" alt="" class="img-fluid"
+                        <img v-bind:src="$store.state.agent.agentProfileImageUrl" alt="" class="img-fluid"
                           @click="agentDetail($store.state.agent.agentNo)">
                       </div>
                       <div class="col-md-6 col-lg-4">

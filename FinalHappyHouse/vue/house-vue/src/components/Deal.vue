@@ -45,7 +45,7 @@
     <div class="item">
       <div class="row">
         <div class="searchTitle m-3" style="font-size: 2rem">검색결과</div>
-        <div v-show="textCondition">검색결과가 없습니다!!!!!!!!!!!!!!!</div>
+        <hr style=" height : 10px;   background-color: gold;">
       </div>
       <div class="row">
         <div id="listDiv">
@@ -230,7 +230,8 @@
                 agentPhone: data.agentDto.agentPhone,
                 agentRate: data.agentDto.agentRate,
                 agentDesc: data.agentDto.agentDesc,
-                img: "assets/img/post-1.jpg",
+                agentProfileImageUrl : data.agentDto.agentProfileImageUrl,
+                img: data.dto.img,
               });
               console.log("134Line houseName : " + this.$store.state.house.dealList);
               this.detailHouseModal.show();
