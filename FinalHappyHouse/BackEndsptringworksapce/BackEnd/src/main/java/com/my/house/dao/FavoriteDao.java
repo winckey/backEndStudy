@@ -9,5 +9,6 @@ public interface FavoriteDao {
 	public int addFavorite(HashMap map);
 	public int removeFavorite(HashMap map);
 	
-		
+	
+	
 }
