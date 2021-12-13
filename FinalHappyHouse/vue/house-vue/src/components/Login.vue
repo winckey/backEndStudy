@@ -128,7 +128,7 @@ export default {
           });
 
           //== <route-link :to=”path”>
-
+          console.log("position : "+this.$store.state.user.userPosition);
           this.$router.push("/main");
         })
         .catch((error) => {

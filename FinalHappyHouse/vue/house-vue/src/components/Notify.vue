@@ -111,6 +111,11 @@
       // 가능한 한 가지 방법
       boardList() {
         this.$store.dispatch("boardList");
+  
+        console.log("position : " + this.$store.state.user.userPosition);
+        if (this.$store.state.user.userPosition == 1) {
+          this.position = true
+        }
       },
 
       // pagination
@@ -253,10 +258,6 @@
       this.insertModal = new Modal(document.getElementById("insertModal"));
       this.detailModal = new Modal(document.getElementById("detailModal"));
       this.updateModal = new Modal(document.getElementById("updateModal"));
-
-      if (this.$store.state.user.userPostion == 1) {
-        this.position = true
-      }
     },
   };
 </script>
